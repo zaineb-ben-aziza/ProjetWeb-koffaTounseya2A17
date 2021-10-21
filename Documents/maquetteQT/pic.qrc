@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/pic">
+        <file>ici/esprit.jpg</file>
+    </qresource>
+</RCC>
