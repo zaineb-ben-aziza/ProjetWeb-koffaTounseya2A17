@@ -57,7 +57,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_ajouter_clicked()
 {
     int id=ui->id->text().toInt();
-       personnel p(id,ui->nmpr->text(),ui->fn->text(),ui->numtel->text(),ui->ville->text(),ui->cin->text(),ui->adrm->text(),ui->adr->text(),ui->datenais->date(),ui->sal->text(),ui->etat1->currentText());
+    float salaire=ui->sal->text().toFloat();
+       personnel p(id,ui->nmpr->text(),ui->fn->text(),ui->numtel->text(),ui->ville->text(),ui->cin->text(),ui->adrm->text(),ui->adr->text(),ui->datenais->date(),salaire,ui->etat1->currentText());
     p.ajouter();
  ui->table1->setModel(p.afficher());
 
@@ -86,7 +87,8 @@ void MainWindow::on_supprimer_clicked()
 void MainWindow::on_modifierPersonnel_clicked()
 {
     int id=ui->id->text().toInt();
-        personnel p(id,ui->nmpr->text(),ui->fn->text(),ui->numtel->text(),ui->ville->text(),ui->cin->text(),ui->adrm->text(),ui->adr->text(),ui->datenais->date(),ui->sal->text(),ui->etat1->currentText());
+     int salaire=ui->sal->text().toInt();
+        personnel p(id,ui->nmpr->text(),ui->fn->text(),ui->numtel->text(),ui->ville->text(),ui->cin->text(),ui->adrm->text(),ui->adr->text(),ui->datenais->date(),salaire,ui->etat1->currentText());
 
         p.modifierPersonnel();
 

@@ -4,12 +4,13 @@
 #include <QSqlQueryModel>
 #include<QDateEdit>
 #include<QDate>
+
 class personnel
 {
 public:
     //constructeur
    personnel();
-   personnel(int id ,QString nomprenom,QString fonctionalitte,QString numtel,QString ville,QString cin,QString email,QString adresse,QDate datenais,QString salaire,QString etat);
+   personnel(int id ,QString nomprenom,QString fonctionalitte,QString numtel,QString ville,QString cin,QString email,QString adresse,QDate datenais,float salaire,QString etat);
 
 
    //crud
@@ -37,7 +38,7 @@ private:
    QString email;
    QString adresse;
    QDate datenais;
-   QString salaire;
+   float salaire;
    QString etat;
 };
 

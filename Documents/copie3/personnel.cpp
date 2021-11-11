@@ -13,10 +13,10 @@ personnel::personnel()
         email="";
         adresse="";
 
-        salaire="";
+
         etat="";
 }
-personnel::personnel(int id ,QString nomprenom ,QString fonctionalitte,QString numtel,QString ville,QString cin,QString email,QString adresse,QDate datenais,QString salaire,QString etat)
+personnel::personnel(int id ,QString nomprenom ,QString fonctionalitte,QString numtel,QString ville,QString cin,QString email,QString adresse,QDate datenais,float salaire,QString etat)
 {
     this->id=id;
     this->nomprenom=nomprenom;
@@ -43,7 +43,9 @@ this->id=id;
 //ajout d'un personnel
 bool personnel::ajouter()
 {
+    QString stringsalaire= QString :: number(salaire);
     QSqlQuery query;
+
  query.prepare("INSERT INTO personnel (idp,nom_prenom,FONCTIONNALITE,numtel,email,ville,adresse,cin,datedenaissance,salaire,etat) values (:id,:nomprenom,:fonctionalitte,:numtel,:email,:ville,:adresse,:cin,(TO_DATE(:datenais,'DD/MM/yyyy')),:salaire,:etat) ");
 
          query.bindValue(":id",id);
@@ -55,7 +57,7 @@ bool personnel::ajouter()
          query.bindValue(":adresse", adresse);
          query.bindValue(":cin", cin);
          query.bindValue(":datenais",datenais.toString("dd/MM/yyyy"));
-         query.bindValue(":salaire", salaire);
+         query.bindValue(":salaire", stringsalaire);
          query.bindValue(":etat", etat);
     return query.exec();
 }
