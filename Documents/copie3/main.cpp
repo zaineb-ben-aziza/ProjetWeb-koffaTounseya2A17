@@ -8,12 +8,23 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
     Connection c;
-    bool test=c.createconnect();
+     bool test=c.createconnect();
+    MainWindow w;
+
+    QMessageBox msgBox;
+
     if(test)
-    {w.show();}
+    {   w.show();
+        msgBox.setWindowTitle("connection avec succee");
+        msgBox.setText("connection effectue");
+        return a.exec();
+    }
 
-
-    return a.exec();
+else
+    {
+        msgBox.setWindowTitle("probleme");
+        msgBox.setText("connection echoue");
+        return a.exec();
+    }
 }

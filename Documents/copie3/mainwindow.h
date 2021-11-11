@@ -16,28 +16,35 @@ public:
     ~MainWindow();
 
 private slots:
-//affiche
-    void on_afficher_clicked();
-
-//supprimer
-    void on_supprimer_clicked();
-//modifier
-    //void on_modifier_clicked();
-
+//gestion des  personnels
+    void on_renitialiser_clicked();
 
     void on_ajouter_clicked();
 
+    void on_afficher_clicked();
 
+    void on_supprimer_clicked();
+
+  void on_modifierPersonnel_clicked();
+
+
+
+
+//gestions  des  congés
 
     void on_chercher_clicked();
 
-    void on_affichersalaire_clicked();
+    void on_ajouterconge_clicked();
 
-    void on_modifier_clicked();
+    void on_afficherConge_clicked();
 
-    void on_renitialiser_clicked();
+    void on_renitialiser_conge_clicked();
 
-    void on_renitialiser_2_clicked();
+    void on_supprimerConge_clicked();
+
+    void on_modifierconge_clicked();
+
+    void on_chercherConge_clicked();
 
 private:
     Ui::MainWindow *ui;

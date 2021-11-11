@@ -9,30 +9,37 @@
 #include <QMessageBox>
 #include <QSqlQueryModel>
 #include<QPixmap>
-
+#include "personnel.h"
+#include"conge.h"
+#include<QDate>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    conge c ;
     ui->setupUi(this);
+    ui->comboBox_2->setModel(c.test());
 
-    QPixmap pix3("C:/Users/user/Documents/maquetteQT/violet.jpg");
-    QPixmap pix4("C:/Users/user/Documents/maquetteQT/y.png");
-QPixmap pix5("C:/Users/user/Documents/maquetteQT/violet.jpg");
 
-      QPixmap pix6("C:/Users/user/Documents/maquetteQT/violet.jpg");
-      QPixmap pix7("C:/Users/user/Documents/maquetteQT/violet.jpg");
-      QPixmap pix8("C:/Users/user/Documents/maquetteQT/violet.jpg");
- QPixmap pix9("C:/Users/user/Documents/maquetteQT/y.png");
+    //des images
+        QPixmap pix3("C:/Users/user/Documents/maquetteQT/y.png");
+         QPixmap pix10("C:/Users/user/Documents/maquetteQT/violet.jpg");
+        QPixmap pix4("C:/Users/user/Documents/maquetteQT/y.png");
+          QPixmap pix5("C:/Users/user/Documents/maquetteQT/iii.png");
+          QPixmap pix6("C:/Users/user/Documents/maquetteQT/violet.jpg");
+          QPixmap pix7("C:/Users/user/Documents/maquetteQT/violet.jpg");
+          QPixmap pix8("C:/Users/user/Documents/maquetteQT/violet.jpg");
+         QPixmap pix9("C:/Users/user/Documents/maquetteQT/y.png");
+        QPixmap pix11("C:/Users/user/Documents/maquetteQT/a.jpg");
+         ui->label_25->setPixmap(pix3.scaled(100,150,Qt::KeepAspectRatio));
+        ui->label_20->setPixmap(pix10.scaled(1200,1000,Qt::KeepAspectRatio));
+          ui->label_23->setPixmap(pix4.scaled(100,150,Qt::KeepAspectRatio));
+         // ui->label_35->setPixmap(pix11.scaled(1200,1000,Qt::KeepAspectRatio));
 
- ui->label_15->setPixmap(pix3.scaled(900,1000,Qt::KeepAspectRatio));
-  ui->label_19->setPixmap(pix4.scaled(100,150,Qt::KeepAspectRatio));
-    ui->label_2->setPixmap(pix5.scaled(900,1000,Qt::KeepAspectRatio));
-
-  ui->label_4->setPixmap(pix6.scaled(900,800,Qt::KeepAspectRatio));
-  ui->label_52->setPixmap(pix7.scaled(900,800,Qt::KeepAspectRatio));
-  ui->label_53->setPixmap(pix8.scaled(900,800,Qt::KeepAspectRatio));
-    ui->label_25->setPixmap(pix9.scaled(100,150,Qt::KeepAspectRatio));
+          ui->label_21->setPixmap(pix6.scaled(1200,1000,Qt::KeepAspectRatio));
+          ui->label_52->setPixmap(pix7.scaled(900,800,Qt::KeepAspectRatio));
+          ui->label_33->setPixmap(pix8.scaled(1200,1000,Qt::KeepAspectRatio));
+            //ui->label_25->setPixmap(pix9.scaled(100,150,Qt::KeepAspectRatio));
 
 }
 
@@ -46,113 +53,58 @@ MainWindow::~MainWindow()
 
 
 
-
-
-//Afficher la  liste  des  personnels
-void MainWindow::on_afficher_clicked()
-{
-
-    QSqlQuery query(QSqlDatabase::database("test-db"));
-    QSqlQueryModel *model=new QSqlQueryModel() ;
-    query.prepare(QString("Select * from personnel"));
-    query.exec();
-    model->setQuery(query);
-    ui->tableView->setModel(model);
-
-
-}
-
-
-//ajouter un personel
+// appel a fonction ajouter personnel
 void MainWindow::on_ajouter_clicked()
 {
-        QString id,NOM_PR,FONCTIONNALITE,NUMTEL,EMAIL,ville,adresse,cin,DATEDENAISSANCE,salaire;
+    int id=ui->id->text().toInt();
+       personnel p(id,ui->nmpr->text(),ui->fn->text(),ui->numtel->text(),ui->ville->text(),ui->cin->text(),ui->adrm->text(),ui->adr->text(),ui->datenais->date(),ui->sal->text(),ui->etat1->currentText());
+    p.ajouter();
+ ui->table1->setModel(p.afficher());
 
-            id=ui->id->text();
-            NOM_PR=ui->nmpr->text();
-           FONCTIONNALITE=ui->fn->text();
-            NUMTEL=ui->numtel->text();
-            EMAIL=ui->adrm->text();
-            ville=ui->ville->text();
-            adresse=ui->adr->text();
-            cin=ui->cin->text();
-            DATEDENAISSANCE=ui->datenais->text();
-            salaire=ui->sal->text();
-            QSqlQuery query(QSqlDatabase::database("test-db"));
-            query.prepare(QString("insert into PERSONNEL values ('"+id+"','"+NOM_PR+"','"+FONCTIONNALITE+"','"+NUMTEL+"','"+EMAIL+"','"+ville+"','"+adresse+"','"+cin+"','"+DATEDENAISSANCE+"','"+salaire+"')"));
-            query.exec();
-    }
+}
 
 
-//supprimer un personnel
+//appel a fonction afficher personnel
+void MainWindow::on_afficher_clicked()
+{
+    personnel p;
+        ui->table1->setModel(p.afficher());
+}
+
+
+//appel a fonction supprimer personnel
 void MainWindow::on_supprimer_clicked()
 {
-    //supprission par id
-    QString id;
-        id=ui->idpers->text();
-
-        QSqlQuery query(QSqlDatabase::database("test-db"));
-        query.prepare(QString("DELETE from personnel where id='"+id+"'"));
-        query.exec();
+    personnel p;
+        p.setid(ui->id->text().toInt());
+        p.supprimer();
+        ui->table1->setModel(p.afficher());
 }
 
 
-//Modifier un personnel
+//appel a fonction modifier personnel
+void MainWindow::on_modifierPersonnel_clicked()
+{
+    int id=ui->id->text().toInt();
+        personnel p(id,ui->nmpr->text(),ui->fn->text(),ui->numtel->text(),ui->ville->text(),ui->cin->text(),ui->adrm->text(),ui->adr->text(),ui->datenais->date(),ui->sal->text(),ui->etat1->currentText());
 
-//void MainWindow::on_modifier_clicked()
-//{
-    //QString idof,nvid;
-       // idof=ui->idof->text();
-       // nvid=ui->nvid->text();
-       // QSqlQuery query(QSqlDatabase::database("test-db"));
-        //query.prepare(QString("update personnel set id='"+nvid+"' where id='"+idof+"'"));
-        //query.exec();
-//}
+        p.modifierPersonnel();
+
+         ui->table1->setModel(p.afficher());
+
+}
 
 
 
-//chercher  un personnel par son id
+//appel chercher  personnel
 void MainWindow::on_chercher_clicked()
 {
-    QString id;
-        id=ui->idcherch->text();
-    QSqlQuery query(QSqlDatabase::database("test-db"));
-    QSqlQueryModel *model=new QSqlQueryModel() ;
-    query.prepare(QString("Select id,nom_prenom,fonctionnalite,numtel,email,ville,adresse,cin,datedenaissance,salaire from personnel where id='"+id+"'"));
-    query.exec();
-    model->setQuery(query);
-    ui->tableView_3->setModel(model);
+    personnel p;
+        p.setid(ui->id->text().toInt());
+        ui->table1->setModel(p.chercher());
 }
 
-//affichage  de la grille des salaires
-void MainWindow::on_affichersalaire_clicked()
-{
-
-    QSqlQuery query(QSqlDatabase::database("test-db"));
-    QSqlQueryModel *model=new QSqlQueryModel() ;
-    query.prepare(QString("Select id,nom_prenom,salaire from personnel"));
-    query.exec();
-    model->setQuery(query);
-    ui->tableView_4->setModel(model);
-}
-
-//modifier un personnel
-void MainWindow::on_modifier_clicked()
-{
-    QString idmodif;
-        idmodif=ui->idmodif->text();
-    QSqlQuery query(QSqlDatabase::database("test-db"));
-    QSqlQueryModel *model=new QSqlQueryModel() ;
-
-    query.prepare(QString("Select nom_prenom,ville,salaire from personnel where  id='"+idmodif+"'"));
-    query.exec();
-
-    model->setQuery(query);
-    ui->combo1->setModel(model);
-
-}
-
-//reset ajout personnel
+//renitialiser personnel
 void MainWindow::on_renitialiser_clicked()
 {
 
@@ -165,11 +117,87 @@ void MainWindow::on_renitialiser_clicked()
         ui->ville->setText("");
         ui->adr->setText("");
         ui->cin->setText("");
-        ui->datenais->setText("");
+
         ui->sal->setText("");
 }
-//reset supprimer personnel
-void MainWindow::on_renitialiser_2_clicked()
+
+//_________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+//bouton ajouter conge
+void MainWindow::on_ajouterconge_clicked()
 {
-  ui->idpers->setText("");
+    QMessageBox msgBox;
+    int id=ui->idconge->text().toInt();
+    conge c(id,ui->datedeb->date(),ui->datefin->date(),"",ui->comboBox_2->currentText());
+
+
+    if (ui->comboBox->currentIndex()!=0)
+    c.settypeconge(ui->comboBox->currentText());
+
+
+     if (c.ajouterConge())
+     {
+
+         msgBox.setText("ajout avec  succes");
+         ui->congetable->setModel(c.afficherConge());
+         msgBox.exec();
+     }
+     else
+     {
+         msgBox.setText("ajout avec  non succes");
+         msgBox.exec();
+     }
+}
+
+
+
+//bouton affichage  conge
+void MainWindow::on_afficherConge_clicked()
+{
+    conge c;
+        ui->congetable->setModel(c.afficherConge());
+        ui->comboBox_2->setModel(c.test());
+
+}
+
+
+//bouton renitialiser conge
+void MainWindow::on_renitialiser_conge_clicked()
+{
+    ui->idconge->setText("");
+
+}
+
+
+//supprimer un conge
+void MainWindow::on_supprimerConge_clicked()
+{
+    conge c;
+        c.settidconge(ui->idconge->text().toInt());
+        c.supprimerConge();
+        ui->congetable->setModel(c.afficherConge());
+}
+
+
+//modifier  la liste des  conges
+void MainWindow::on_modifierconge_clicked()
+{
+    int idconge=ui->idconge->text().toInt();
+        conge c(idconge,ui->datedeb->date(),ui->datefin->date(),ui->comboBox->currentText(),ui->comboBox_2->currentText());
+
+        c.modifierconge();
+
+         ui->congetable->setModel(c.afficherConge());
+}
+
+//chercher  un conge
+
+
+void MainWindow::on_chercherConge_clicked()
+{
+
+        conge c;
+            c.settidconge(ui->idconge->text().toInt());
+            ui->congetable->setModel(c.chercherConge());
+
 }
