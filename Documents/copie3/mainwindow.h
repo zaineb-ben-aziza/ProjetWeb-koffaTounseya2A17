@@ -38,13 +38,45 @@ private slots:
 
     void on_afficherConge_clicked();
 
-    void on_renitialiser_conge_clicked();
+
 
     void on_supprimerConge_clicked();
 
     void on_modifierconge_clicked();
 
     void on_chercherConge_clicked();
+
+
+
+    void on_affichersalaire_2_clicked();
+
+    void on_calcul_clicked();
+
+    void on_trier_clicked();
+
+    void on_trier_2_clicked();
+
+
+
+    void on_trier_3_clicked();
+
+    void on_affichermail_clicked();
+
+    void on_impressionpdf_clicked();
+
+
+
+    void on_table1_activated(const QModelIndex &index);
+
+    void on_congetable_activated(const QModelIndex &index);
+
+    void on_tabemail_activated(const QModelIndex &index);
+
+    void on_impressionpdf_2_clicked();
+
+
+
+    void on_impressionpdf_3_clicked();
 
 private:
     Ui::MainWindow *ui;

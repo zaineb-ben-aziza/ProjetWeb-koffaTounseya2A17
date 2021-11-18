@@ -62,34 +62,55 @@ bool personnel::ajouter()
     return query.exec();
 }
 
+
+
+
 //affichage d'un personnel
 QSqlQueryModel *personnel::afficher()
 {
 QSqlQuery query;
 QSqlQueryModel *model=new QSqlQueryModel();
-query.prepare(QString("Select * from personnel"));
+query.prepare(QString("Select * from personnel order by idp"));
 query.exec();
 model->setQuery(query);
 return model;
 }
 
+
+QString personnel::test()
+{
+    QSqlQuery query;
+    query.prepare(QString("select * from personnel where idp=:id"));
+    query.bindValue(0,id);
+    query.exec();
+    query.next();
+    return query.value(0).toString();//111
+
+}
+
+
+
 //supprimer d'un personnel
 void personnel::supprimer()
 {
     QSqlQuery query(QSqlDatabase::database("test-db"));
-    query.prepare(QString("DELETE from personnel where idp=:id"));
+    query.prepare(QString("DELETE from personnel where idp=:id "));
 
     query.bindValue(":id",id);
     query.exec();
+
+
 }
 
 
 
 
 //modifier  un personnel
-void  personnel::modifierPersonnel()
+void personnel::modifierPersonnel()
 {
     QSqlQuery query(QSqlDatabase::database("test-db"));
+             QString stringsalaire= QString :: number(salaire);
+
         query.prepare(QString("update personnel set nom_prenom=:nomprenom,fonctionnalite=:fonctionalitte,numtel=:numtel,email=:email,ville=:ville,adresse=:adresse,cin=:cin,datedenaissance=TO_DATE(:datenaissance,'DD/MM/yyyy'),salaire=:salaire,etat=:etat where idp=:id"));
         query.bindValue(":id",id);
         query.bindValue(":fonctionalitte",fonctionalitte);
@@ -100,12 +121,16 @@ void  personnel::modifierPersonnel()
         query.bindValue(":adresse", adresse);
         query.bindValue(":cin", cin);
          query.bindValue(":datenaissance",datenais.toString("dd/MM/yyyy"));
-        query.bindValue(":salaire", salaire);
+        query.bindValue(":salaire", stringsalaire);
         query.bindValue(":etat", etat);
-        query.exec();
+      query.exec();
+
+
+
+
 }
 
-
+//chercher  un personnel
 QSqlQueryModel * personnel::chercher()
 {
 
@@ -120,9 +145,75 @@ QSqlQueryModel * personnel::chercher()
 }
 
 
+//affichage  des salaires
+
+QSqlQueryModel *personnel::afficher_Salaire()
+{
+QSqlQuery query;
+QSqlQueryModel *model=new QSqlQueryModel();
+query.prepare(QString("Select idp,nom_prenom,salaire from personnel order by idp"));
+query.exec();
+model->setQuery(query);
+return model;
+}
 
 
+//calcule la somme des  salaires
+QSqlQueryModel *personnel::calcul_somme_salaire()
+{
+QSqlQuery query;
+QSqlQueryModel *model=new QSqlQueryModel();
+query.prepare(QString("SELECT  SUM(salaire) AS somme_total from personnel "));
+query.exec();
+model->setQuery(query);
+return model;
+}
 
+//trier les  salaires asc
+QSqlQueryModel *personnel::tri_asc_salaire()
+{
+QSqlQuery query;
+QSqlQueryModel *model=new QSqlQueryModel();
+query.prepare(QString("select idp,nom_prenom,salaire from personnel order by salaire asc"));
+
+query.exec();
+model->setQuery(query);
+return model;
+}
+
+//trier les  salaires desc
+QSqlQueryModel *personnel::tri_desc_salaire()
+{
+QSqlQuery query;
+QSqlQueryModel *model=new QSqlQueryModel();
+query.prepare(QString("select idp,nom_prenom,salaire from personnel order by salaire desc "));
+query.exec();
+model->setQuery(query);
+return model;
+}
+
+
+//afficher  les adresses  email
+QSqlQueryModel *personnel::afficherEmail()
+{
+QSqlQuery query;
+QSqlQueryModel *model=new QSqlQueryModel();
+query.prepare(QString("Select  email from personnel "));
+query.exec();
+model->setQuery(query);
+return model;
+}
+
+//affichage d'un personnel
+QSqlQueryModel *personnel::afficherBDD()
+{
+QSqlQuery query;
+QSqlQueryModel *model=new QSqlQueryModel();
+query.prepare(QString("Select * from personnel order by idp"));
+query.exec();
+model->setQuery(query);
+return model;
+}
 
 
 

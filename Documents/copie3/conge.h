@@ -24,7 +24,7 @@ public:
          //setters
          void settypeconge(QString);
         void settidconge(int idcong);
-
+QString test2();
 private:
     int idconge;
     QDate datedebut;

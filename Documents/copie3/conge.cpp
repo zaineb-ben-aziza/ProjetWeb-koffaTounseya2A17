@@ -106,8 +106,20 @@ QSqlQueryModel *conge::afficherConge()
 {
 QSqlQuery query;
 QSqlQueryModel *model=new QSqlQueryModel();
-query.prepare(QString("Select * from conge"));
+query.prepare(QString("Select * from conge order by idconge"));
 query.exec();
 model->setQuery(query);
 return model;
+}
+
+
+QString conge::test2()
+{
+    QSqlQuery query;
+    query.prepare(QString("select * from conge where idconge=:id"));
+    query.bindValue(0,idconge);
+    query.exec();
+    query.next();
+    return query.value(0).toString();
+
 }
