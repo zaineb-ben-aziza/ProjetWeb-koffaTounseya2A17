@@ -21,7 +21,7 @@
 		
 		//ajouter ingredient
 		
-		function ajouterReclamation(){
+		function ajouterReclamation($reclamation){
 			$sql="INSERT INTO reclamation (Contenu,Pseudonyme,Type_paiement) 
 			VALUES (:Contenu,:Pseudonyme,:Type_paiement)";
 			$db = config::getConnexion();
@@ -29,9 +29,9 @@
 				$query = $db->prepare($sql);
 				$query->execute([
 					
-					':Contenu'=>$_POST["Contenu"],
-					':Pseudonyme'=>$_POST["Pseudonyme"],
-					':Type_paiement'=>$_POST["Type_paiement"]
+					':Contenu'=> $reclamation->getContenu(),
+					':Pseudonyme'=> $reclamation -> getPseudonyme(),
+					':Type_paiement'=> $reclamation -> getPaiement()
 				]);			
 			}
 			catch (Exception $e){
@@ -52,6 +52,30 @@
 				die('Erreur:'. $e->getMessage());
 			}
 			return $req->execute();
+		}
+
+
+		
+		function modifierReclamation($reclamation, $ID){
+			try {
+				$db = config::getConnexion();
+				$query = $db->prepare(
+					'UPDATE reclamation SET 
+						Contenu= :Contenu, 
+						Pseudonyme= :Pseudonyme, 
+						Type_paiement= :Type_paiement
+					WHERE ID_reclamation= :ID_reclamation'
+				);
+				$query->execute([
+					'Contenu' => $reclamation->getContenu(),
+					'Pseudonyme' => $reclamation->getPseudonyme(),
+					'Type_paiement' => $reclamation->getPaiement(),
+					'ID_reclamation' => $ID
+				]);
+				echo $query->rowCount() . " records UPDATED successfully <br>";
+			} catch (PDOException $e) {
+				$e->getMessage();
+			}
 		}
 
 	}

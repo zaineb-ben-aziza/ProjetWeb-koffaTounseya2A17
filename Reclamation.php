@@ -8,8 +8,7 @@
         
         
         
-        function __construct($ID, $Contenu, $Pseudonyme, $Type_paiement){
-            $this->ID=$ID;
+        function __construct($Contenu, $Pseudonyme, $Type_paiement){
             $this->Contenu=$Contenu;
             $this->Pseudonyme=$Pseudonyme;
             $this->Type_paiement=$Type_paiement;

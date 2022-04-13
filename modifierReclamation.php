@@ -1,3 +1,28 @@
+<?php
+include_once 'C:/xampp/htdocs/Projet/ReclamationC.php';
+$ID = $_GET['id'];
+$error = "";
+
+$reclamation = null;
+
+$reclamationC = new ReclamationC();
+
+if (isset($_POST['Contenu']) &&
+    isset($_POST['Pseudonyme']) &&
+    isset($_POST['Type_paiement'])){
+    
+        if (!empty($_POST['Contenu']) &&
+        !empty($_POST['Pseudonyme']) &&
+        !empty($_POST['Type_paiement'])) {
+            $reclamation = new Reclamation($_POST['Contenu'], $_POST['Pseudonyme'], $_POST['Type_paiement']);
+            $reclamationC->modifierReclamation($reclamation, $ID);
+            header ("Location:afficherReclamation.php");
+        }
+        else
+        $error = "Missing information";
+    }
+?>
+<!DOCTYPE html>
 <html dir="ltr" lang="en">
 
 <head>
@@ -12,9 +37,8 @@
     <meta name="robots" content="noindex,nofollow">
     <title>Kofa Tounseya</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!-- Favicon icon -->
-      <link rel="icon" type="image/png" sizes="32x32" href="C:/xampp/htdocs/projet/icon/icon.png">
+       <link rel="icon" type="image/png" sizes="32x32" href="C:/xampp/htdocs/projet/icon/icon.png">
     <!-- Custom CSS -->
    <link href="css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -50,9 +74,14 @@
                     <!-- Logo -->
                     <!-- ============================================================== -->
                     <a class="navbar-brand" href="dashboard.html">
-                       
+                     
                     </a>
-                   
+                    <!-- ============================================================== -->
+                    <!-- End Logo -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
                     <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
                         href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
@@ -80,8 +109,8 @@
                                 <a href="" class="active">
                                     <i class="fa fa-search"></i>
                                 </a>
-								
-								
+
+
                             </form>
                         </li>
                         <!-- ============================================================== -->
@@ -89,7 +118,7 @@
                         <!-- ============================================================== -->
                         <li>
                             <a class="profile-pic" href="#">
-                                <img src="C:/xampp/htdocs/projet/icon/page.png" alt="user-img" width="50"
+                                <img src="C:/xampp/htdocs/projet/icon/adem.png" alt="user-img" width="50"
                                     class="img-circle"><span class="text-white font-medium">Mehdi Zinelabidine</span></a>
                         </li>
                         <!-- ============================================================== -->
@@ -113,26 +142,27 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                                                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
                                 aria-expanded="false">
                                <i class="bi bi-house-fill"></i>
-							   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
   <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
 </svg>
                                 <span class="hide-menu"> &nbsp &nbsp &nbsp &nbsp Home</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="afficher_Reclamation.php"
+  <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="afficher_utilisateur.php"
                                 aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="hide-menu">Gestion des Reclamation</span>
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">Gestion des Reclamations</span>
                             </a>
                         </li>
-                      
-                        
-                    </ul>
+
+                     
+                       
+                 
 
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -152,7 +182,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Gestion des Reclamations</h4>
+                        <h4 class="page-title">Gestion Reclamations</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
@@ -167,62 +197,48 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-        
+       
             <!-- =======================FORMULAIRE GESTION DES  INGREDIENTS======================================= -->
+           <form name="f"  method="POST">
   <div class="container">
-<button  type ="submit" class="btn btn-primary my-5"><a href="ajouterReclamation.php"  class="text-light"> Ajouter une Reclamation</a> </button>
- <!-- =======================PHP======================================= -->
-<?php
-    include 'C:/xampp/htdocs/projet/ReclamationC.php';
-	$Reclamation=new ReclamationC();
-	$liste=$Reclamation->afficherReclamation(); 
-	
-?>
+<br>
+<br>
+  
+    <input type="hidden" name="id" class="form-control" id="" aria-describedby="emailHelp">
+ 
+ 
+  <!-- <div class="">
+    <label for="exampleInputPassword1" class="">ID Reclamation:</label>
+    <input type="number"  name="ID_reclamation" class="form-control" id="">
+  </div> -->
+  <div class="">
+    <label for="exampleInputPassword1" class="">Contenu:</label>
+    <input type="text"  name="Contenu" class="form-control" id="">
+  </div>
+    <div class="">
+    <label for="exampleInputPassword1" class="">Pseudonyme:</label>
+    <input type="text"  name="Pseudonyme" class="form-control" id="">
+  </div>
+  <div class="">
+    <label for="exampleInputPassword1" class="">Type_paiement:</label>
+    <input type="text"  name="Type_paiement" class="form-control" id="">
+  </div> 
+  <br>
 
-		<table class="table">
-		 
-			<tr>
-				<th>Id</th>
-				<th>Contenu</th>
-				<th>Pseudonyme</th>
-                <th>Type_paiement</th>
-			</tr>
-			
-			<?php
-				foreach($liste as $Reclamation){
-			?>
-			<tr>
-				<td><?php echo $Reclamation['ID_reclamation']; ?></td>
-				<td><?php echo $Reclamation['Contenu']; ?></td>
-				<td><?php echo $Reclamation['Pseudonyme']; ?></td>
-				<td><?php echo $Reclamation['Type_paiement']; ?></td>
-			<td>
-                <?php
-                    echo'
-                    <p> 
-                    <button  type ="submit" class="btn btn-primary my-5"><a href="modifierReclamation.php? id='.$Reclamation['ID_reclamation'].'" class="text-light"> modifier</a> </button>
-                    <button  type ="submit" class="btn btn-danger"><a href="supprimerReclamation.php? deletevar='.$Reclamation['ID_reclamation'].'"  class="text-light"> Supprimer</a> </button></p>
-                    ';
-                ?>
-		</td>
-				
-			</tr>
-            
-			<?php
-				}
-			?>
-			 
-		</table>
-    <!-- =========================END PHP===================================== -->
-	
-	
-   
-   <button type="button" class="btn btn-secondary">Impression PDF</button>
-   <button type="button" class="btn btn-outline-info">Tri Asc</button>
-   <button type="button" class="btn btn-outline-warning">Tri Desc</button>
-  <!-- ===========================END FORMULAIRE================================================================================= -->
- 
- 
+<p><input type="submit"  value="Modifier" class="btn btn-info"  name="modifier">&nbsp;
+<button type="reset" class="btn btn-danger">Reset</button></p>
+
+
+
+  </div>
+</form>
+
+<div id="error">
+<?php echo $error; ?>
+</div>
+
+        <!-- ================================================================================================= -->
+
 
     <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->

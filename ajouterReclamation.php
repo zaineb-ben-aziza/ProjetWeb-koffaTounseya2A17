@@ -1,11 +1,31 @@
 <?php
 include_once 'C:/xampp/htdocs/Projet/ReclamationC.php';
-if(isset($_POST['ajouter'])){
-$Reclamation=new ReclamationC();
-$Reclamation->ajouterReclamation();
-header ("Location:afficherReclamation.php");
+$error = "";
 
-}
+$reclamation = null;
+
+$reclamationC = new ReclamationC();
+
+
+if (isset($_POST['Contenu']) &&
+    isset($_POST['Pseudonyme']) &&
+    isset($_POST['Type_paiement'])){
+    
+        if (!empty($_POST['Contenu']) &&
+        !empty($_POST['Pseudonyme']) &&
+        !empty($_POST['Type_paiement'])) {
+            $reclamation = new Reclamation($_POST['Contenu'], $_POST['Pseudonyme'], $_POST['Type_paiement']);
+            $reclamationC->ajouterReclamation($reclamation);
+            header ("Location:afficherReclamation.php");
+        }
+        else
+        $error = "Missing information";
+    }
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -217,6 +237,10 @@ header ("Location:afficherReclamation.php");
 
   </div>
 </form>
+
+<div id="error">
+            <?php echo $error; ?>
+            </div>
 
         <!-- ================================================================================================= -->
 
