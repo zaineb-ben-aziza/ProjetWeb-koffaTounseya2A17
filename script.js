@@ -3,6 +3,7 @@ function verif()
 {
 	
 //achat//
+var test=false
     var code=document.getElementById("codeing").value
 	var nom=document.getElementById("noming").value
 	var prix=document.getElementById("prixing").value
@@ -26,38 +27,45 @@ function verif()
 
 
 	///obligatoire client
+	for(let i=0;i<nom.length;i++)
+	if(!(nom.charAt(i).toUpperCase()>="A" && nom.charAt(i).toUpperCase()<="Z"))
+	{
+		
+	cnoming.innerHTML="nom doit  etre chaine!"	
+	test=true;
+	}
 
     if(code==0) 
 	{
 ccodeing.innerHTML="saisie du code doit etre obligatoire!"
-return false;
+test=true;
 	}
 	
 	if(nom==0) 
 	{
 cmon.innerHTML="saisie du nom doit etre obligatoire!"
-return false;
+test=true;
 	}
 	
 	if(prix==0) 
 	{
 cprixing.innerHTML="saisie du prix doit etre obligatoire!"
-return false;
+test=true;
 	}
 	
 	if(qte==0) 
 	{
 cqteing.innerHTML="saisie du quantite doit etre obligatoire!"
-return false;
+test=true;
 	}
 
-//code ingredient 3 chiffre
-if((code.length!=3) || (isNaN(code)))
 
+	
+	if(test)
 	{
-	ccodeing.innerHTML="le champs  codeing doit  contenir seulement 3 chiffres!"
-return false;
+		return false
 	}
+	
 
 	}
 	

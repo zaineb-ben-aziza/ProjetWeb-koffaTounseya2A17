@@ -150,7 +150,7 @@ header('Location:afficheringredient.php');
                         </li>
 						
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="promo.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="afficher_promos.php"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="hide-menu">Gestion des promos</span>

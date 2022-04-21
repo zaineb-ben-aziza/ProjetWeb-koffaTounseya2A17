@@ -3,7 +3,7 @@ function verif()
 {
 	
 //achat//
-  
+  var test=false
 	var nom=document.getElementById("noming").value
 	var prix=document.getElementById("prixing").value
 	var qte=document.getElementById("qteing").value
@@ -32,22 +32,25 @@ function verif()
 	if(nom==0) 
 	{
 cmon.innerHTML="saisie du nom doit etre obligatoire!"
-return false;
+test=true;
 	}
 	
 	if(prix==0) 
 	{
 cprixing.innerHTML="saisie du prix doit etre obligatoire!"
-return false;
+test=true;
 	}
 	
 	if(qte==0) 
 	{
 cqteing.innerHTML="saisie du quantite doit etre obligatoire!"
-return false;
+test=true;
 	}
 
-
+if(test)
+	{
+		return false
+	}
 
 	}
 	

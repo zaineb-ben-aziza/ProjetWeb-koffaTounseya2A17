@@ -5,7 +5,8 @@ include_once 'C:/xampp/htdocs/projet/promosC.php';
             $_GET['deletevar'],
             $_POST["nompr"],		
             $_POST["datedeb"],
-            $_POST["datefin"]
+            $_POST["datefin"],
+			 $_POST["codeing"]
            
          );
          $promosC=new promosC();
@@ -200,6 +201,13 @@ include_once 'C:/xampp/htdocs/projet/promosC.php';
             </div>
        
             <!-- =======================FORMULAIRE GESTION DES  INGREDIENTS======================================= -->
+			
+			
+<!-- =========CLICK MODIFIER======================================= -->
+			<?php $promosC=new promosC();
+	$listepromos=$promosC->click_promos($_GET['deletevar']); 
+	foreach($listepromos as $promos){
+	?>
      <form name="f"  method="POST">
 	 <div class="container">
 
@@ -210,17 +218,23 @@ include_once 'C:/xampp/htdocs/projet/promosC.php';
     <input type="hidden"  name="codepr" class="form-control" id="codepr" aria-describedby="emailHelp">
  
   </div>
+  
+  
   <div class="">
-    <label for="exampleInputPassword1" class="">Nom du promo:</label>
-    <input type="text" name="nompr" class="form-control" id="nompr">
+    <label for="exampleInputPassword1" class="">Nom de promo:</label>
+		<!-- =========CLICK MODIFIER======================================= -->
+    <input type="text"  name="nompr" class="form-control" id="" value=<?php echo $promos['codepr'];}?>>
+	
+	
+	
+	<span id="cmon" style="color:#FF0000"> </span>
   </div>
   <br>
     <br>
+	
   <label for="start">DateDebut:</label>
 
-<input type="date" id="datedeb" name="datedeb"
-       value="2018-07-22"
-       >
+<input type="date" id="datedeb" name="datedeb" value="2018-07-22">
    
   <br>
      <br>

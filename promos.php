@@ -4,14 +4,16 @@
 		private $nompr=null;
 		private $datedeb=null;
 		private $datefin=null;
+		private $codeing=null;
 		
 		
 		
-		function __construct($codepr, $nompr, $datedeb, $datefin){
+		function __construct($codepr, $nompr, $datedeb, $datefin,$codeing){
 			$this->codepr=$codepr;
 			$this->nompr=$nompr;
 			$this->datedeb=$datedeb;
 			$this->datefin=$datefin;
+			$this->codeing=$codeing;
 			
 		}
 		//getters
@@ -26,6 +28,10 @@
 		}
 		function getdatefin(){
 			return $this->datefin;
+		}
+		
+		function getcodeing(){
+			return $this->codeing;
 		}
 		
 		

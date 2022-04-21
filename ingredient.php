@@ -1,4 +1,5 @@
 <?php
+
 	class ingredient{
 		private $codeing=null;
 		private $noming=null;

@@ -193,6 +193,7 @@
 				<th>nom promo</th>
 				<th>date debut</th>
 				<th>date fin</th>
+				<th>code ing</th>
 				<th>Operation</th>
 			</tr>
 			<?php
@@ -203,6 +204,7 @@
 				<td>'.$promos['nompr'].' </td>
 				<td>  '.$promos['datedeb'].' </td>
 				<td>  '.$promos['datefin'].' </td>
+				<td>  '.$promos['codeing'].' </td>
 			<td>
 	
 	 <button class="btn btn-info"><a href="update_promos.php? deletevar='.$promos['codepr'].'" class="text-light">Modifier</a></button>

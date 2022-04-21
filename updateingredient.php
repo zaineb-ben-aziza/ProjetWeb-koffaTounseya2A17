@@ -200,6 +200,12 @@ include_once 'C:/xampp/htdocs/projet/ingredientC.php';
             </div>
        
             <!-- =======================FORMULAIRE GESTION DES  INGREDIENTS======================================= -->
+				<?php $ingredientC=new ingredientC();
+	$listeingredient=$ingredientC->click_ingredient($_GET['deletevar']); 
+	foreach($listeingredient as $ingredient){
+	?>
+	
+
      <form name="f"  method="POST">
 		   <div class="container">
 <br>
@@ -211,17 +217,17 @@ include_once 'C:/xampp/htdocs/projet/ingredientC.php';
   </div>
  <div class="">
     <label for="exampleInputPassword1" class="">Nom de l'ingredient:</label>
-    <input type="text"  name="noming" class="form-control" id="noming">
+    <input type="text"  name="noming" class="form-control" id="noming" value=<?php echo $ingredient['noming'];?>>
 	<span id="cmon" style="color:#FF0000"> </span>
   </div>
   <div class="">
     <label for="exampleInputPassword1" class="">Prix de l'ingredient:</label>
-    <input type="number"  step="0.1"   min="1" type="number" placeholder="0.1 TND" name="prixing" class="form-control" id="prixing">
+    <input type="number"  step="0.1"   min="1" type="number" placeholder="0.1 TND" name="prixing" class="form-control" id="prixing" value=<?php echo $ingredient['prixing'];?>>
 	<span id="cprixing" style="color:#FF0000"> </span>
   </div>
     <div class="">
     <label for="exampleInputPassword1" class="">Quantité Disponible:</label>
-    <input type="text"  name="qteing" class="form-control" id="qteing">
+    <input type="text"  name="qteing" class="form-control" id="qteing" value=<?php echo $ingredient['qteing'];}?>>
 	<span id="cqteing" style="color:#FF0000"> </span>
   </div>
   <br>

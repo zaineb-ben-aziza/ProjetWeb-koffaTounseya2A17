@@ -1,5 +1,5 @@
 <?php
-	include 'C:/xampp/htdocs/projet/config.php';
+	include_once 'C:/xampp/htdocs/projet/config.php';
 	include_once 'C:/xampp/htdocs/projet/promos.php';
 	
 		
@@ -21,8 +21,8 @@
 		
 		//ajouter ingredient
 		function ajouterpromos(){
-			$sql="INSERT INTO promo (codepr, nompr, datedeb, datefin) 
-			VALUES (:codepr,:nompr,:datedeb, :datefin)";
+			$sql="INSERT INTO promo (codepr, nompr, datedeb, datefin ,codeing) 
+			VALUES (:codepr,:nompr,:datedeb, :datefin , :codeing)";
 			$db = config::getConnexion();
 			
 			try{
@@ -31,7 +31,8 @@
 					':codepr' => $_POST["codepr"],
 					':nompr' => $_POST["nompr"],
 					':datedeb' => $_POST["datedeb"],
-					':datefin' => $_POST["datefin"]
+					':datefin' => $_POST["datefin"],
+					':codeing' => $_POST["codeing"]
 			
 				]);				
 			}
@@ -88,5 +89,18 @@ try {
 	$e->getMessage();
 }
 }
+
+//CLICK MODIFIER
+function click_promos($codepr){
+			$sql="SELECT * FROM promo where codepr= $codepr";
+			$db = config::getConnexion();
+			try{
+				$liste = $db->query($sql);
+				return $liste;
+			}
+			catch(Exception $e){
+				die('Erreur:'. $e->getMeesage());
+			}
+		}
 	}
 ?>

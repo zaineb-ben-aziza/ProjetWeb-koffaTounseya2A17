@@ -3,6 +3,7 @@ function verif()
 {
 	
 //achat//
+var test=false
     var code=document.getElementById("codepr").value
 	var nom=document.getElementById("nompr").value
 
@@ -22,27 +23,31 @@ function verif()
 
 
 	///obligatoire client
+	
+
 
     if(code==0) 
 	{
 ccodepr.innerHTML="saisie du code doit etre obligatoire!"
-return false;
+test=true;
 	}
 	
 	if(nom==0) 
 	{
 cnompr.innerHTML="saisie du nom doit etre obligatoire!"
-return false;
+test=true;
 	}
 	
 	
 
 //code ingredient 3 chiffre
-if((code.length!=3) || (isNaN(code)))
 
+	
+	
+	
+	if(test)
 	{
-	ccodepr.innerHTML="le champs  codeing doit  contenir seulement 3 chiffres!"
-return false;
+		return false
 	}
 
 	}

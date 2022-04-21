@@ -1,5 +1,5 @@
 <?php
-	include 'C:/xampp/htdocs/projet/config.php';
+	include_once 'C:/xampp/htdocs/projet/config.php';
 	include_once 'C:/xampp/htdocs/projet/ingredient.php';
 	
 		
@@ -72,10 +72,7 @@ try {
 		
 		WHERE codeing= :codeing'
 	);
-	var_dump($ingredient->getcodeing());
-	var_dump($ingredient-> getNoming());
-	var_dump($ingredient->getPrixing());
-	var_dump($ingredient->getqteing());
+
 	$query->execute([
 		':codeing' => $ingredient->getcodeing(),
 		':noming' => $ingredient-> getNoming(),
@@ -90,5 +87,32 @@ try {
 	$e->getMessage();
 }
 }
+
+
+function chercherID($code){
+	
+			$sql="SELECT * FROM ingredient where codeing=$code";
+			$db = config::getConnexion();
+			try{
+				$liste = $db->query($sql);
+				return $liste;
+			}
+			catch(Exception $e){
+				die('Erreur:'. $e->getMeesage());
+			}	
+		}
+		
+		
+		function click_ingredient($codeing){
+			$sql="SELECT * FROM ingredient where codeing= $codeing";
+			$db = config::getConnexion();
+			try{
+				$liste = $db->query($sql);
+				return $liste;
+			}
+			catch(Exception $e){
+				die('Erreur:'. $e->getMeesage());
+			}
+		}
 	}
 ?>

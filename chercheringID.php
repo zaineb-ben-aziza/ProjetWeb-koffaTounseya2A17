@@ -1,17 +1,4 @@
-<?php
-include_once 'C:/xampp/htdocs/projet/promosC.php';
-if(isset($_POST['ajouter'])){
-$promos=new promosC();
-$promos->ajouterpromos();
-header('Location:afficher_promos.php');
 
-}
-//appel liste deroulante ingredient
-include'C:/xampp/htdocs/projet/ingredientC.php';
-	$ingredientC=new ingredientC();
-	$listeingredient=$ingredientC->afficheringredient(); 
-	
-?>
 
 
 <html dir="ltr" lang="en">
@@ -28,20 +15,17 @@ include'C:/xampp/htdocs/projet/ingredientC.php';
     <meta name="robots" content="noindex,nofollow">
     <title>Kofa Tounseya</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!-- Favicon icon -->
-       <link rel="icon" type="image/png" sizes="32x32" href="C:/xampp/htdocs/projet/icon/icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="C:/xampp/htdocs/projet/icon/icon.png">
     <!-- Custom CSS -->
    <link href="css/style.min.css" rel="stylesheet">
-   
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-<script src="script2.js">
-</script>
 </head>
 
 <body>
@@ -69,14 +53,9 @@ include'C:/xampp/htdocs/projet/ingredientC.php';
                     <!-- Logo -->
                     <!-- ============================================================== -->
                     <a class="navbar-brand" href="dashboard.html">
-                      
+                       
                     </a>
-                    <!-- ============================================================== -->
-                    <!-- End Logo -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
+                   
                     <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
                         href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
@@ -137,7 +116,7 @@ include'C:/xampp/htdocs/projet/ingredientC.php';
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
+                                                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
                                 aria-expanded="false">
                                <i class="bi bi-house-fill"></i>
 							   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
@@ -147,24 +126,22 @@ include'C:/xampp/htdocs/projet/ingredientC.php';
                                 <span class="hide-menu"> &nbsp &nbsp &nbsp &nbsp Home</span>
                             </a>
                         </li>
-						   <li class="sidebar-item">
+                        <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="afficheringredient.php"
                                 aria-expanded="false">
-                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="hide-menu">Gestion des ingredients</span>
                             </a>
                         </li>
-						
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="afficher_promos.php"
                                 aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="hide-menu">Gestion des promos</span>
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">Gestion des  promos</span>
                             </a>
                         </li>
-                     
-                       
-                 
+                        
+                    </ul>
 
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -184,7 +161,7 @@ include'C:/xampp/htdocs/projet/ingredientC.php';
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Gestion des promos</h4>
+                        <h4 class="page-title">Gestion des ingredients</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
@@ -200,67 +177,56 @@ include'C:/xampp/htdocs/projet/ingredientC.php';
                 <!-- /.col-lg-12 -->
             </div>
         
-<!-- =======================FORMULAIRE GESTION DES  PROMOS======================================= -->
-
-
-           <form name="f"  method="POST">
-		  <div class="container">
-
-<br>
-<br>
-  <div class="">
-    <label for="exampleInputEmail1" class="">code du promo:</label>
-    <input type="text"  name="codepr"class="form-control" id="codepr" aria-describedby="emailHelp">
- <span id="ccodepr" style="color:#FF0000"> </span>
-  </div>
-  
-  <div class="">
-    <label for="exampleInputPassword1" class="">Nom du promo:</label>
-    <input type="text" name="nompr" class="form-control" id="nompr">
-	 <span id="cnompr" style="color:#FF0000"> </span>
-  </div>
-  
-  
-  <br>
-<label  class="dropdown">code ingredient:</label>
-
-<!-- ======LISTE DEROULANTE===== -->
-<select name="codeing">
-    <option value="">choisir un code d'ingredient</option>
-	<?php
-foreach($listeingredient as $ingredient){
-?>
-<option value=<?php echo $ingredient['codeing'];?>><?php echo $ingredient['codeing'];}?></option>
+            <!-- =======================FORMULAIRE GESTION DES  INGREDIENTS======================================= -->
+  <div class="container">
+<button  type ="submit" class="btn btn-primary my-5"><a href="ajouteringredient.php"  class="text-light"> Ajouter un ingrédient</a> </button>
+ <!-- =======================PHP======================================= -->
  
-</select>
+
+
+<?php
+include_once 'C:/xampp/htdocs/projet/ingredientC.php';
+if(isset($_POST['chercher'])){
+$ingredient=new ingredientC();
+$listeingredient=$ingredient->chercherID($_POST["code"]);
+echo'
+<table class="table">
+		 
+			<tr>
+				<th>code ingredient</th>
+				<th>nom ingredient</th>
+				<th>prix ingredient</th>
+				<th>quantite ingredient</th>
+				<th>Operation</th>
+			</tr>
+				';
+				foreach($listeingredient as $ingredient){
+					echo'
+		
+			<tr>
+				<td>  '.$ingredient['codeing'].' </td>
+				<td>'.$ingredient['noming'].' </td>
+				<td>  '.$ingredient['prixing'].' </td>
+				<td>  '.$ingredient['qteing'].' </td>
+			<td>
+	
+	 <button class="btn btn-info"><a href="updateingredient.php? deletevar='.$ingredient['codeing'].'" class="text-light">Modifier</a></button>
+  <button class="btn btn-danger"><a href="supprimeringredient.php? deletevar='.$ingredient['codeing'].'" class="text-light">Delete</a></button>
   
-  
-  
-  <br>
-    <br>
-  <label for="start">DateDebut:</label>
-
-<input type="date" id="datedeb" name="datedeb"
-       value="2018-07-22"
-       >
-    <span id="cdatedeb" style="color:#FF0000"> </span>
-  <br>
-     <br>
-  <label for="start">DateFin:</label>
-
-<input type="date" id="datefin" name="datefin"
-       value="2018-07-22"
-       >
-	   <span id="cdatefin" style="color:#FF0000"> </span>
-    <br>
-  <br>
-<p><input type="submit"  value="Ajouter" class="btn btn-info"  name="ajouter" onclick="return verif()" >&nbsp &nbsp 
-<input type="Reset"  value="Annuler" class="btn btn-danger"  ></p>
-</form>
+		</td>
+				
+			</tr>';
+			
+				}
+			
+}
+?>
 
 
-<!-- ================================================================================================= -->
 
+		
+
+ 
 
     <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
