@@ -5,14 +5,20 @@
 		private $noming=null;
 		private $prixing=null;
 		private $qteing=null;
+		private $composant=null;
+	
+	
 		
 		
 		
-		function __construct($codeing, $noming, $prixing, $qteing){
+		function __construct($codeing, $noming, $prixing, $qteing ,$composant){
 			$this->codeing=$codeing;
 			$this->noming=$noming;
 			$this->prixing=$prixing;
 			$this->qteing=$qteing;
+			$this->composant=$composant;
+			
+			
 			
 		}
 		//getters
@@ -28,6 +34,10 @@
 		function getqteing(){
 			return $this->qteing;
 		}
+		function getcomposant(){
+			return $this->composant;
+		}
+		
 		
 		//setters
 		function setcodeing(int $codeing){
@@ -42,6 +52,10 @@
 		function setqteing(int $qteing){
 			$this->qteing=$qteing;
 		}
+		function setcomposant(int $composant){
+			$this->coposant=$composant;
+		}
+		
 		
 		
 	}

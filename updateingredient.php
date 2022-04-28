@@ -5,8 +5,8 @@ include_once 'C:/xampp/htdocs/projet/ingredientC.php';
             $_GET['deletevar'],
             $_POST["noming"],		
             $_POST["prixing"],
-            $_POST["qteing"]
-           
+            $_POST["qteing"],
+            $_POST["composant"]
          );
          $ingredientC=new ingredientC();
          $ingredientC->modifieringredient($ingredient);
@@ -222,15 +222,25 @@ include_once 'C:/xampp/htdocs/projet/ingredientC.php';
   </div>
   <div class="">
     <label for="exampleInputPassword1" class="">Prix de l'ingredient:</label>
-    <input type="number"  step="0.1"   min="1" type="number" placeholder="0.1 TND" name="prixing" class="form-control" id="prixing" value=<?php echo $ingredient['prixing'];?>>
+    <input type="number"  step="0.1"    type="number" placeholder="0.1 TND" name="prixing" class="form-control" id="prixing" value=<?php echo $ingredient['prixing'];?>>
 	<span id="cprixing" style="color:#FF0000"> </span>
   </div>
     <div class="">
     <label for="exampleInputPassword1" class="">Quantité Disponible:</label>
-    <input type="text"  name="qteing" class="form-control" id="qteing" value=<?php echo $ingredient['qteing'];}?>>
+    <input type="text"  name="qteing" class="form-control" id="qteing" value=<?php echo $ingredient['qteing'];?>>
 	<span id="cqteing" style="color:#FF0000"> </span>
   </div>
+     <div class="">
+    <label for="exampleInputPassword1" class="">Composant:</label>
+    <input type="textarea"  name="composant" class="form-control" id="composant" value=<?php echo $ingredient['composant'];}?>>
+	<span id="composant" style="color:#FF0000"> </span>
+  </div>
+  
+  
   <br>
+  
+
+  
 
 
 

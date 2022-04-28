@@ -211,7 +211,7 @@ header('Location:afficheringredient.php');
   </div>
   <div class="">
     <label for="exampleInputPassword1" class="">Prix de l'ingredient:</label>
-    <input type="number"  step="0.1"   min="1" type="number" placeholder="0.1 TND" name="prixing" class="form-control" id="prixing">
+    <input type="number"  step="0.1"    type="number" placeholder="0.1 TND" name="prixing" class="form-control" id="prixing">
 	<span id="cprixing" style="color:#FF0000"> </span>
   </div>
     <div class="">
@@ -219,8 +219,21 @@ header('Location:afficheringredient.php');
     <input type="text"  name="qteing" class="form-control" id="qteing">
 	<span id="cqteing" style="color:#FF0000"> </span>
   </div>
-  <br>
+ 
 
+<div class="">
+<p>Composant:</p>
+ <label for="floatingTextarea"></label>
+  <textarea class="form-control" name="composant" id="composant"></textarea>
+</div>
+ <br>
+     <div class="">
+    <label for="exampleInputPassword1" class="">Image de l'ingredient:</label>
+    <input type="file"  name="image" class="form-control" id="image">
+
+  </div>
+  
+  <br>
 <p><input type="submit"  value="Ajouter" class="btn btn-info"  name="ajouter" onclick="return verif()">&nbsp &nbsp 
 <input type="Reset"  value="Annuler" class="btn btn-danger"  ></p>
 </form>

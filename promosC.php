@@ -90,6 +90,8 @@ try {
 }
 }
 
+	
+
 //CLICK MODIFIER
 function click_promos($codepr){
 			$sql="SELECT * FROM promo where codepr= $codepr";
@@ -101,6 +103,18 @@ function click_promos($codepr){
 			catch(Exception $e){
 				die('Erreur:'. $e->getMeesage());
 			}
+		}
+		function chercherpromo($code){
+	
+			$sql="SELECT * FROM promo where codepr=$code";
+			$db = config::getConnexion();
+			try{
+				$liste = $db->query($sql);
+				return $liste;
+			}
+			catch(Exception $e){
+				die('Erreur:'. $e->getMeesage());
+			}	
 		}
 	}
 ?>

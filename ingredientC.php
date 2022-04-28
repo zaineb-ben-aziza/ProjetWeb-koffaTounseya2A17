@@ -21,8 +21,14 @@
 		
 		//ajouter ingredient
 		function ajouteringredient(){
-			$sql="INSERT INTO ingredient (codeing, noming, prixing, qteing) 
-			VALUES (:codeing,:noming,:prixing, :qteing)";
+		
+			//$image=$_FILES["image"]["name"];
+					//$upload="image/".$image;
+			//move_uploaded_file($_FILES["image"]["tmp_name"],$upload);
+			
+			$sql="INSERT INTO ingredient (codeing, noming, prixing, qteing ,composant) 
+			VALUES (:codeing,:noming,:prixing, :qteing ,:composant)";
+		
 			$db = config::getConnexion();
 			
 			try{
@@ -31,8 +37,11 @@
 					':codeing' => $_POST["codeing"],
 					':noming' => $_POST["noming"],
 					':prixing' => $_POST["prixing"],
-					':qteing' => $_POST["qteing"]
-			
+					':qteing' => $_POST["qteing"],
+					':composant' => $_POST["composant"]
+					
+				
+				
 				]);				
 			}
 			catch (Exception $e){
@@ -68,8 +77,9 @@ try {
 		
 			noming= :noming, 
 			prixing= :prixing, 
-			qteing= :qteing
-		
+			qteing= :qteing,
+			composant= :composant
+			
 		WHERE codeing= :codeing'
 	);
 
@@ -77,8 +87,8 @@ try {
 		':codeing' => $ingredient->getcodeing(),
 		':noming' => $ingredient-> getNoming(),
 		':prixing' => $ingredient->getPrixing(),
-		':qteing' => $ingredient->getqteing()
-
+		':qteing' => $ingredient->getqteing(),
+		':composant' => $ingredient->getcomposant(),
 
 	
 	]);
@@ -101,6 +111,18 @@ function chercherID($code){
 				die('Erreur:'. $e->getMeesage());
 			}	
 		}
+		function chercherNom($code){
+	
+			$sql="SELECT * FROM ingredient where noming=$code";
+			$db = config::getConnexion();
+			try{
+				$liste = $db->query($sql);
+				return $liste;
+			}
+			catch(Exception $e){
+				die('Erreur:'. $e->getMeesage());
+			}	
+		}
 		
 		
 		function click_ingredient($codeing){
@@ -114,5 +136,31 @@ function chercherID($code){
 				die('Erreur:'. $e->getMeesage());
 			}
 		}
+		
+		
+		function triNomASC(){
+            $sql="SELECT * FROM ingredient ORDER BY noming ASC";
+            $db = config::getConnexion();
+            try{
+                $liste = $db->query($sql);
+                return $liste;
+            }
+            catch(Exception $e){
+                die('Erreur:'. $e->getMessage());
+            }
+        }
+
+        function triNomDESC(){
+            $sql="SELECT * FROM ingredient ORDER BY noming DESC";
+            $db = config::getConnexion();
+            try{
+                $liste = $db->query($sql);
+                return $liste;
+            }
+            catch(Exception $e){
+                die('Erreur:'. $e->getMeesage());
+            }
+        }
+
 	}
 ?>

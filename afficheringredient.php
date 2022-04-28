@@ -15,7 +15,7 @@
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!-- Favicon icon -->
-      <link rel="icon" type="image/png" sizes="32x32" href="C:/xampp/htdocs/projet/icon/icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="icon/icon.png">
     <!-- Custom CSS -->
    <link href="css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -90,7 +90,7 @@
                         <!-- ============================================================== -->
                         <li>
                             <a class="profile-pic" href="#">
-                                <img src="C:/xampp/htdocs/projet/icon/adem.png" alt="user-img" width="50"
+                                <img src="icon/adem.png" alt="user-img" width="50"
                                     class="img-circle"><span class="text-white font-medium">Adem Nsir</span></a>
                         </li>
                         <!-- ============================================================== -->
@@ -166,7 +166,7 @@
                             <ol class="breadcrumb ms-auto">
                                 <li><a href="Dashboard.html" class="fw-normal">Home</a></li>
                             </ol>
-                            <a href="https://www.wrappixel.com/templates/ampleadmin/" target="_blank"
+                            <a href="frontafficheing.php" target="_blank"
                                 class="btn btn-danger  d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">front
                                 </a>
                         </div>
@@ -195,6 +195,8 @@
 </nav>
 </form>
 
+
+
  <form method="GET" name="ff">
 <?php
     include'C:/xampp/htdocs/projet/ingredientC.php';
@@ -210,6 +212,7 @@
 				<th>nom ingredient</th>
 				<th>prix ingredient</th>
 				<th>quantite ingredient</th>
+				<th>Composant</th>
 				<th>Operation</th>
 			</tr>
 			<?php
@@ -220,6 +223,7 @@
 				<td>'.$ingredient['noming'].' </td>
 				<td>  '.$ingredient['prixing'].' </td>
 				<td>  '.$ingredient['qteing'].' </td>
+				<td>  '.$ingredient['composant'].' </td>
 			<td>
 	
 	 <button class="btn btn-info"><a href="updateingredient.php? deletevar='.$ingredient['codeing'].'" class="text-light">Modifier</a></button>
@@ -237,10 +241,13 @@
 <!-- =========================END PHP===================================== -->
 	
 	
-   
-   <button type="button" class="btn btn-secondary">Impression PDF</button>
-   <button type="button" class="btn btn-outline-info">Tri Asc</button>
-   <button type="button" class="btn btn-outline-warning">Tri Desc</button>
+     <form method="POST" action="triasc.php"  name="f"  class="container-fluid">
+
+	  <input type="SUBMIT" value="tri par nom" class="btn btn-outline-info" name="triasc">
+	 
+
+
+
   <!-- ===========================END FORMULAIRE================================================================================= -->
  
  

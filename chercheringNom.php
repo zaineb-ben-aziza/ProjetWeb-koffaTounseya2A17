@@ -1,3 +1,6 @@
+
+
+
 <html dir="ltr" lang="en">
 
 <head>
@@ -158,12 +161,12 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Gestion des promos</h4>
+                        <h4 class="page-title">Gestion des ingredients</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
                             <ol class="breadcrumb ms-auto">
-                                <li><a href="frontafficheing.php" class="fw-normal">Home</a></li>
+                                <li><a href="Dashboard.html" class="fw-normal">Home</a></li>
                             </ol>
                             <a href="https://www.wrappixel.com/templates/ampleadmin/" target="_blank"
                                 class="btn btn-danger  d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">front
@@ -176,73 +179,56 @@
         
             <!-- =======================FORMULAIRE GESTION DES  INGREDIENTS======================================= -->
   <div class="container">
-<button  type ="submit" class="btn btn-primary my-5"><a href="ajouter_promos.php"  class="text-light"> Ajouter un promo</a> </button>
-
- <form method="POST" action="chercherpromo.php"  name="f"  class="container-fluid">
- <nav class="navbar navbar-light bg-light">
-  
- <div class="input-group">
-      <span class="input-group-text" id="basic-addon1">   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-</svg>&nbsp </span>
-      <input type="text" class="form-control" name="code" placeholder="Chercher par...">
-	  <input type="SUBMIT" value="chercher" class="btn btn-success" name="chercher">
-	
-    </div>
-</nav>
-</form>
-
-
+<button  type ="submit" class="btn btn-primary my-5"><a href="ajouteringredient.php"  class="text-light"> Ajouter un ingrédient</a> </button>
  <!-- =======================PHP======================================= -->
- <form method="GET" name="ff">
+ 
+
+
 <?php
-    include'C:/xampp/htdocs/projet/promosC.php';
-	$promosC=new promosC();
-	$listepromos=$promosC->afficherpromos(); 
+include_once 'C:/xampp/htdocs/projet/ingredientC.php';
+if(isset($_POST['chercher'])){
+$ingredient=new ingredientC();
+$listeingredient=$ingredient->chercherNom($_POST["code"]);
+echo'
+<table class="table">
+		 
+			<tr>
+				<th>code ingredient</th>
+				<th>nom ingredient</th>
+				<th>prix ingredient</th>
+				<th>quantite ingredient</th>
+				<th>Composant</th>
+				<th>Operation</th>
+			</tr>
+				';
+				foreach($listeingredient as $ingredient){
+					echo'
+		
+			<tr>
+				<td>  '.$ingredient['codeing'].' </td>
+				<td>'.$ingredient['noming'].' </td>
+				<td>  '.$ingredient['prixing'].' </td>
+				<td>  '.$ingredient['qteing'].' </td>
+				<td>  '.$ingredient['composant'].' </td>
+			<td>
+	
+	 <button class="btn btn-info"><a href="updateingredient.php? deletevar='.$ingredient['codeing'].'" class="text-light">Modifier</a></button>
+  <button class="btn btn-danger"><a href="supprimeringredient.php? deletevar='.$ingredient['codeing'].'" class="text-light">Delete</a></button>
+  
+		</td>
+				
+			</tr>';
+			
+				}
+			
+}
+
 ?>
 
 
-		<table class="table">
-		 
-			<tr>
-				<th>code promo</th>
-				<th>nom promo</th>
-				<th>date debut</th>
-				<th>date fin</th>
-				<th>code ing</th>
-				<th>Operation</th>
-			</tr>
-			<?php
-				foreach($listepromos as $promos){
-			echo'
-			<tr>
-				<td>  '.$promos['codepr'].' </td>
-				<td>'.$promos['nompr'].' </td>
-				<td>  '.$promos['datedeb'].' </td>
-				<td>  '.$promos['datefin'].' </td>
-				<td>  '.$promos['codeing'].' </td>
-			<td>
-	
-	 <button class="btn btn-info"><a href="update_promos.php? deletevar='.$promos['codepr'].'" class="text-light">Modifier</a></button>
-  <button class="btn btn-danger"><a href="supprimer_promos.php? deletevar='.$promos['codepr'].'" class="text-light">Delete</a></button>
-  
-		</td>';
-				?>
-			</tr>
-			<?php
-				}
-			?>
-			 
-		</table>
-<!-- =========================END PHP===================================== -->
-	
-	
-   
-   <button type="button" class="btn btn-secondary">Impression PDF</button>
-   <button type="button" class="btn btn-outline-info">Tri Asc</button>
-   <button type="button" class="btn btn-outline-warning">Tri Desc</button>
-  <!-- ===========================END FORMULAIRE================================================================================= -->
- 
+
+		
+
  
 
     <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>

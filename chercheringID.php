@@ -166,7 +166,7 @@
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
                             <ol class="breadcrumb ms-auto">
-                                <li><a href="Dashboard.html" class="fw-normal">Home</a></li>
+                                <li><a href="frontafficheing.php" class="fw-normal">Home</a></li>
                             </ol>
                             <a href="https://www.wrappixel.com/templates/ampleadmin/" target="_blank"
                                 class="btn btn-danger  d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">front
@@ -197,6 +197,7 @@ echo'
 				<th>nom ingredient</th>
 				<th>prix ingredient</th>
 				<th>quantite ingredient</th>
+				<th>Composant</th>
 				<th>Operation</th>
 			</tr>
 				';
@@ -208,6 +209,7 @@ echo'
 				<td>'.$ingredient['noming'].' </td>
 				<td>  '.$ingredient['prixing'].' </td>
 				<td>  '.$ingredient['qteing'].' </td>
+				<td>  '.$ingredient['composant'].' </td>
 			<td>
 	
 	 <button class="btn btn-info"><a href="updateingredient.php? deletevar='.$ingredient['codeing'].'" class="text-light">Modifier</a></button>
