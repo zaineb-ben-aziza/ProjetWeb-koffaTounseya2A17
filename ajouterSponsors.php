@@ -1,12 +1,12 @@
 <?php
 include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/SponsorsC.php";
+
  // create 
  $Sponsors = null;
 
  // create an instance of the controller
  $SponsorsC = new SponsorsC();
  if (
-     isset($_POST["id_Sponsors"]) &&
      isset($_POST["Nom_Sponsors"]) &&		
      isset($_POST["Marque"]) &&
      isset($_POST["Numero"]) && 
@@ -24,7 +24,7 @@ include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/SponsorsC.php";
              $_POST['Nom_Sponsors'],
              $_POST['Marque'], 
              $_POST['Numero'],
-             $_POST['Adresse_mail'],
+             $_POST['Adresse_mail']
          );
          $SponsorsC->ajouterSponsors($Sponsors);
          header ("Location:afficherSponsors.php");
@@ -170,7 +170,7 @@ include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/SponsorsC.php";
                             </a>
                         </li>
   <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="afficher_utilisateur.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="afficherSponsors.php"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">Gestion des Sponsors</span>
@@ -219,10 +219,12 @@ include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/SponsorsC.php";
             <!-- =======================FORMULAIRE GESTION DES Sponsorss ======================================= -->
            <form name="f" action="" method="POST">
   <div class="container">
+
+
 <br>
 <br>
-<label for="exampleInputPassword1" class="">id_Sponsors:</label >
-    <input type="text" name="id_Sponsors" class="form-control" id="id_Sponsors" aria-describedby="emailHelp" value="....">
+
+    <input type="hidden" name="id_Sponsors" class="form-control" id="id_Sponsors" aria-describedby="emailHelp" value="....">
     <span id_Sponsors="cid_Sponsors" style="color:#FF0000"> </span>
  
   <div class="">
@@ -244,10 +246,8 @@ include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/SponsorsC.php";
     <label for="exampleInputPassword1" class="">Adresse_mail:</label>
     <input type="text"  name="Adresse_mail" class="form-control" id="">
   </div>
- 
- 
-  <br>
-
+ <br>
+ <br>
 <p><input type="submit"  value="Ajouter" class="btn btn-info"  name="ajouter" onclick="return verif()">&nbsp;
 <button type="reset" class="btn btn-danger">Reset</button></p>
 

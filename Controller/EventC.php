@@ -2,6 +2,7 @@
 	
 	include_once '../config.php';
 	include_once "$_SERVER[DOCUMENT_ROOT]/projet/Model/Event.php";
+	include_once "$_SERVER[DOCUMENT_ROOT]/projet/Model/Sponsors.php";
 	
 	
 	class EvenementC {
@@ -25,14 +26,14 @@
 				$req->execute();
 			}
 			catch(Exception $e){
-				die('Erreur:'. $e->getMeesage());
+				die('Erreur:'. $e->getMessage());
 			}
 			return $req->execute();
 		}
 		function ajouterEvenement($Evenement){
 			
-			$sql="INSERT INTO events (id_event,Nom,dateDebut,dateFin,description,adresse) 
-			VALUES (:idEvent,:nom,:dateDebut, :dateFin,:descriptions,:adresse)";
+			$sql="INSERT INTO events (id_event,Nom,dateDebut,dateFin,description,adresse,id_Sponsors) 
+			VALUES (:idEvent,:nom,:dateDebut, :dateFin,:descriptions,:adresse,:id_Sponsors)";
 			$db = config::getConnexion();
 			try{
 				$query = $db->prepare($sql);
@@ -42,7 +43,8 @@
 					':dateDebut' => $Evenement->getdateDebut(),
 					':dateFin' => $Evenement->getdateFin(),
 					':descriptions' => $Evenement->getdescriptions(),
-					':adresse' => $Evenement->getadresse()
+					':adresse' => $Evenement->getadresse(),
+					':id_Sponsors' => $Evenement->getid_Sponsors()
 				]);		
 			} 
 			catch (Exception $e){
@@ -73,7 +75,8 @@
 						dateDebut= :date_debut, 
 						dateFin= :date_fin,  
 						description= :DateInscription,
-						adresse=:adresse
+						adresse=:adresse,
+						id_Sponsors=:id_Sponsors
 					WHERE id_event= :id_event'
 				);
 				$query->execute([
@@ -82,7 +85,8 @@
 					':date_fin' => $Evenement->getdateFin(),
 					':DateInscription' => $Evenement->getdescriptions(),
 					':id_event' => $Evenement->getidEvent(),
-					':adresse' => $Evenement->getadresse()
+					':adresse' => $Evenement->getadresse(),
+					':id_Sponsors' => $Evenement->getid_Sponsors()
 
 				]);
 				echo $query->rowCount() . " records UPDATED successfully <br>";

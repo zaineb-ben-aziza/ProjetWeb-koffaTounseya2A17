@@ -1,7 +1,7 @@
 <?php
 	class Sponsors{
 		private $id_Sponsors=null;
-		private $Nom_Sponsors=null;
+		private $nom=null;
 		private $Marque=null;
 		private $Numero=null;
 		private $Adresse_mail=null;
@@ -31,6 +31,7 @@
 			return $this->Adresse_mail;
 		}
 	
+	
         //setters
         function setid_Sponsors(int $id_Sponsors){
 			$this->id_Sponsors=$id_Sponsors;
@@ -47,6 +48,7 @@
 		function setAdresse_mail(string $Adresse_mail){
 			$this->Adresse_mail=$Adresse_mail;
 		}
+	
 		
 	
 		

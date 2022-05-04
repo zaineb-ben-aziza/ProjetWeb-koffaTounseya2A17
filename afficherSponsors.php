@@ -1,7 +1,14 @@
 <?php
     include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/SponsorsC.php";
 	$Sponsors=new SponsorsC();
-	$listeSponsors=$Sponsors->afficherSponsors(); 
+	if (isset($_REQUEST['TriASC'])) {
+        $listeSponsors=$Sponsors->triNomASC(); 
+    } elseif (isset($_REQUEST['TriDESC'])) {
+        $listeSponsors=$Sponsors->triNomDESC(); 
+    } else {
+        $listeSponsors=$Sponsors->afficherSponsors();
+    }
+   // $listeSponsors=$Sponsors->afficherSponsors(); 
 ?>
 <html dir="ltr" lang="en">
 
@@ -178,11 +185,23 @@
 <button  type ="submit" class="btn btn-primary my-5"><a href="ajouterSponsors.php"  class="text-light"> Ajouter un Sponsors</a> </button>
  <!-- =======================PHP======================================= -->
 
+ <form method="POST" action="chercherSponsors.php"  name="f"  class="container-fluid">
+ <nav class="navbar navbar-light bg-light">
+ 
+ <div class="input-group">
+      <span class="input-group-text" id="basic-addon1">   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg>&nbsp </span>
+      <input type="text" class="form-control" name="id_Sponsors" placeholder="Chercher par...">
+ <input type="SUBMIT" value="chercher" class="btn btn-success" name="chercher">
 
+    
+</nav>
+</form>
 		<table class="table">
 		 
 			<tr>
-				<th>idEvent</th>
+				<th>id_Sponsor</th>
 				<th>Nom_Sponsors</th>	
                 <th>Marque</th>
 				<th>Numero</th>
@@ -205,7 +224,7 @@
               
 			<td><?php
                 echo  '
-			<button class="btn btn-info"><a href="modifierSponsors.php? deletevar='.$SponsorsC['id_Sponsors'].'" class="text-light">Modifier </a></button>
+			<button class="btn btn-info"><a href="modifierSponsors.php?deletevar='.$SponsorsC['id_Sponsors'].'" class="text-light">Modifier </a></button>
   <button class="btn btn-danger"><a href="supprimerSponsors.php? deletevar='.$SponsorsC['id_Sponsors'].'" class="text-light">Delete</a></button>
 		</td>';
 				?>
@@ -219,11 +238,16 @@
 		</table>
     <!-- =========================END PHP===================================== -->
 	
-	
+	<form action="" method="POST">
+    </div>
+
+   <button type="submit" name="TriASC" class="btn btn-outline-info">Tri Asc</button>
+   <button type="submit" name="TriDESC" class="btn btn-outline-warning">Tri Desc</button>
+   <button  type ="submit" class="btn btn-primary my-5"><a href="genpdf.php"  class="text-light">Imprimer</a> </button>
+        <button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button>
    
-   <button type="button" class="btn btn-secondary">Impression PDF</button>
-   <button type="button" class="btn btn-outline-info">Tri Asc</button>
-   <button type="button" class="btn btn-outline-warning">Tri Desc</button>
+
+            </form>
   <!-- ===========================END FORMULAIRE================================================================================= -->
  
  

@@ -6,15 +6,18 @@
 		private $dateFin=null;
 		private $descriptions=null;
 		private $adresse;
+		private $id_Sponsors;
 		
 		private $password=null;
-		function __construct($idEvent, $nom, $dateDebut, $dateFin, $descriptions, $adresse){
+		function __construct($idEvent, $nom, $dateDebut, $dateFin, $descriptions, $adresse, $id_Sponsors){
 			$this->idEvent=$idEvent;
 			$this->nom=$nom;
 			$this->dateDebut=$dateDebut;
 			$this->dateFin=$dateFin;
 			$this->descriptions=$descriptions;
 			$this->adresse=$adresse;
+			$this->id_Sponsors=$id_Sponsors;
+
 		}
 		function getidEvent(){
 			return $this->idEvent;
@@ -34,6 +37,9 @@
 		function getadresse(){
 			return $this->adresse;
 		}
+		function getid_Sponsors(){
+			return $this->id_Sponsors;
+		}
         //setters
         function setidEvent(int $idEvent){
 			$this->idEvent=$idEvent;
@@ -52,6 +58,9 @@
 		}
 		function setadresse(string $adresse){
 			$this->adresse=$adresse;
+		}
+		function setid_Sponsors(int $id_Sponsors){
+			$this->id_Sponsors=$id_Sponsors;
 		}
 		
 	}

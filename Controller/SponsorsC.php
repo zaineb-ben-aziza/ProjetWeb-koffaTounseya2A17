@@ -2,7 +2,7 @@
 	
 	include_once '../config.php';
 	include_once "$_SERVER[DOCUMENT_ROOT]/projet/Model/Sponsors.php";
-	
+
 	
 	class SponsorsC {
 		function afficherSponsors(){
@@ -13,9 +13,35 @@
 				return $liste;
 			}
 			catch(Exception $e){
+				die('Erreur:'. $e->getMessage());
+			}
+		}
+
+
+		function triNomASC(){
+			$sql="SELECT * FROM sponsors ORDER BY Nom_Sponsors ASC";
+			$db = config::getConnexion();
+			try{
+				$liste = $db->query($sql);
+				return $liste;
+			}
+			catch(Exception $e){
+				die('Erreur:'. $e->getMessage());
+			}
+		}
+
+		function triNomDESC(){
+			$sql="SELECT * FROM sponsors ORDER BY Nom_Sponsors DESC";
+			$db = config::getConnexion();
+			try{
+				$liste = $db->query($sql);
+				return $liste;
+			}
+			catch(Exception $e){
 				die('Erreur:'. $e->getMeesage());
 			}
 		}
+
 		function supprimerSponsors($id_Sponsors){
 			$sql="DELETE FROM sponsors WHERE id_Sponsors=:id_Sponsors";
 			$db = config::getConnexion();
@@ -42,6 +68,7 @@
 					':Marque' => $Sponsors->getMarque(),
 					':Numero' => $Sponsors->getNumero(),
 					':Adresse_mail' => $Sponsors->getAdresse_mail()
+					
 			
 				]);		
 			} 
@@ -72,7 +99,7 @@
 						Nom_Sponsors= :Nom_Sponsors, 
 						Marque= :Marque, 
 						Numero= :Numero,  
-						Adresse_mail= :Adresse_mail,
+						Adresse_mail= :Adresse_mail
 						
 					WHERE id_Sponsors= :id_Sponsors'
 				);
@@ -89,6 +116,30 @@
 				$e->getMessage();
 			}
 		}
+		function chercherSponsors($id_Sponsors){
+
+			$sql="SELECT * FROM sponsors where id_Sponsors=$id_Sponsors";
+			$db = config::getConnexion();
+			try{
+			$liste = $db->query($sql);
+			return $liste;
+			}
+			catch(Exception $e){
+			die('Erreur:'. $e->getMessage());
+			}
+			}
+			
+		function click_Sponsors($id_Sponsors){
+			$sql="SELECT * FROM sponsors where id_sponsors= $id_Sponsors";
+			$db = config::getConnexion();
+			try{
+			$liste = $db->query($sql);
+			return $liste;
+			}
+			catch(Exception $e){
+			die('Erreur:'. $e->getMeesage());
+			}
+			}
 
 	}
 ?>

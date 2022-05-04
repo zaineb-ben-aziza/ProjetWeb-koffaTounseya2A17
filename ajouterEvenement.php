@@ -1,7 +1,10 @@
 <?php
 include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/EventC.php";
+include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/SponsorsC.php";
  // create 
- $Evenement = null;
+ $Sponsors = null;
+ $SponsorsC=new SponsorsC();
+$listeSponsors=$SponsorsC->afficherSponsors();
 
  // create an instance of the controller
  $EvenementC = new EvenementC();
@@ -11,14 +14,18 @@ include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/EventC.php";
      isset($_POST["date_debut"]) &&
      isset($_POST["date_fin"]) && 
      isset($_POST["descriptions"]) && 
-     isset($_POST["adresse"])
+     isset($_POST["adresse"]) &&
+     isset($_POST["id_Sponsors"])
+
  ) {
      if (
          !empty($_POST['nom']) &&
          !empty($_POST["date_debut"]) && 
          !empty($_POST["date_fin"]) && 
          !empty($_POST["descriptions"]) && 
-         !empty($_POST["adresse"])
+         !empty($_POST["adresse"]) &&
+         !empty($_POST["id_Sponsors"])
+
      ) {
        
          $Evenement = new Evenement(
@@ -27,7 +34,9 @@ include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/EventC.php";
              $_POST['date_debut'], 
              $_POST['date_fin'],
              $_POST['descriptions'],
-             $_POST['adresse']
+             $_POST['adresse'],
+             $_POST['id_Sponsors']
+
          );
          $EvenementC->ajouterEvenement($Evenement);
          header ("Location:afficherEvenement.php");
@@ -224,9 +233,8 @@ include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/EventC.php";
   <div class="container">
 <br>
 <br>
-<label for="exampleInputPassword1" class="">id:</label >
-    <input type="text" name="id" class="form-control" id="id" aria-describedby="emailHelp" value="....">
-    <span id="cid" style="color:#FF0000"> </span>
+<input type="hidden" name="id" class="form-control" id="id" aria-describedby="emailHelp" value="....">
+    <span id_Sponsors="cid_Sponsors" style="color:#FF0000"> </span>
  
   <div class="">
     <label for="exampleInputPassword1" class="">nom:</label >
@@ -251,7 +259,20 @@ include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/EventC.php";
     <label for="exampleInputPassword1" class="">Adresse:</label>
     <input type="text"  name="adresse" class="form-control" id="">
   </div>
-  
+  <div class="">
+<label>Nom_ID_sponsors</label>
+                     <select class="form-control" name="id_Sponsors" id="id_Sponsors">
+                                                            
+                         <?php 
+             foreach ($listeSponsors as $Sponsors){
+          ?>
+ <option value="<?php echo $Sponsors['id_Sponsors']; ?>"><?php echo $Sponsors['Nom_Sponsors']; ?>-<?php echo $Sponsors['id_Sponsors']; ?></option>
+        <?php
+        }
+        ?>
+    </select>
+                                                            
+ </div>
  
   <br>
 

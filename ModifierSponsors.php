@@ -2,7 +2,9 @@
 include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/SponsorsC.php";
  // create 
  $Sponsors = null;
-
+ include_once 'C:/xampp/htdocs/projet/Controller/EventC.php';
+ $EvenementC=new EvenementC();
+ $listeEvenement=$EvenementC->afficherEvent();
  // create an instance of the controller
  $SponsorsC = new SponsorsC();
  if (
@@ -10,20 +12,22 @@ include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/SponsorsC.php";
      isset($_POST["Nom_Sponsors"]) &&		
      isset($_POST["Marque"]) &&
      isset($_POST["Numero"]) && 
-     isset($_POST["Adresse_mail"])  
+     isset($_POST["Adresse_mail"]) 
  ) {
      if (
          !empty($_POST['Nom_Sponsors']) &&
          !empty($_POST["Marque"]) && 
          !empty($_POST["Numero"]) && 
-         !empty($_POST["Adresse_mail"])      ) {
+         !empty($_POST["Adresse_mail"]) 
+              ) {
        
          $Sponsors = new Sponsors(
-            $_GET['deletevar'],
+            $_POST["id_Sponsors"],
              $_POST['Nom_Sponsors'],
              $_POST['Marque'], 
              $_POST['Numero'],
              $_POST['Adresse_mail'],
+             
              
          );
          $SponsorsC->modifierSponsors($Sponsors);
@@ -213,34 +217,44 @@ include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/SponsorsC.php";
             </div>
        
             <!-- =======================FORMULAIRE GESTION DES  SPONSORS======================================= -->
-           <form name="f" action="" method="POST">
+            <?php $SponsorsC=new SponsorsC();
+$listeSponsors=$SponsorsC->click_Sponsors($_GET['deletevar']);
+foreach($listeSponsors as $Sponsors){
+?>
+           
+           
+           
+           
+            <form name="f" action="" method="POST">
   <div class="container">
 <br>
 <br>
   
-    <input type="text" name="id_Sponsors" class="form-control" id="" aria-describedby="emailHelp" value="0">
+    <input type="text" value="<?php echo $_GET['deletevar']; ?>"  name="id_Sponsors" class="form-control" id="" aria-describedby="emailHelp" hidden>
  
  
   <div class="">
     <label for="exampleInputPassword1" class="">Nom_Sponsors:</label>
-    <input type="text"  name="Nom_Sponsors" class="form-control" id="">
+    <input type="text"  name="Nom_Sponsors" class="form-control" id="" value=<?php echo $Sponsors['Nom_Sponsors'];?>>
   </div>
   <div class="">
     <label for="exampleInputPassword1" class="">Marque:</label>
-    <input type="text"  name="Marque" class="form-control" id="">
+    <input type="text"  name="Marque" class="form-control" id="" value=<?php echo $Sponsors['Marque'];?>>
   </div>
     <div class="">
     <label for="exampleInputPassword1" class="">Numero:</label>
-    <input type="text"  name="Numero" class="form-control" id="">
+    <input type="text"  name="Numero" class="form-control" id="" value=<?php echo $Sponsors['Numero'];?> >
   </div>
   <div class="">
     <label for="exampleInputPassword1" class="">Adresse_mail:</label>
-    <input type="text"  name="Adresse_mail" class="form-control" id="">
+    <input type="text"  name="Adresse_mail" class="form-control" id="" value=<?php echo $Sponsors['Adresse_mail'];}?>>
   </div>
   
   
- 
   <br>
+  <br>
+  <br>
+
 
 <p><input type="submit"  value="Modifer" class="btn btn-info"  name="Modifer">&nbsp;
 <button type="reset" class="btn btn-danger">Reset</button></p>

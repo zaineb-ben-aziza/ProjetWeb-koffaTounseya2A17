@@ -1,5 +1,7 @@
 <?php
 include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/EventC.php";
+include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/SponsorsC.php";
+
  // create 
  $Evenement = null;
 
@@ -11,23 +13,26 @@ include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/EventC.php";
      isset($_POST["date_debut"]) &&
      isset($_POST["date_fin"]) && 
      isset($_POST["descriptions"]) && 
-     isset($_POST["adresse"])
+     isset($_POST["adresse"]) &&
+     isset($_POST["id_Sponsors"])
  ) {
      if (
          !empty($_POST['nom']) &&
          !empty($_POST["date_debut"]) && 
          !empty($_POST["date_fin"]) && 
          !empty($_POST["descriptions"]) && 
-         !empty($_POST["adresse"])
+         !empty($_POST["adresse"]) &&
+         !empty($_POST["id_Sponsors"])
      ) {
-       
+        
          $Evenement = new Evenement(
             $_GET['deletevar'],
              $_POST['nom'],
              $_POST['date_debut'], 
              $_POST['date_fin'],
              $_POST['descriptions'],
-             $_POST['adresse']
+             $_POST['adresse'],
+             $_POST['id_Sponsors']
          );
          $EvenementC->modifierEvenement($Evenement);
          header ("Location:afficherEvenement.php");
@@ -245,7 +250,25 @@ include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/EventC.php";
     <input type="text"  name="adresse" class="form-control" id="">
   </div>
   
- 
+  <div class="">
+<label>Nom_ID_sponsors</label>
+                     <select class="form-control" name="id_Sponsors" id="id_Sponsors">
+                                                            
+                         <?php 
+                      include_once "$_SERVER[DOCUMENT_ROOT]/projet/Controller/SponsorsC.php";
+                      $evenement=new SponsorsC();
+                      $listeSponsors=$evenement->afficherSponsors();     
+             foreach ($listeSponsors as $Sponsors){
+             
+              
+          ?>
+ <option value="<?php echo $Sponsors['id_Sponsors']; ?>"><?php echo $Sponsors['Nom_Sponsors']; ?>-<?php echo $Sponsors['id_Sponsors']; ?></option>
+        <?php
+        }
+        ?>
+    </select>
+                                                            
+ </div>
   <br>
 
 <p><input type="submit"  value="Modifer" class="btn btn-info"  name="Modifer">&nbsp;

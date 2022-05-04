@@ -188,6 +188,7 @@
 				<th>dateFin</th>
 				<th>descriptions</th>
                 <th>adresse</th>
+                <th>id_Sponsors</th>
               
                 
 			</tr>
@@ -202,6 +203,7 @@
 				<td><?php echo $EvenementC['dateFin']; ?></td>
                 <td><?php echo $EvenementC['description']; ?></td>
                 <td><?php echo $EvenementC['adresse']; ?></td>
+                <td><?php echo $EvenementC['id_Sponsors']; ?></td>
               
 			<td><?php
                 echo  '
