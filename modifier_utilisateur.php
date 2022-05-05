@@ -1,3 +1,23 @@
+<?php
+
+include_once 'C:/xampp/htdocs/projet/utilisateurC.php';
+         if (isset($_POST["modifier"])) {
+           $utilisateur = new Utilisateur(
+            $_GET['deletevar'],
+            $_POST["nom"],		
+            $_POST["prenom"],
+            $_POST["date_naissance"],
+            $_POST["pseudo"],
+            $_POST["mot_passe"],
+            $_POST["adresse"],
+            $_POST["email"] ,
+            $_POST["type"]
+         );
+         $utilisateurC=new utilisateurC();
+         $utilisateurC->modifierutilisateur($utilisateur);
+         header ("Location:afficher_utilisateur.php");
+     }
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -24,6 +44,8 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
+<script src="controle.js" language="javascript">
+</script>
 
 <body>
     <!-- ============================================================== -->
@@ -129,20 +151,13 @@
                             </a>
                         </li>
   <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href=""
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="afficher_utilisateur.php"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Gestion des Admin</span>
+                                <span class="hide-menu">Gestion des Utilisateurs</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href=""
-                                aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="hide-menu">Gestion des Client</span>
-                            </a>
-                        </li>
                      
                        
                  
@@ -182,48 +197,99 @@
             </div>
        
             <!-- =======================FORMULAIRE GESTION DES  INGREDIENTS======================================= -->
-           <form name="f" action="afficheringredient.php" method="POST">
-  <div class="container">
+
+           <form name="f"  method="POST">
+           <div class="container">
 <br>
 <br>
-  
+<?php
+	$UtilisateurC=new UtilisateurC();
+	$listeadmin=$UtilisateurC->afficherutilisateur($_GET['deletevar']); 
+
+  foreach($listeadmin as $UtilisateurC){
+  ?>
     <input type="hidden" name="id" class="form-control" id="" aria-describedby="emailHelp">
- 
- 
   <div class="">
     <label for="exampleInputPassword1" class="">Nom:</label>
-    <input type="text"  name="nom" class="form-control" id="">
+    <input type="text"  name="nom" class="form-control" id="1" value=<?php  echo $UtilisateurC["nom"];  ?>> 
+  </div>
+  <div class="">
+    <label for="exampleInputPassword1" class="" id="nom_c" style="color:#FF0000"></label>
   </div>
   <div class="">
     <label for="exampleInputPassword1" class="">Prenom:</label>
-    <input type="text"  name="prenom" class="form-control" id="">
+    <input type="text"  name="prenom" class="form-control" id=""  value=<?php  echo $UtilisateurC["prenom"]; ?>>
+  </div>
+  <div class="">
+    <label for="exampleInputPassword1" class="" id="prenom_c" style="color:#FF0000"></label>
   </div>
     <div class="">
     <label for="exampleInputPassword1" class="">Email:</label>
-    <input type="text"  name="email" class="form-control" id="">
+    <input type="text"  name="email" class="form-control" id=""  placeholder="@exemple.com"value=<?php  echo $UtilisateurC["email"]; ?>>
+  </div>
+  <div class="">
+    <label for="exampleInputPassword1" class="" id="email_c" style="color:#FF0000"></label>
   </div>
   <div class="">
     <label for="exampleInputPassword1" class="">Date_naissance:</label>
-    <input type="date"  name="date_naissance" class="form-control" id="">
+    <input type="date"  name="date_naissance" class="form-control" id="" value=<?php  echo $UtilisateurC["date_naissance"]; ?>>
+  </div>
+  <div class="">
+    <label for="exampleInputPassword1" class="" id="date_c" style="color:#FF0000"></label>
   </div>
   <div class="">
     <label for="exampleInputPassword1" class="">Adresse:</label>
-    <input type="text"  name="adresse" class="form-control" id="">
+    <input type="text"  name="adresse" class="form-control" id="" value=<?php  echo $UtilisateurC["adresse"]; ?>>
+  </div>
+  <div class="">
+    <label for="exampleInputPassword1" class="" id="adresse_c" style="color:#FF0000"></label>
   </div>
   <div class="">
     <label for="exampleInputPassword1" class="">Pseudo:</label>
-    <input type="text"  name="pseudo" class="form-control" id="">
+    <input type="text"  name="pseudo" class="form-control" id="" value=<?php  echo $UtilisateurC["pseudo"]; ?>>
+  </div>
+  <div class="">
+    <label for="exampleInputPassword1" class="" id="pseudo_c" style="color:#FF0000"></label>
   </div>
   <div class="">
     <label for="exampleInputPassword1" class="">Mot_passe:</label>
-    <input type="text"  name="mot_passe" class="form-control" id="">
+    <input type="text"  name="mot_passe" class="form-control" id="" value=<?php  echo $UtilisateurC["mot_passe"]; ?>>
   </div>
- 
+  <div class="">
+    <label for="exampleInputPassword1" class="" id="mot_passe_c" style="color:#FF0000"></label>
+  </div>
+  <div class="">
+    <label for="exampleInputPassword1" class="">type:</label>
+    <?php
+    if ($UtilisateurC["type"]=="admin" ){
+    echo'
+    <select type="select" name="type">
+    <option  value="admin" selected >Admin</option>
+    <option  value="client" >Client</option>
+     </select>';}
+    else  {
+            echo'
+    <select type="select" name="type">
+    <option  value="admin"  >Admin</option>
+    <option  value="client" selected>Client</option>
+     </select>';}
+    ?>
+    <br>
+  </div>
+  <div class="">
+    <label for="exampleInputPassword1" class="" id="type_c" style="color:#FF0000"></label>
+  </div>
+  
   <br>
 
-<p><input type="submit"  value="Ajouter" class="btn btn-info"  name="ajouter"><a href=""></a>&nbsp;
+<p><input type="submit"  value="Modifier" class="btn btn-info"  name="modifier" onclick="return controle_ajout()">&nbsp;
 <button type="reset" class="btn btn-danger">Reset</button></p>
- 
+
+<?php
+  }
+?>
+
+
 </form>
 
         <!-- ================================================================================================= -->

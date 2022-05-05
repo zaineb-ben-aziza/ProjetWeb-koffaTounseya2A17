@@ -1,3 +1,29 @@
+<?php
+include_once 'C:/xampp/htdocs/projet/carte_fideliteC.php';
+ $carte_fidiliteC = new carte_fidiliteC();
+ if (
+     isset($_POST["id"]) &&
+     isset($_POST["point"]) 		
+     
+     ){
+         
+     if (
+         !empty($_POST["id"]) &&		
+         !empty($_POST["point"]) 
+        
+     ) {
+         $carte_fidelite = new carte_fidelite(
+            $_POST["id"],
+            $_POST["point"]		
+            
+         );
+         $carte_fidiliteC->ajouter_cartefidilite($carte_fidelite);
+         header ("Location:afficher_cartefidelite.php");
+     }
+    }
+     
+
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -24,6 +50,8 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
+<script src="controle.js" language="javascript">
+</script>
 
 <body>
     <!-- ============================================================== -->
@@ -95,7 +123,7 @@
                         <li>
                             <a class="profile-pic" href="#">
                                 <img src="C:/xampp/htdocs/projet/icon/adem.png" alt="user-img" width="50"
-                                    class="img-circle"><span class="text-white font-medium">Adem Nsir</span></a>
+                                    class="img-circle"><span class="text-white font-medium">Aziz jazzar</span></a>
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
@@ -127,22 +155,24 @@
 </svg>
                                 <span class="hide-menu"> &nbsp &nbsp &nbsp &nbsp Home</span>
                             </a>
-                        </li>
+                            </li>
   <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href=""
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="afficher_utilisateur.php"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Gestion des Admin</span>
+                                <span class="hide-menu">Gestion utilisateur</span>
                             </a>
                         </li>
-
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href=""
+                        </li>
+  <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="afficher_cartefidelite.php"
                                 aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="hide-menu">Gestion des Client</span>
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">Gestion de carte de fidilite</span>
                             </a>
                         </li>
+                    
+
                      
                        
                  
@@ -182,48 +212,36 @@
             </div>
        
             <!-- =======================FORMULAIRE GESTION DES  INGREDIENTS======================================= -->
-           <form name="f" action="afficheringredient.php" method="POST">
+        <form name="f"  method="POST">
   <div class="container">
 <br>
 <br>
-  
     <input type="hidden" name="id" class="form-control" id="" aria-describedby="emailHelp">
- 
- 
+    <?php
+    include_once 'C:/xampp/htdocs/projet/utilisateurC.php';
+	$UtilisateurC=new UtilisateurC();
+	$listeadmin=$UtilisateurC->afficheradmin(); 
+	?>
   <div class="">
-    <label for="exampleInputPassword1" class="">Nom:</label>
-    <input type="text"  name="nom" class="form-control" id="">
+    <label for="exampleInputPassword1" class="">id carte fidilite:</label>
+    <select name="id" >
+  
+    <option value="">--Please choose an option--</option>
+    <?php
+				foreach($listeadmin as $UtilisateurC){
+			?>
+    <option value="<?php echo $UtilisateurC["id"] ; ?>"><?php echo $UtilisateurC["id"] ;} ?></option>
+</select>
   </div>
+  
   <div class="">
-    <label for="exampleInputPassword1" class="">Prenom:</label>
-    <input type="text"  name="prenom" class="form-control" id="">
+    <label for="exampleInputPassword1" class="">point:</label>
+    <input type="text"  name="point" class="form-control" id="1">
   </div>
-    <div class="">
-    <label for="exampleInputPassword1" class="">Email:</label>
-    <input type="text"  name="email" class="form-control" id="">
-  </div>
-  <div class="">
-    <label for="exampleInputPassword1" class="">Date_naissance:</label>
-    <input type="date"  name="date_naissance" class="form-control" id="">
-  </div>
-  <div class="">
-    <label for="exampleInputPassword1" class="">Adresse:</label>
-    <input type="text"  name="adresse" class="form-control" id="">
-  </div>
-  <div class="">
-    <label for="exampleInputPassword1" class="">Pseudo:</label>
-    <input type="text"  name="pseudo" class="form-control" id="">
-  </div>
-  <div class="">
-    <label for="exampleInputPassword1" class="">Mot_passe:</label>
-    <input type="text"  name="mot_passe" class="form-control" id="">
-  </div>
- 
+  
   <br>
-
-<p><input type="submit"  value="Ajouter" class="btn btn-info"  name="ajouter"><a href=""></a>&nbsp;
+<p><input type="submit"  value="Ajouter" class="btn btn-info"  name="ajouter" ">&nbsp;
 <button type="reset" class="btn btn-danger">Reset</button></p>
- 
 </form>
 
         <!-- ================================================================================================= -->

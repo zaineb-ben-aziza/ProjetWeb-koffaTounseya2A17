@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+
 <html dir="ltr" lang="en">
 
 <head>
@@ -13,8 +14,9 @@
     <meta name="robots" content="noindex,nofollow">
     <title>Kofa Tounseya</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!-- Favicon icon -->
-       <link rel="icon" type="image/png" sizes="32x32" href="C:/xampp/htdocs/projet/icon/icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="C:/xampp/htdocs/projet/icon/icon.png">
     <!-- Custom CSS -->
    <link href="css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -50,14 +52,9 @@
                     <!-- Logo -->
                     <!-- ============================================================== -->
                     <a class="navbar-brand" href="dashboard.html">
-                     
+                       
                     </a>
-                    <!-- ============================================================== -->
-                    <!-- End Logo -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
+                   
                     <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
                         href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
@@ -85,8 +82,8 @@
                                 <a href="" class="active">
                                     <i class="fa fa-search"></i>
                                 </a>
-
-
+								
+								
                             </form>
                         </li>
                         <!-- ============================================================== -->
@@ -94,8 +91,8 @@
                         <!-- ============================================================== -->
                         <li>
                             <a class="profile-pic" href="#">
-                                <img src="C:/xampp/htdocs/projet/icon/adem.png" alt="user-img" width="50"
-                                    class="img-circle"><span class="text-white font-medium">Adem Nsir</span></a>
+                                <img src="C:/xampp/htdocs/projet/icon/page.png" alt="user-img" width="50"
+                                    class="img-circle"><span class="text-white font-medium">Aziz jazzar</span></a>
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
@@ -118,34 +115,40 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
+                                                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
                                 aria-expanded="false">
                                <i class="bi bi-house-fill"></i>
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+							   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
   <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
 </svg>
                                 <span class="hide-menu"> &nbsp &nbsp &nbsp &nbsp Home</span>
                             </a>
                         </li>
-  <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href=""
-                                aria-expanded="false">
-                                <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Gestion des Admin</span>
-                            </a>
-                        </li>
-
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href=""
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="afficher_utilisateur.php"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="hide-menu">Gestion des Client</span>
+                                <span class="hide-menu">Gestion des utilisateur</span>
                             </a>
                         </li>
-                     
-                       
-                 
+						 <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="afficher_cartefidelite.php"
+                                aria-expanded="false">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu">Gestion carte de  fidelite</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="statistique.php"
+                                aria-expanded="false">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu">Statistique</span>
+                            </a>
+                        </li>
+                      
+                        
+                    </ul>
 
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -165,14 +168,14 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Gestion Admin</h4>
+                        <h4 class="page-title">Gestion des Utilisateurs</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
                             <ol class="breadcrumb ms-auto">
                                 <li><a href="Dashboard.html" class="fw-normal">Home</a></li>
                             </ol>
-                            <a href="https://www.wrappixel.com/templates/ampleadmin/" target="_blank"
+                            <a href="front.php" target="_blank"
                                 class="btn btn-danger  d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">front
                                 </a>
                         </div>
@@ -180,54 +183,69 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-       
+        
             <!-- =======================FORMULAIRE GESTION DES  INGREDIENTS======================================= -->
-           <form name="f" action="afficheringredient.php" method="POST">
   <div class="container">
-<br>
-<br>
-  
-    <input type="hidden" name="id" class="form-control" id="" aria-describedby="emailHelp">
- 
- 
-  <div class="">
-    <label for="exampleInputPassword1" class="">Nom:</label>
-    <input type="text"  name="nom" class="form-control" id="">
-  </div>
-  <div class="">
-    <label for="exampleInputPassword1" class="">Prenom:</label>
-    <input type="text"  name="prenom" class="form-control" id="">
-  </div>
-    <div class="">
-    <label for="exampleInputPassword1" class="">Email:</label>
-    <input type="text"  name="email" class="form-control" id="">
-  </div>
-  <div class="">
-    <label for="exampleInputPassword1" class="">Date_naissance:</label>
-    <input type="date"  name="date_naissance" class="form-control" id="">
-  </div>
-  <div class="">
-    <label for="exampleInputPassword1" class="">Adresse:</label>
-    <input type="text"  name="adresse" class="form-control" id="">
-  </div>
-  <div class="">
-    <label for="exampleInputPassword1" class="">Pseudo:</label>
-    <input type="text"  name="pseudo" class="form-control" id="">
-  </div>
-  <div class="">
-    <label for="exampleInputPassword1" class="">Mot_passe:</label>
-    <input type="text"  name="mot_passe" class="form-control" id="">
-  </div>
- 
-  <br>
+<button  type ="submit" class="btn btn-primary my-5"><a href="ajouter_utilisateur.php"  class="text-light"> Ajouter un utilisateur</a> </button>
+ <!-- =======================PHP======================================= -->
+<?php
+    include_once 'C:/xampp/htdocs/projet/utilisateurC.php';
+	$UtilisateurC=new UtilisateurC();
+	$listeadmin=$UtilisateurC->afficheradmin(); 
+	
+?>
 
-<p><input type="submit"  value="Ajouter" class="btn btn-info"  name="ajouter"><a href=""></a>&nbsp;
-<button type="reset" class="btn btn-danger">Reset</button></p>
+		<table class="table">
+		 
+			<tr>
+				<th>id</th>
+				<th>nom</th>
+				<th>prenom</th>
+                <th>adresse</th>
+				<th>date_naissance</th>
+				<th>pseudo</th>
+                <th>mot_passe</th>
+                <th>email</th>
+                <th>type</th>
+                <th>date_enregistrement</th>
+                
+			</tr>
+			
+			<?php
+				foreach($listeadmin as $UtilisateurC){
+			?>
+			<tr>
+				<td><?php echo $UtilisateurC['id']; ?></td>
+				<td><?php echo $UtilisateurC['nom']; ?></td>
+				<td><?php echo $UtilisateurC['prenom']; ?></td>
+				<td><?php echo $UtilisateurC['adresse']; ?></td>
+                <td><?php echo $UtilisateurC['date_naissance']; ?></td>
+                <td><?php echo $UtilisateurC['pseudo']; ?></td>
+                <td><?php echo $UtilisateurC['mot_passe']; ?></td>
+                <td><?php echo $UtilisateurC['email']; ?></td>
+                <td><?php echo $UtilisateurC['type']; ?></td>
+                <td><?php echo $UtilisateurC['date_enregistrement']; ?></td>
+			<td><?php
+                echo  '
+			<button class="btn btn-info"><a href="modifier_utilisateur.php? deletevar='.$UtilisateurC['id'].'" class="text-light" name="modifier">Modifier </a></button>
+  <button class="btn btn-danger"><a href="supprimer_utilisateur.php? deletevar='.$UtilisateurC['id'].' " class="text-light">Supprimer</a></button>
+		</td>';
+				?>
+                </td>
+			</tr>
+            
+			<?php
+				}
+			?>
+			 
+		</table>
+    <!-- =========================END PHP===================================== -->
+	
+   <a href="imprimer.php"><button class="btn btn-secondary">Impression PDF</button></a>
+   <a href="trie.php"><button type="button" class="btn btn-outline-info">Tri Asc</button></a>
+  <!-- ===========================END FORMULAIRE================================================================================= -->
  
-</form>
-
-        <!-- ================================================================================================= -->
-
+ 
 
     <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->

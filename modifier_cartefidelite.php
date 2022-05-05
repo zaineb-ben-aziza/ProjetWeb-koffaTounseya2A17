@@ -1,3 +1,18 @@
+<?php
+
+include_once 'C:/xampp/htdocs/projet/carte_fideliteC.php';
+$carteC=new carte_fidiliteC();
+         if (isset($_POST["modifier"])) {
+           $carte = new carte_fidelite(
+            $_POST["id"],
+            $_POST["point"]
+         );
+         
+         $carteC->modifier_cartefidilite($carte);
+         header ("Location:afficher_cartefidelite.php");
+         
+     }
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -24,6 +39,8 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
+<script src="controle.js" language="javascript">
+</script>
 
 <body>
     <!-- ============================================================== -->
@@ -129,20 +146,13 @@
                             </a>
                         </li>
   <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href=""
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="afficher_utilisateur.php"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Gestion des Admin</span>
+                                <span class="hide-menu">Gestion des Utilisateurs</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href=""
-                                aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="hide-menu">Gestion des Client</span>
-                            </a>
-                        </li>
                      
                        
                  
@@ -182,48 +192,37 @@
             </div>
        
             <!-- =======================FORMULAIRE GESTION DES  INGREDIENTS======================================= -->
-           <form name="f" action="afficheringredient.php" method="POST">
-  <div class="container">
-<br>
-<br>
-  
-    <input type="hidden" name="id" class="form-control" id="" aria-describedby="emailHelp">
- 
- 
-  <div class="">
-    <label for="exampleInputPassword1" class="">Nom:</label>
-    <input type="text"  name="nom" class="form-control" id="">
-  </div>
-  <div class="">
-    <label for="exampleInputPassword1" class="">Prenom:</label>
-    <input type="text"  name="prenom" class="form-control" id="">
-  </div>
-    <div class="">
-    <label for="exampleInputPassword1" class="">Email:</label>
-    <input type="text"  name="email" class="form-control" id="">
-  </div>
-  <div class="">
-    <label for="exampleInputPassword1" class="">Date_naissance:</label>
-    <input type="date"  name="date_naissance" class="form-control" id="">
-  </div>
-  <div class="">
-    <label for="exampleInputPassword1" class="">Adresse:</label>
-    <input type="text"  name="adresse" class="form-control" id="">
-  </div>
-  <div class="">
-    <label for="exampleInputPassword1" class="">Pseudo:</label>
-    <input type="text"  name="pseudo" class="form-control" id="">
-  </div>
-  <div class="">
-    <label for="exampleInputPassword1" class="">Mot_passe:</label>
-    <input type="text"  name="mot_passe" class="form-control" id="">
-  </div>
- 
-  <br>
 
-<p><input type="submit"  value="Ajouter" class="btn btn-info"  name="ajouter"><a href=""></a>&nbsp;
+           <form name="f"  method="POST">
+           <div class="container">
+<br>
+<br>
+    <input type="hidden" name="id" class="form-control" id="" aria-describedby="emailHelp">
+    <?php
+    include_once 'C:/xampp/htdocs/projet/utilisateurC.php';
+	$carteC=new carte_fidiliteC();
+    $listeadmin=$carteC->afficher_id($_GET["deletevar"]);
+	
+	?>
+  <div class="">
+    <label for="exampleInputPassword1" class="">id carte fidilite:</label>
+    <select name="id" >
+    <?php
+				foreach($listeadmin as $UtilisateurC){
+			?>
+    <option value="<?php echo $UtilisateurC["id"] ; ?>"><?php echo $UtilisateurC["id"] ; ?></option>
+</select>
+  </div>
+  
+  <div class="">
+    <label for="exampleInputPassword1" class="">point:</label>
+    <input type="text"  name="point" class="form-control" id="1" value=<?php echo $UtilisateurC["point"] ; } ?>>
+  </div>
+  
+  <br>
+<p><input type="submit"  value="Modifier" class="btn btn-info"  name="modifier" ">&nbsp;
 <button type="reset" class="btn btn-danger">Reset</button></p>
- 
+
 </form>
 
         <!-- ================================================================================================= -->

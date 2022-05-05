@@ -1,14 +1,25 @@
-<html>
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
 <head>
-    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
     <title>koffa tounsia</title>
     <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
     <!-- Custom CSS -->
     <link href="css/style.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
 </head>
+
 <body>
+    
     <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
@@ -64,24 +75,55 @@
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
-                        
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="gestion_admin.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="afficher_utilisateur.php"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="hide-menu">Gestion Admin</span>
+                                <span class="hide-menu">Gestion des comptes</span>
                             </a>
                         </li>
-                      
-                        <li class="sidebar-item" id="test">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="gestion_client.html"
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="gestion des ingredients.html"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Gestion Client</span>
+                                <span class="hide-menu">Gestion des ingrédients</span>
                             </a>
-                      </li>
-                            
-                       
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="gestion des evenements.html"
+                                aria-expanded="false">
+                                <i class="fa fa-font" aria-hidden="true"></i>
+                                <span class="hide-menu">Gestion des evenements</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="map-google.html"
+                                aria-expanded="false">
+                                <i class="fa fa-globe" aria-hidden="true"></i>
+                                <span class="hide-menu">Gestion des achats</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="blank.html"
+                                aria-expanded="false">
+                                <i class="fa fa-columns" aria-hidden="true"></i>
+                                <span class="hide-menu">Gestion des recettes</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="404.html"
+                                aria-expanded="false">
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                <span class="hide-menu">Gestion des Commentaires</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="front.php"
+                                aria-expanded="false">
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                <span class="hide-menu">Back to front</span>
+                            </a>
+                        </li>
                     </ul>
 
                 </nav>
@@ -89,36 +131,6 @@
             </div>
             <!-- End Sidebar scroll-->
         </aside>
-          <!-- Gestion admin-->
-          <div id="gestion_text">
-            <form name="f" action="afficheringredient.php" method="POST">
-                <div class="container">
-              <br>
-              <br>
-                <div class="">
-                  <label for="exampleInputEmail1" class="">code de l'ingredient:</label>
-                  <input type="text" name="codeing" class="form-control" id="" aria-describedby="emailHelp">
-               
-                </div>
-                <div class="">
-                  <label for="exampleInputPassword1" class="">Nom de l'ingredient:</label>
-                  <input type="text"  name="noming" class="form-control" id="">
-                </div>
-                <div class="">
-                  <label for="exampleInputPassword1" class="">Prix de l'ingredient:</label>
-                  <input type="text"  name="prixing" class="form-control" id="">
-                </div>
-                  <div class="">
-                  <label for="exampleInputPassword1" class="">Quantité Disponible:</label>
-                  <input type="text"  name="qteing" class="form-control" id="">
-                </div>
-                <br>
-              
-              <p><input type="submit"  value="Ajouter" class="btn btn-info"  name="ajouter"><a href=""></a></p>
-               
-              </form>
-        
-        </div>
        
     <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
@@ -135,5 +147,7 @@
     <!--chartis chart-->
    
 </body>
+  <footer class="footer text-center"> 2021 © esprit                
+</footer>
 
 </html>

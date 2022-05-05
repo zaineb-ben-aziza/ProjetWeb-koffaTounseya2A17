@@ -1,3 +1,45 @@
+<?php
+include_once 'C:/xampp/htdocs/projet/utilisateurC.php';
+ $utilisateurC = new utilisateurC();
+ if (
+     isset($_POST["id"]) &&
+     isset($_POST["nom"]) &&		
+     isset($_POST["prenom"]) &&
+     isset($_POST["date_naissance"]) && 
+     isset($_POST["email"]) && 
+     isset($_POST["pseudo"])&&
+     isset($_POST["mot_passe"])&&
+     isset($_POST["adresse"] )   
+     ){
+         
+     if (
+         !empty($_POST["nom"]) &&		
+         !empty($_POST["prenom"]) &&
+         !empty($_POST["date_naissance"]) && 
+         !empty($_POST["email"]) && 
+         !empty($_POST["pseudo"])&&
+         !empty($_POST["mot_passe"])&&
+         !empty($_POST["adresse"])
+     ) {
+         $utilisateur = new Utilisateur(
+            $_POST["id"],
+            $_POST["nom"],		
+            $_POST["prenom"],
+            $_POST["date_naissance"],
+            $_POST["pseudo"],
+            $_POST["mot_passe"],
+            $_POST["adresse"],
+            $_POST["email"] ,
+            $_POST["type"]
+            
+         );
+         $utilisateurC->ajouterutilisateur($utilisateur);
+         header ("Location:afficher_utilisateur.php");
+     }
+    }
+     
+
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -24,6 +66,8 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
+<script src="controle.js" language="javascript">
+</script>
 
 <body>
     <!-- ============================================================== -->
@@ -85,8 +129,6 @@
                                 <a href="" class="active">
                                     <i class="fa fa-search"></i>
                                 </a>
-
-
                             </form>
                         </li>
                         <!-- ============================================================== -->
@@ -129,20 +171,20 @@
                             </a>
                         </li>
   <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href=""
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="afficher_utilisateur.php"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Gestion des Admin</span>
+                                <span class="hide-menu">Gestion des Utilisateurs</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="afficher_cartefidelite.php"
+                                aria-expanded="false">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu">Gestion de carte de fidelite</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href=""
-                                aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="hide-menu">Gestion des Client</span>
-                            </a>
-                        </li>
                      
                        
                  
@@ -182,48 +224,82 @@
             </div>
        
             <!-- =======================FORMULAIRE GESTION DES  INGREDIENTS======================================= -->
-           <form name="f" action="afficheringredient.php" method="POST">
+        <form name="f"  method="POST">
   <div class="container">
 <br>
 <br>
-  
     <input type="hidden" name="id" class="form-control" id="" aria-describedby="emailHelp">
- 
- 
   <div class="">
     <label for="exampleInputPassword1" class="">Nom:</label>
-    <input type="text"  name="nom" class="form-control" id="">
+    <input type="text"  name="nom" class="form-control" id="1">
+  </div>
+  <div class="">
+    <label for="exampleInputPassword1" class="" id="nom_c" style="color:#FF0000"></label>
   </div>
   <div class="">
     <label for="exampleInputPassword1" class="">Prenom:</label>
     <input type="text"  name="prenom" class="form-control" id="">
   </div>
+  <div class="">
+    <label for="exampleInputPassword1" class="" id="prenom_c" style="color:#FF0000"></label>
+  </div>
     <div class="">
     <label for="exampleInputPassword1" class="">Email:</label>
-    <input type="text"  name="email" class="form-control" id="">
+    <input type="text"  name="email" class="form-control" id=""  placeholder="@exemple.com">
+  </div>
+  <div class="">
+    <label for="exampleInputPassword1" class="" id="email_c" style="color:#FF0000"></label>
   </div>
   <div class="">
     <label for="exampleInputPassword1" class="">Date_naissance:</label>
     <input type="date"  name="date_naissance" class="form-control" id="">
   </div>
   <div class="">
+    <label for="exampleInputPassword1" class="" id="date_c" style="color:#FF0000"></label>
+  </div>
+  <div class="">
     <label for="exampleInputPassword1" class="">Adresse:</label>
     <input type="text"  name="adresse" class="form-control" id="">
+  </div>
+  <div class="">
+    <label for="exampleInputPassword1" class="" id="adresse_c" style="color:#FF0000"></label>
   </div>
   <div class="">
     <label for="exampleInputPassword1" class="">Pseudo:</label>
     <input type="text"  name="pseudo" class="form-control" id="">
   </div>
   <div class="">
+    <label for="exampleInputPassword1" class="" id="pseudo_c" style="color:#FF0000"></label>
+  </div>
+  <div class="">
     <label for="exampleInputPassword1" class="">Mot_passe:</label>
     <input type="text"  name="mot_passe" class="form-control" id="">
   </div>
- 
-  <br>
+  <div class="">
+    <label for="exampleInputPassword1" class="" id="mot_passe_c" style="color:#FF0000"></label>
+  </div>
+  <div class="">
+    <label for="exampleInputPassword1" class="">type:</label>
 
-<p><input type="submit"  value="Ajouter" class="btn btn-info"  name="ajouter"><a href=""></a>&nbsp;
+<br>    
+
+   <select type="select" name="type">
+   <option  value="admin">Admin</option>
+   <option  value="client" >Client</option>
+    </select>
+
+
+
+
+
+  </div>
+  <div class="">
+    <label for="exampleInputPassword1" class="" id="type_c" style="color:#FF0000"></label>
+  </div>
+  
+  <br>
+<p><input type="submit"  value="Ajouter" class="btn btn-info"  name="ajouter" onclick="return controle_ajout()">&nbsp;
 <button type="reset" class="btn btn-danger">Reset</button></p>
- 
 </form>
 
         <!-- ================================================================================================= -->
