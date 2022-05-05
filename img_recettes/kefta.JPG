@@ -1,0 +1,2902 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<meta name="reply-to" content= "contact@chahiatayba.com"/>
+<meta name="revisit-after" content= "1 days"/>
+<meta name="robots" content= "index, follow"/>
+<meta name="WebsiteSpark" content="iDne4uM1RU" />
+
+
+<link rel="canonical" href='http://www.chahiatayba.com/recettes/233/kefta-tunisienne' />
+<meta property="og:title" content='kefta tunisienne - Accompagnement - chahiatayba.com'/>
+<meta property="og:description" content='c&#39;est tr&#232;s d&#232;licieuse  - Viandes rouges, Classiques tunisiens, Les l&#233;gumes, Les plats, Les fritures, Les plats tunisiens, Les plats &#224; la viande rouge'/>
+<meta property="og:image" content='http://www.chahiatayba.com/Photos/Original/129446740937508163.jpg'/>
+<title>Recette kefta tunisienne</title>
+<meta name="description" content='c&#39;est tr&#232;s d&#232;licieuse  - Viandes rouges, Classiques tunisiens, Les l&#233;gumes, Les plats, Les fritures, Les plats tunisiens, Les plats &#224; la viande rouge' />
+<meta name="keywords" content='Viandes rouges, Classiques tunisiens, Les l&#233;gumes, Les plats, Les fritures, Les plats tunisiens, Les plats &#224; la viande rouge' />
+
+<link href='http://static.chahiatayba.com/stylesheet/chahia.css'  rel="stylesheet" />
+<!--[if IE 6]> <link href='http://static.chahiatayba.com/stylesheet/chahia_ie6.css' rel="stylesheet" /><![endif]-->
+<link href='http://static.chahiatayba.com/stylesheet/jquery.pnotify.default.css'  rel="stylesheet" />
+<link href='http://static.chahiatayba.com/stylesheet/menu_style.css' rel="stylesheet" />
+
+<script type="text/javascript" src='http://static.chahiatayba.com/javascript/jquery.1.7.1.js'></script>
+<script type="text/javascript" src='http://static.chahiatayba.com/javascript/connexion.js'></script>
+ 
+<script type="text/javascript" src='http://static.chahiatayba.com/javascript/jquery.tagSphere.js'></script>
+<script type="text/javascript" src='http://static.chahiatayba.com/javascript/jquery.pnotify.min.js'></script>
+
+<script type="text/javascript" src='http://static.chahiatayba.com/Scripts/star-rating/jquery.rating.pack.js' charset="utf-8"></script>
+<script type="text/javascript" src='http://static.chahiatayba.com/Scripts/star-rating/jquery.MetaData.js' charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href='http://static.chahiatayba.com/Scripts/star-rating/jquery.rating.css' />
+
+<link rel="stylesheet" type="text/css" href='http://static.chahiatayba.com/stylesheet/chahiatayba_pnotify.css' />
+<script type="text/javascript" src='http://static.chahiatayba.com/javascript/chahiatayba_pnotify.js' charset="utf-8"></script>
+<script type="text/javascript" src='http://static.chahiatayba.com/javascript/menu_zied.js' charset="utf-8"></script>
+
+<script type="text/javascript" src="http://apis.google.com/js/plusone.js">
+    { lang: 'fr' }
+</script>
+
+<script>    function fbs_click() { u = location.href; t = document.title; window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(u) + '&t=' + encodeURIComponent(t), 'sharer', 'toolbar=0,status=0,width=626,height=436'); return false; }</script>
+
+<script>
+    
+
+
+         
+    function SetAsFavorite(){
+
+        var methodParams = { contentId:233,  category:2 };
+        var stringMethodParams = JSON.stringify(methodParams);
+        var coeurUrl = 'http://static.chahiatayba.com/images/png/signet-modifier-coeur-amour-plume-icone-7523-16.png';
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: 'http://www.chahiatayba.com/Services/ContentUpdate.asmx/SetContentAsFavorite',
+            data: stringMethodParams,
+            dataType: "json",
+            async: false,
+            success: function(data, text){
+                if (data != null && data.d != ""){
+                    var opts = {
+                        title: 'Succès',
+                        text: "Vous avez définit cette recette en tant que recette coup de coeur de votre blog.",
+                        addclass: "stack-custom",
+                        //addclass: "stack-custom2",
+                        pnotify_delay: 3000,
+                        pnotify_stack: stack_custom,
+                        pnotify_type: "notice"
+                    };
+
+                    $.pnotify(opts);
+                }
+            },
+            error: function (request, status, error) {
+                alert('problème lors de l\'appel au service ContentUpdate');    
+            }
+        });
+
+    }
+
+    function RateReceipt(){
+        
+        var rateValue = -1;
+        $('input[name*="staredit"]').each(function(){
+            if(this.checked) 
+                rateValue = this.value;
+		});
+
+
+        
+
+        var methodParams = { contentId:233,  rateValue:rateValue, category:2 };
+        var stringMethodParams = JSON.stringify(methodParams);
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: 'http://www.chahiatayba.com/Services/RateContent.asmx/Rate',
+            data: stringMethodParams,
+            dataType: "json",
+            async: false,
+            success: function(data, text){
+                if (data != null && data.d != ""){
+                    var noteEtVote = data.d.split("_");
+                    $("#spnNote").text(noteEtVote[0]);
+                    $("#spnNbVotes").text(noteEtVote[1]);
+                    $("#ratingDiv").fadeOut(0).html("Vous avez voté, merci !").fadeIn(2000);
+                }
+            },
+            error: function (request, status, error) {
+                alert('problème lors de l\'appel au service de notation');
+                
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        $('#btnRateReceipt').click(function(e) {
+            RateReceipt();
+        });
+
+        $("[id*=btnVoteConcours]").click(function () {
+            
+        });
+
+        
+    
+        
+    });
+
+    
+    function voteForReceipt(concoursRecetteId) {
+        var methodParams = { concoursRecetteId: concoursRecetteId };
+        var stringMethodParams = JSON.stringify(methodParams);
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: 'http://www.chahiatayba.com/Services/ConcoursService.asmx/LikeConcoursRecette',
+            data: stringMethodParams,
+            dataType: "json",
+            async: false,
+            success: function (data, text) {
+                if (data != null) {
+                    //vote recette concours OK 
+                    if (data.d > 0) {
+                        $('#spnNbVotesConcours').html(data.d);
+                        
+                    }
+                    //already like comment
+                    else if (data.d == 0) {
+                        var opts = {
+                            title: 'Notification',
+                            text: "Vous avez déjà voté pour recette !",
+                            addclass: "stack-bottomright",
+                            //addclass: "stack-custom2",
+                            pnotify_delay: 3000,
+                            pnotify_stack: stack_bottomright,
+                            width: "200px",
+                            min_height: "100px",
+                            pnotify_type: "notice"
+                        };
+
+                        $.pnotify(opts);
+                    }
+                    //non connecté
+                    else if (data.d == -1) {
+                        var identificationUrl = 'http://www.chahiatayba.com/login.aspx?returnurl=%2frecettes%2f233%2fkefta-tunisienne?votereceipt=' + concoursRecetteId;
+                        var opts = {
+                            title: 'Notification',
+                            text: 'Veuillez vous <a href="' + identificationUrl + '">connecter</a>',
+                            addclass: "stack-bottomright",
+                            //addclass: "stack-custom2",
+                            pnotify_delay: 3000,
+                            pnotify_stack: stack_bottomright,
+                            width: "200px",
+                            min_height: "100px",
+                            pnotify_type: "notice"
+                        };
+
+                        $.pnotify(opts);
+                    }
+                    //erreur serveur
+                    else {
+
+                    }
+
+                }
+            },
+            error: function (request, status, error) {
+                alert('problème lors de l\'appel au service de vérification captcha');
+
+            }
+        });
+    }
+
+</script>
+    <script type="application/ld+json">
+        {
+          "@context": "http://schema.org/", 
+          "@type": "Recipe", 
+          "name": "kefta tunisienne",
+          "image": "http://www.chahiatayba.com/Photos/Original/129446740937508163.jpg",
+          "description": "c&#39;est tr&#232;s d&#232;licieuse ",
+          "keywords": "Viandes rouges, Classiques tunisiens, Les l&#233;gumes, Les plats, Les fritures, Les plats tunisiens, Les plats &#224; la viande rouge",
+          "author": {
+            "@type": "Person",
+            "name": "chef nani"
+          },
+          "prepTime":  "PT60M" ,
+          "cookTime":  "PT10M" , 
+          "totalTime":  "PT70M" , 
+          "nutrition": {
+            "@type": "NutritionInformation",
+            "calories": ""
+          },
+          "recipeIngredient": [ 
+                                   "4 pommes de terre " 
+                                ,  
+                                   "1 oignon" 
+                                ,  
+                                   "1/2 botte de persil " 
+                                ,  
+                                   "100g de viande hachée " 
+                                ,  
+                                   "2 oeufs " 
+                                ,  
+                                   "100 g de chapelure" 
+                                ,  
+                                   "1 pincée de sel et de poivre " 
+                                ,  
+                                   "Tabel" 
+                               ],
+            "recipeInstructions": [ 
+                                        {
+                                            "@type": "HowToStep",
+                                            "text": "1/Eplucher les pommes de terre et les faire cuire &#224; l&#39;eau."
+                                        }
+                                  ,  
+                                        {
+                                            "@type": "HowToStep",
+                                            "text": "2/Eplucher l&#39;oignons et le couper finement."
+                                        }
+                                  ,  
+                                        {
+                                            "@type": "HowToStep",
+                                            "text": "3/Faire revenir la viande hach&#233;e."
+                                        }
+                                  ,  
+                                        {
+                                            "@type": "HowToStep",
+                                            "text": "4/Hacher le persil."
+                                        }
+                                  ,  
+                                        {
+                                            "@type": "HowToStep",
+                                            "text": "5/M&#233;langer la viande, les pommes de terre &#233;cras&#233;es, le persil l&#39;oignon."
+                                        }
+                                  ,  
+                                        {
+                                            "@type": "HowToStep",
+                                            "text": "6/Y ajouter la chapelure."
+                                        }
+                                  ,  
+                                        {
+                                            "@type": "HowToStep",
+                                            "text": "7/Bien malaxer pour faire une pur&#233;e."
+                                        }
+                                  ,  
+                                        {
+                                            "@type": "HowToStep",
+                                            "text": "8/Ajouter les oeufs et bien m&#233;langer (il faut que cela face une p&#226;te moelleuse)."
+                                        }
+                                  ,  
+                                        {
+                                            "@type": "HowToStep",
+                                            "text": "9/Faire chauffer de l&#39;huile dans une po&#234;le."
+                                        }
+                                  ,  
+                                        {
+                                            "@type": "HowToStep",
+                                            "text": "10/Quand l&#39;huile est assez chaude prendre un peu de la p&#226;te, la rouler dans la main, l&#39;aplatir comme une galette et la mettre dans l&#39;huile."
+                                        }
+                                  ,  
+                                        {
+                                            "@type": "HowToStep",
+                                            "text": "11/Faire dorer."
+                                        }
+                                  ,  
+                                        {
+                                            "@type": "HowToStep",
+                                            "text": "12/Laisser reposer une minute puis d&#233;guster ."
+                                        }
+                                 
+                                 ],
+            "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "3.01",
+            "ratingCount": "82"
+            }    
+        }
+    </script>
+
+</head>
+
+<body class="theme1">
+<div id="fb-root"></div>
+<script>    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    } (document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+<div class="container_bande_header">
+    <div class="bande_header">
+            <div style="float:left; margin-top:5px;">
+            <a href="https://twitter.com/ChahiaTaybacom" class="twitter-follow-button" data-show-count="false" data-lang="en">Suivez nous sur twitter @ChahiaTaybacom</a>
+
+            <script>
+                !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");
+            </script>
+            &nbsp;&nbsp;
+           <iframe src="http://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FChahia.Tayba&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=222350187857983" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+           &nbsp;&nbsp;
+           </div>
+           <div style="float:left;">
+           <a title="Partager une recette" href='http://www.chahiatayba.com/DeposerRecette.aspx' ><img style="width:30px; height:30px;" alt="D&eacute;poser une recette " src='http://static.chahiatayba.com/Images/png/Add_Recipe_bottomcircleplus.png' /></a>
+           &nbsp;
+           <a title="R&eacute;diger un article" href='http://www.chahiatayba.com/Deposer-Article.aspx'><img style="width:28px;  height:28px;" alt="Partager un article" src='http://static.chahiatayba.com/Images/png/list2_add.png' /></a>
+           </div>
+           <div style="float:right; height:100%;  margin-top:5px;">
+             
+<script type="text/javascript" src='http://static.chahiatayba.com/javascript/fbLogin.js' charset="utf-8"></script>
+
+
+<script type="text/javascript">
+    function connectCtUser(accessToken) {
+
+        FB.api('/me', function (response) {
+
+            var methodParams = { accessToken: accessToken };
+
+            var stringMethodParams = JSON.stringify(methodParams);
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: 'http://www.chahiatayba.com/Services/Facebook.asmx/Connect',
+                data: stringMethodParams,
+                dataType: "json",
+                async: false,
+                success: function (data, text) {
+                    if (data != null && data.d != "") {
+
+                        location.reload();
+                    }
+                },
+                error: function (request, status, error) {
+                    var opts = {
+                        title: "Probleme lors de la connexion",
+                        text: "La connexion facebook a échoué",
+                        addclass: "stack-custom",
+                        //addclass: "stack-custom2",
+                        pnotify_delay: 3000,
+                        pnotify_stack: stack_custom,
+                        pnotify_type: "notice"
+                    };
+
+                    $.pnotify(opts);
+                }
+            });
+
+        });
+    }
+</script>
+
+<script type="text/javascript">
+    function makeItPassword() {
+        document.getElementById("passcontainer")
+        .innerHTML = "<input type=\"password\" name=\"password_bar\" id=\"password_bar\" onfocus=\"if(this.value=='Mot de passe'){this.value='';}\" onblur=\"if(this.value==''){makeItText();}\" />";
+        document.getElementById("password_bar").focus();
+    }
+
+    function makeItText() {
+        document.getElementById("passcontainer")
+        .innerHTML = "<input onfocus=\"return makeItPassword()\" name=\"password_bar\" type=\"text\" value=\"Mot de passe\" />";
+        document.getElementById("password_bar").focus();
+    }
+</script>
+<form action="" method="post">
+    <div class="login_input">
+        <table>
+            <tr>
+                <td style=" vertical-align:top;">
+                    <div style="margin-top:1px;">
+                        <fb:login-button scope="public_profile,email" data-size="small" onlogin="checkLoginState();">
+                        </fb:login-button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                </td>
+                <td style=" vertical-align:middle;">
+                    <input name="login_bar" id="login_bar" type="text" value="Login" onfocus="if(this.value=='Login'){this.value='';}" onblur="if(this.value==''){this.value='Login';}" />
+                    <span id="passcontainer">
+                        <input onfocus="return makeItPassword()" name="password_bar" type="text" value="Mot de passe" />
+                    </span>
+                    
+                </td>
+                <td style=" vertical-align:middle;">
+                    <div class="login_button" > 
+                        <input type="submit" value="se connecter" />
+                    </div>            
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
+
+
+             
+           </div>
+    </div>
+</div>
+    
+<div class="container">
+  
+
+
+
+
+
+
+<div id="div_TopBanner" style="margin-top:10px;">
+<div style=" text-align:right; margin-right:50px;">
+                
+                 
+
+                        
+                 
+</div> 
+</div> 
+
+
+
+<div style="height:130px;" id="logoContainer">
+    <div>
+    <table>
+        <tr>
+             
+            <td style=" vertical-align:top;">
+            <div class="cont_logo">
+                <a href='http://www.chahiatayba.com/' class="logoNew">
+                    <img alt="logo" class="logoNewImg" src='http://static.chahiatayba.com/Images/png/logo_2.png' />
+                </a>
+            </div>
+            </td>
+            <td>
+                <div id="searchbox" class="searchbox">
+                    <form action='http://www.chahiatayba.com/Resultats.aspx' method="get">
+		                <input type="text" placeholder="Chercher un plat ou un ingrédient (ex. carottes)" name="searchtext" id="searchtext" class="ui-autocomplete-input">
+		                <label for="txtRecipeSearch">
+                            <img id="searchGo" src="http://frcdn.ar-cdn.com/global/search.png" alt="Chercher un plat ou un ingrédient (ex. carottes)" title="Chercher un plat ou un ingrédient (ex. carottes)">
+                        </label>
+                    </form>
+	            </div>
+            </td>
+        </tr>
+        
+    </table>
+    </div>
+</div>
+
+<ul id="menu">
+	<li><a href='http://www.chahiatayba.com/'>ACCUEIL</a></li>
+    <li class="activeLink"><a href='#' class="open-menu">RECETTES</a><a href="/recettes" class="all" title="Toutes les recettes"><span class="drop">&nbsp;</span></a></li>
+    <li class="videos"><a href='/recettes/videos' >VIDEOS</a></li>
+    <li><a href='/cuisine/magazine' >MAGAZINE</a></li>
+    <li><a href='/recettes/astuces' >ASTUCES</a></li>
+    <li><a href='/tous-les-concours' >CONCOURS</a></li>
+    
+</ul>
+<div class="hider">
+<div class="contentMenu clearfix">
+    <div class="col_principal">
+        <ul>
+            <li><a href="#" class="hover">Les recettes tunisiennes</a></li>
+            <li><a href="#">Les plats</a></li>
+            <li><a href="#">Les desserts</a></li>
+            <li><a href="#">Divers</a></li>
+        </ul>
+    </div>
+    <div class="col_items">
+        <div class="listOne">
+            <ul>
+                <li><a href='/recettes/t22/recette-couscous-agneau-poulet-veau-boeuf-poisson-masfouf'>Couscous</a></li>
+                <li><a href='/recettes/t74/tajine-tunisien-tagine-oeuf'>Les Tajines</a></li>
+                <li><a href='/recettes/t39/mar9a-marka-plat-sauce-pain'>Les plats &agrave; saucer / mar9a</a></li>
+                <li><a href='/recettes/t88/recette-entree-tunisienne'>Les entr&eacute;es</a></li>
+                <li><a href='/recettes/t89/recette-plat-tunisien'>Les plats</a></li>
+                <li><a href='/recettes/t90/recette-dessert-tunisien'>Les desserts</a></li>
+            </ul>
+        </div>
+        <div class="listTwo">
+            <ul>
+                <li><a href='/recettes/t91/recette-plat-poisson'>Au poisson</a></li>
+                <li><a href='/recettes/t92/recette-plat-viande-rouge-mouton-veau-boeuf'>A la viande rouge</a></li>
+                <li><a href='/recettes/t93/recette-plat-viande-blanche'>Au poulet / viande blanche</a></li>
+                <li><a href='/recettes/t94/recette-plat-fruits-de-mer'>Aux fruits de mer</a></li>
+                <li><a href='/recettes/t95/recette-plat-vegetarien'>Végétariens</a></li>
+            </ul>
+        </div>
+        <div class="listThree">
+            <ul>
+                <li><a href='/recettes/t3/recette-dessert-gateau-patisserie-chocolat'>Tout chocolat</a></li>
+                <li><a href='/recettes/t4/recette-dessert-gateau-patisserie-fruit'>Fruités</a></li>
+                <li><a href='/recettes/t5/recette-dessert-gateau-anniversaire'>Les gâteaux d'anniversaire</a></li>
+                <li><a href='/recettes/t1/recette-dessert-tunisien'>Les desserts tunisiens</a></li>
+                <li><a href='/recettes/t6/recette-dessert-tarte-sucree'>Les tartes</a></li>
+            </ul>
+        </div>
+        <div class="listFour">
+            <ul>
+                <li><a href='/recettes/t17/recette-rapide-chrono-30-minutes'>Les recettes rapides</a></li>
+                <li><a href='/recettes/t20/recette-pate-pizza-epaisse-fine'>Les pizzas</a></li>
+                <li><a href='/recettes/t12/aperitifs-amuse-gueule-bouche'>Les ap&eacute;ritifs</a></li>
+                <li><a href='/recettes/t41/smoothie-boisson-fruit-lait-yaourt'>Les smoothies</a></li>
+			    <li><a href='/recettes/t73/pain-maison-dieri-tabouna-mlawi'>Les pains maison</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="col_img">
+        <div class="selectImg">
+        
+            <div class="contentSelect"> 
+                <ul>
+                    
+                    
+                    <li class="item clearfix active">
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/607/couscous-a-l-agneau' data-src='http://www.chahiatayba.com/Photos/Menu/130219210210008000.jpg' data-title="couscous à l'agneau" data-rate="0/5"><!-- --></a></div>
+                            <div><a href='/recettes/305/Couscous-au-Poisson' data-src='http://www.chahiatayba.com/Photos/Menu/129542604365701877.jpg' data-title="Couscous au Poisson" data-rate="2.53/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/119/Couscous-au-poulet' data-src='http://www.chahiatayba.com/Photos/Menu/129280841727455684.jpg' data-title="Couscous au poulet"  data-rate="3.35/5"><!-- --></a></div>
+                            <div><a href='/recettes/104/couscous-bel-osben' data-src='http://www.chahiatayba.com/Photos/Menu/129275766465784604.jpg' data-title="couscous bel osbén"  data-rate="1.66/5"><!-- --></a></div>
+                        </div>
+                    </li>
+                    
+                
+
+                    
+                    <li class="item">
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/44/Tajine-Malsou9a' data-src='http://www.chahiatayba.com/Photos/Menu/129254087939000472.jpg' data-title="Tajine Malsou9a" data-rate="3.24/5"><!-- --></a></div>
+                            <div><a href='/recettes/445/Tajine-Sibnekh-et-Gouta' data-src='http://www.chahiatayba.com/Photos/Menu/129875492417754666.jpg' data-title="Tajine Sibnékh et Gouta" data-rate="2.35/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/299/Tajine-au-poulet' data-src='http://www.chahiatayba.com/Photos/Menu/129534930910210460.jpg' data-title="Tajine au poulet"  data-rate="2.91/5"><!-- --></a></div>
+                            <div><a href='/recettes/313/Gratin-de-macaronis---Tajine-makrouna' data-src='http://www.chahiatayba.com/Photos/Menu/129562516660270927.jpg' data-title="Gratin de macaronis - Tajine makrouna"  data-rate="3.59/5"><!-- --></a></div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/363/Market-Khodhra--Ragout-aux-blettes-epinards-et-persil-' data-src='http://www.chahiatayba.com/Photos/Menu/129635754567925274.jpg' data-title="Market Khodhra (Ragout aux blettes,épinards et persil)" data-rate="2.69/5"><!-- --></a></div>
+                            <div><a href='/recettes/93/Ojja-Pommes-de-terre-Merguez' data-src='http://www.chahiatayba.com/Photos/Menu/129272955640314816.jpg' data-title="Ojja Pommes de terre Merguèz" data-rate="3.20/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/56/Tajine-Merguez' data-src='http://www.chahiatayba.com/Photos/Menu/129260894965980166.jpg' data-title="Tajine Merguèz"  data-rate="3.28/5"><!-- --></a></div>
+                            <div><a href='/recettes/52/Sauce-aux-haricots-blancs-et-a-la-viande-de-mouton--mar9et-loubya-ou-loubia-' data-src='http://www.chahiatayba.com/Photos/Menu/129259210311330730.jpg' data-title="Sauce aux haricots blancs et à la viande de mouton (mar9et loubya ou loubia)"  data-rate="3.55/5"><!-- --></a></div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/439/Salade-ommek-houriya' data-src='http://www.chahiatayba.com/Photos/Menu/129861553792857011.jpg' data-title="Salade ommek houriya" data-rate="3.33/5"><!-- --></a></div>
+                            <div><a href='/recettes/54/Salade-mechweya--grillee-' data-src='http://www.chahiatayba.com/Photos/Menu/129260094600645771.jpg' data-title="Salade mechweya (grillée)" data-rate="3.65/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/12/Brik-au-thon' data-src='http://www.chahiatayba.com/Photos/Menu/129233611926594944.jpg' data-title="Brik au thon"  data-rate="3.84/5"><!-- --></a></div>
+                            <div><a href='/recettes/60/Salade-Blankit' data-src='http://www.chahiatayba.com/Photos/Menu/129261712427089164.jpg' data-title="Salade Blankit"  data-rate="3.81/5"><!-- --></a></div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/607/couscous-a-l-agneau' data-src='http://www.chahiatayba.com/Photos/Menu/130219210210008000.jpg' data-title="couscous à l'agneau" data-rate="0.00/5"><!-- --></a></div>
+                            <div><a href='/recettes/374/Lablabi-bel-hargma--pied-de-veau-' data-src='http://www.chahiatayba.com/Photos/Menu/129740756777028843.jpg' data-title="Lablabi bel hargma (pied de veau)" data-rate="3.55/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/359/Cheveux-d-ange-au-poulet---Dwida-mfawra-b-djej' data-src='http://www.chahiatayba.com/Photos/Menu/129611549740294738.jpg' data-title="Cheveux d'ange au poulet - Dwida mfawra b djèj"  data-rate="3.09/5"><!-- --></a></div>
+                            <div><a href='/recettes/70/Nwasser-a-la-viande-d-agneau' data-src='http://www.chahiatayba.com/Photos/Menu/129265285163983818.jpg' data-title="Nwasser à la viande d'agneau"  data-rate="3.85/5"><!-- --></a></div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/123/Bouza' data-src='http://www.chahiatayba.com/Photos/Menu/129281857333740863.jpg' data-title="Bouza" data-rate="2.82/5"><!-- --></a></div>
+                            <div><a href='/recettes/491/widhnin-il-kadhi' data-src='http://www.chahiatayba.com/Photos/Menu/129891127801622685.jpg' data-title="widhnin il kadhi" data-rate="2.55/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/333/Samsa' data-src='http://www.chahiatayba.com/Photos/Menu/129578097986433935.jpg' data-title="Samsa"  data-rate="3.70/5"><!-- --></a></div>
+                            <div><a href='/recettes/83/youyou' data-src='http://www.chahiatayba.com/Photos/Menu/129269585785066872.jpg' data-title="youyou"  data-rate="3.18/5"><!-- --></a></div>
+                        </div>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+
+
+
+                
+
+            
+            <div class="contentSelect"> 
+                <ul>
+                     
+                    <li class="item">
+
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/305/Couscous-au-Poisson' data-src='http://www.chahiatayba.com/Photos/Menu/129542604365701877.jpg' data-title="Couscous au Poisson" data-rate="2.53/5"><!-- --></a></div>
+                            <div><a href='/recettes/373/Gratin-pommes-de-terre-et-saumon' data-src='http://www.chahiatayba.com/Photos/Menu/129739885398176347.jpg' data-title="Gratin pommes de terre et saumon" data-rate="2.50/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/31/Sardines-panees' data-src='http://www.chahiatayba.com/Photos/Menu/129247196114206641.jpg' data-title="Sardines panées"  data-rate="3.75/5"><!-- --></a></div>
+                            <div><a href='/recettes/42/Soupe-de-poisson-chorba-frik-au-poisson-' data-src='http://www.chahiatayba.com/Photos/Menu/129251772938081233.jpg' data-title="Soupe de poisson(chorba frik au poisson)"  data-rate="3.08/5"><!-- --></a></div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/607/couscous-a-l-agneau' data-src='http://www.chahiatayba.com/Photos/Menu/130219210210008000.jpg' data-title="couscous à l'agneau" data-rate="0.00/5"><!-- --></a></div>
+                            <div><a href='/recettes/374/Lablabi-bel-hargma--pied-de-veau-' data-src='http://www.chahiatayba.com/Photos/Menu/129740756777028843.jpg' data-title="Lablabi bel hargma (pied de veau)" data-rate="3.55/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/203/Piments-farcis---felfel-me7chi' data-src='http://www.chahiatayba.com/Photos/Menu/129385548152148248.jpg' data-title="Piments farcis - felfel me7chi"  data-rate="2.40/5"><!-- --></a></div>
+                            <div><a href='/recettes/70/Nwasser-a-la-viande-d-agneau' data-src='http://www.chahiatayba.com/Photos/Menu/129265285163983818.jpg' data-title="Nwasser à la viande d'agneau"  data-rate="3.85/5"><!-- --></a></div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/359/Cheveux-d-ange-au-poulet---Dwida-mfawra-b-djej' data-src='http://www.chahiatayba.com/Photos/Menu/129611549740294738.jpg' data-title="Cheveux d'ange au poulet - Dwida mfawra b djèj" data-rate="3.09/5"><!-- --></a></div>
+                            <div><a href='/recettes/258/Roule-de-Dinde---Mekattef' data-src='http://www.chahiatayba.com/Photos/Menu/129471719250398346.jpg' data-title="Roulé de Dinde - Mekattef" data-rate="3.21/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/40/Chorba-mfawra' data-src='http://www.chahiatayba.com/Photos/Menu/129249139882788547.jpg' data-title="Chorba mfawra"  data-rate="3.36/5"><!-- --></a></div>
+                            <div><a href='/recettes/24/Riz-saute-aux-poivrons-et-a-l-escalope' data-src='http://www.chahiatayba.com/Photos/Menu/129244486657193543.jpg' data-title="Riz sauté aux poivrons et à l'escalope"  data-rate="3.07/5"><!-- --></a></div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/296/Kammounia-bessoubia' data-src='http://www.chahiatayba.com/Photos/Menu/129530426052894411.jpg' data-title="Kammounia bessoubia" data-rate="3.69/5"><!-- --></a></div>
+                            <div><a href='/recettes/298/Riz-au-calamars-farcis' data-src='http://www.chahiatayba.com/Photos/Menu/129530458514835427.jpg' data-title="Riz au calamars farcis" data-rate="3.46/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/244/Pa%C3%ABlla-au-poulet-et-aux-fruits-de-mer' data-src='http://www.chahiatayba.com/Photos/Menu/129465898302841329.jpg' data-title="Paëlla au poulet et aux fruits de mer"  data-rate="3.72/5"><!-- --></a></div>
+                            <div><a href='/recettes/113/Spaghettis-aux-fruits-de-mer--recette-rapide-' data-src='http://www.chahiatayba.com/Photos/Menu/129279146136500897.jpg' data-title="Spaghettis aux fruits de mer (recette rapide)"  data-rate="3.47/5"><!-- --></a></div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/437/Kefta-vegetarienne---kadheba' data-src='http://www.chahiatayba.com/Photos/Menu/129851137910017282.jpg' data-title="Kefta végétarienne - kadhèba" data-rate="2.50/5"><!-- --></a></div>
+                            <div><a href='/recettes/234/3ejja-tunisienne' data-src='http://www.chahiatayba.com/Photos/Menu/129449435942393689.jpg' data-title="3ejja tunisienne" data-rate="2.70/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/319/Kafteji' data-src='http://www.chahiatayba.com/Photos/Menu/129568535625464684.jpg' data-title="Kafteji"  data-rate="2.99/5"><!-- --></a></div>
+                            <div><a href='/recettes/127/Veloute-vegetarien--7sow-kadheb-' data-src='http://www.chahiatayba.com/Photos/Menu/129283332173204141.jpg' data-title="Velouté végétarien (7sow kadhèb)"  data-rate="2.06/5"><!-- --></a></div>
+                        </div>
+                    </li>   
+                </ul>
+            </div>
+            <div class="contentSelect"> 
+                <ul>
+                    <li class="item">
+
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/63/Gateau-biscuit-chocolat-cafe' data-src='http://www.chahiatayba.com/Photos/Menu/129263054892662808.jpg' data-title="Gâteau biscuit chocolat café" data-rate="3.28/5"><!-- --></a></div>
+                            <div><a href='/recettes/184/Brownies-aux-noix' data-src='http://www.chahiatayba.com/Photos/Menu/129340531778519807.jpg' data-title="Brownies aux noix" data-rate="3.77/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/170/Mousse-au-chocolat-et-au-crumble' data-src='http://www.chahiatayba.com/Photos/Menu/129308693154873978.jpg' data-title="Mousse au chocolat et au crumble"  data-rate="3.75/5"><!-- --></a></div>
+                            <div><a href='/recettes/111/Gateau-au-chocolat-au-coeur-fondant' data-src='http://www.chahiatayba.com/Photos/Menu/129278056806284770.jpg' data-title="Gâteau au chocolat au coeur fondant"  data-rate="3.65/5"><!-- --></a></div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/181/Tarte-crumble-aux-pommes' data-src='http://www.chahiatayba.com/Photos/Menu/129337224958929517.jpg' data-title="Tarte crumble aux pommes" data-rate="2.79/5"><!-- --></a></div>
+                            <div><a href='/recettes/48/Tarte-au-citron-meringuee' data-src='http://www.chahiatayba.com/Photos/Menu/129255250468388983.jpg' data-title="Tarte au citron meringuée" data-rate="3.24/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/82/Biscuits-a-la-confiture' data-src='http://www.chahiatayba.com/Photos/Menu/129268792657012341.jpg' data-title="Biscuits à la confiture"  data-rate="3.35/5"><!-- --></a></div>
+                            <div><a href='/recettes/23/Roule-a-la-confiture-de-coing' data-src='http://www.chahiatayba.com/Photos/Menu/129244453882890302.jpg' data-title="Roulé à la confiture de coing"  data-rate="3.53/5"><!-- --></a></div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/278/Gateau-Hello-Kitty' data-src='http://www.chahiatayba.com/Photos/Menu/129495296337586735.jpg' data-title="Gateau Hello Kitty" data-rate="3.59/5"><!-- --></a></div>
+                            <div><a href='/recettes/431/Foret-noire' data-src='http://www.chahiatayba.com/Photos/Menu/129848315752086422.jpg' data-title="Foret noire" data-rate="0.00/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/362/Gateau-d%E2%80%99anniversaire-au-chocolat' data-src='http://www.chahiatayba.com/Photos/Menu/129622016778050514.jpg' data-title="Gâteau d’anniversaire au chocolat"  data-rate="3.15/5"><!-- --></a></div>
+                            <div><a href='/recettes/269/fraisier-' data-src='http://www.chahiatayba.com/Photos/Menu/129477727928824167.jpg' data-title="fraisier"  data-rate="3.96/5"><!-- --></a></div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/128/Zriga' data-src='http://www.chahiatayba.com/Photos/Menu/129284144763950084.jpg' data-title="Zriga" data-rate="2.81/5"><!-- --></a></div>
+                            <div><a href='/recettes/115/Gateau-de-sorgho---Khobzet-droo' data-src='http://www.chahiatayba.com/Photos/Menu/129279275858335023.jpg' data-title="Gâteau de sorgho - Khobzét drôo" data-rate="2.69/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/107/Samsa-avec-pate-faite-maison' data-src='http://www.chahiatayba.com/Photos/Menu/129275741311847365.jpg' data-title="Samsa avec pâte faite maison"  data-rate="3.48/5"><!-- --></a></div>
+                            <div><a href='/recettes/83/youyou' data-src='http://www.chahiatayba.com/Photos/Menu/129269585785066872.jpg' data-title="youyou"  data-rate="3.18/5"><!-- --></a></div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/189/Tarte-tatin-' data-src='http://www.chahiatayba.com/Photos/Menu/129343301340101568.jpg' data-title="Tarte tatin" data-rate="3.70/5"><!-- --></a></div>
+                            <div><a href='/recettes/181/Tarte-crumble-aux-pommes' data-src='http://www.chahiatayba.com/Photos/Menu/129337224958929517.jpg' data-title="Tarte crumble aux pommes" data-rate="2.79/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/129/Tarte-Crumble-aux-Abricots-' data-src='http://www.chahiatayba.com/Photos/Menu/129285082391071563.jpg' data-title="Tarte Crumble aux Abricots"  data-rate="3.49/5"><!-- --></a></div>
+                            <div><a href='/recettes/48/Tarte-au-citron-meringuee' data-src='http://www.chahiatayba.com/Photos/Menu/129255250468388983.jpg' data-title="Tarte au citron meringuée"  data-rate="3.24/5"><!-- --></a></div>
+                        </div>
+                    </li>   
+                </ul>
+            </div>
+            <div class="contentSelect"> 
+                <ul>
+                    <li class="item">
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/379/Tagliatelle-au-saumon-frais' data-src='http://www.chahiatayba.com/Photos/Menu/129747259704076636.jpg' data-title="Tagliatelle au saumon frais" data-rate="3.91/5"><!-- --></a></div>
+                            <div><a href='/recettes/188/Gateau-Pomme-Poire-Pepites-de-chocolat' data-src='http://www.chahiatayba.com/Photos/Menu/129343283126585732.jpg' data-title="Gâteau Pomme Poire Pépites de chocolat" data-rate="3.59/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/184/Brownies-aux-noix' data-src='http://www.chahiatayba.com/Photos/Menu/129340531778519807.jpg' data-title="Brownies aux noix"  data-rate="3.77/5"><!-- --></a></div>
+                            <div><a href='/recettes/187/Masfouf--couscous-sucre-' data-src='http://www.chahiatayba.com/Photos/Menu/129340574604583156.jpg' data-title="Masfouf (couscous sucré)"  data-rate="3.70/5"><!-- --></a></div>
+                        </div>
+                    </li>  
+                    <li class="item">
+
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/351/Focaccia-ou-l-authentique-pizza-a-pate-epaisse' data-src='http://www.chahiatayba.com/Photos/Menu/129601973911385622.jpg' data-title="Focaccia ou l'authentique pizza à pâte épaisse" data-rate="3.33/5"><!-- --></a></div>
+                            <div><a href='/recettes/69/pate-a-pizza-tres-facile' data-src='http://www.chahiatayba.com/Photos/Menu/129265267922239579.jpg' data-title="pate a pizza tres facile" data-rate="3.72/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/3/Pizza-au-Thon' data-src='http://www.chahiatayba.com/Photos/Menu/Pizza2.JPG' data-title="Pizza au Thon"  data-rate="3.56/5"><!-- --></a></div>
+                            <div><a href='/recettes/5/Pate-a-pizza-fine' data-src='http://www.chahiatayba.com/Photos/Menu/DSC_0622.JPG' data-title="Pâte à pizza fine"  data-rate="3.13/5"><!-- --></a></div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/335/Brick-danouni--pate-sans-semoule-fine-' data-src='http://www.chahiatayba.com/Photos/Menu/129578978064421517.jpg' data-title="Brick danouni (pâte sans semoule fine)" data-rate="2.97/5"><!-- --></a></div>
+                            <div><a href='/recettes/72/Barquettes-au-thon' data-src='http://www.chahiatayba.com/Photos/Menu/129265307095413316.jpg' data-title="Barquettes au thon" data-rate="3.21/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/60/Salade-Blankit' data-src='http://www.chahiatayba.com/Photos/Menu/129261712427089164.jpg' data-title="Salade Blankit"  data-rate="3.81/5"><!-- --></a></div>
+                            <div><a href='/recettes/61/Doigts-de-Fatma' data-src='http://www.chahiatayba.com/Photos/Menu/129261759591971840.jpg' data-title="Doigts de Fatma"  data-rate="3.18/5"><!-- --></a></div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/164/Smoothie-pomme-poire-banane' data-src='http://www.chahiatayba.com/Photos/Menu/129306050146948190.jpg' data-title="Smoothie pomme poire banane" data-rate="3.33/5"><!-- --></a></div>
+                            <div><a href='/recettes/165/Smoothie-aux-dattes' data-src='http://www.chahiatayba.com/Photos/Menu/129306110062669362.jpg' data-title="Smoothie aux dattes" data-rate="4.27/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/368/Milk-Shake-Bananes-Dattes-Noisettes' data-src='http://www.chahiatayba.com/Photos/Menu/129723343221979038.jpg' data-title="Milk Shake Bananes Dattes Noisettes"  data-rate="0.00/5"><!-- --></a></div>
+                            <div><a href='/recettes/311/Smoothie-peche-orange-banane' data-src='http://www.chahiatayba.com/Photos/Menu/129547883591666396.jpg' data-title="Smoothie pêche orange banane"  data-rate="3.66/5"><!-- --></a></div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="col col-l">
+                            <div class="mrg-b"><a href='/recettes/66/Khobz-Tabouna-au-four' data-src='http://www.chahiatayba.com/Photos/Menu/129264095018145762.jpg' data-title="Khobz Tabouna au four" data-rate="3.77/5"><!-- --></a></div>
+                            <div><a href='/recettes/155/Mlaoui' data-src='http://www.chahiatayba.com/Photos/Menu/129301637575377107.jpg' data-title="Mlaoui" data-rate="3.16/5"><!-- --></a></div>
+                        </div>
+                        <div class="col col-c">
+                            <div class="viewImg clearfix mrg-h">
+                                <a href="#" class="master">
+                                    <div class="bg"></div>
+                                    <span class="title">Title</span>
+                                    <span class="rate">Rating</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-r">
+                            <div class="mrg-b"><a href='/recettes/381/Pain-Farci' data-src='http://www.chahiatayba.com/Photos/Menu/129755897334057837.jpg' data-title="Pain Farci"  data-rate="3.09/5"><!-- --></a></div>
+                            <div><a href='/recettes/16/Pain-aux-olives-et-ognions--pour-machine-a-pain-' data-src='http://www.chahiatayba.com/Photos/Menu/129241811162888314.jpg' data-title="Pain aux olives et ognions (pour machine à pain)"  data-rate="3.26/5"><!-- --></a></div>
+                        </div>
+                    </li>
+                      
+                </ul>
+            </div>
+            
+
+
+
+
+
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+  <div class="main_content">
+    <div class="section_gauche">
+
+        
+        
+<div class="navBanner">
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- chahiatayba carré -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-3807136501472659"
+     data-ad-slot="1248513563"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</div>
+      
+      <div class="clear"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+      <div class="ht20"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+
+      
+        
+<div class="b_wrapper">
+    
+        <h2 class="title_b_wrapper"><a href='/recettes/accompagnement'>Tou(te)s les Accompagnements</a></h2>
+    
+    <div class="padding_wrapper">
+
+
+<div> <a href='/recettes/234/3ejja-tunisienne'><img src='http://www.chahiatayba.com/Photos/Thum120/129449435942393689.jpg' width="61" height="61" class="img_entree" alt=" " /></a>
+        <div class="tbc">
+        <div class="libelle_entree"><a href='/recettes/234/3ejja-tunisienne'><strong> 3ejja tunisienne</strong> </a> </div>
+        <p class="descriptif_entree">un tr&#232;s bon plat tunisien </p>
+        </div>
+        <div class="clear"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+        <div class="padding_btn_lire"><a href='/recettes/234/3ejja-tunisienne' class="btn_lire"><span><strong>lire plus</strong></span></a><span class="note_entree">2,77 / 5</span>
+        <div class="clear"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+        </div>
+</div>
+
+
+<div> <a href='/recettes/179/Bambalouni---Sfenj'><img src='http://www.chahiatayba.com/Photos/Thum120/129325564912869045.jpg' width="61" height="61" class="img_entree" alt=" " /></a>
+        <div class="tbc">
+        <div class="libelle_entree"><a href='/recettes/179/Bambalouni---Sfenj'><strong> Bambalouni - Sfenj</strong> </a> </div>
+        <p class="descriptif_entree">De bons beignets fris &#224; la Tunisienne...</p>
+        </div>
+        <div class="clear"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+        <div class="padding_btn_lire"><a href='/recettes/179/Bambalouni---Sfenj' class="btn_lire"><span><strong>lire plus</strong></span></a><span class="note_entree">3,28 / 5</span>
+        <div class="clear"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+        </div>
+</div>
+
+
+   </div>
+</div>
+        <div class="clear"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+        <div class="ht20"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+
+    </div>
+
+    <div itemscope itemtype="http://data-vocabulary.org/Recipe" class="section_droite">
+      <div class="actualite"><span class="titre_actualite">actualités</span>
+            
+<marquee class="marquee">
+    <a href="#?"> Assalam alaikom, bonjour, 3la slametkom, hello, ... </a>
+    <a href="#?"> Nouveau look pour chahiatayba.com !!! </a>
+</marquee>
+      </div>
+      <div class="ht20"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+      <div class="b_wrapper">
+        <div class="padding_wrapper">
+          <div class="libelle_recette">
+            <h1 itemprop="name">Recette de kefta tunisienne</h1>
+            
+          </div>
+          <div style=" width:100px; text-align:right;">
+            
+          </div>
+          <div class="clear"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+          
+          <div itemprop="review" itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
+ 
+            <span itemprop="rating" id="spnNote" class="note_fiche_recette"> 3.01 </span> / 5
+            moyenne de <b><span itemprop="count" id="spnNbVotes">82</span> votes</b> 
+          </div>
+          
+          <div class="clear"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+          <p class="descriptif_bloc">
+            <span itemprop="summary">c&#39;est tr&#232;s d&#232;licieuse </span>
+            
+            
+          </p>
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="320" valign="top"><img itemprop="photo" src='http://www.chahiatayba.com/Photos/Original/129446740937508163.jpg' alt="Photo Recette" width="312" height="232" class="border_img" />
+               <div style="width:100%; margin-top:10px;">
+                    <div class="padd_face_rating"><a rel="nofollow" href="http://www.facebook.com/share.php?u=<;url>" class="partager_facebook" onclick="return fbs_click()" target="_blank">partager sur facebook</a> </div>
+                    <div class="fb-like" style="float:right;" data-href="http://www.chahiatayba.com/recettes/233/kefta-tunisienne" data-send="false" data-layout="button_count" data-width="85" data-show-faces="false"></div>  
+                </div>
+                <div class="clear"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+                 <div style="width:100%; margin-top:5px;">
+                    <div style="float:left;">
+                        
+<form action="">
+    <div id="ratingDiv">
+        <input name='staredit0' type="radio" value="1" class="star" />
+        <input name='staredit0' type="radio" value="2" class="star" />
+        <input name='staredit0' type="radio" value="3" checked="checked" class="star" />
+        <input name='staredit0' type="radio" value="4" class="star" />
+        <input name='staredit0' type="radio" value="5" class="star" />
+
+        <input name="btnRateReceipt" id="btnRateReceipt" type="button" value="Noter" />
+    </div>
+</form> 
+                    </div>
+                    <div style="float:right;width:59px;">
+                        <div class="g-plusone" data-size="medium" data-count="true" style="width:66px;" ></div>
+                    </div>
+                </div> 
+                <div class="clear"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+                <div style="width:100%; margin-top:7px;">
+                    <div style="float:left;">
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-lang="fr" data-hashtags="recette">Tweeter</a>
+                            <script>    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>
+                    </div>
+                    
+                </div>
+
+              </td>
+              <td width="20">&nbsp;</td>
+              <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab_chef">
+                  <tr>
+                    <td colspan="3" class="colhead"><a class="prop_chef" href='/blogs/314/chef-nani'>Propos&eacute;e par :<br />
+                        <span itemprop="author">chef nani</span></a></td>
+                  </tr>
+                  <tr>
+                    <td colspan="3"> 
+                        <div class="detail_recette_toque"><table><tr><td style="padding:0;"><img src='http://static.chahiatayba.com/Images/png/BronzeChefHat.png' alt="bronze cap" /></td><td>x0</td></tr></table></div>
+                        <div class="detail_recette_toque"><table><tr><td style="padding:0;"><img src='http://static.chahiatayba.com/Images/png/SilverChefHat.png' alt="silver cap" /></td><td>x0</td></tr></table></div>  
+                        <div class="detail_recette_toque"><table><tr><td style="padding:0;"><img src='http://static.chahiatayba.com/Images/png/GoldChefHat.png' alt="gold cap" /></td><td>x0</td></tr></table></div>
+                    </td>
+                  </tr>
+                  <tr class="col1">
+                    <td><strong>Co&ucirc;t du plat </strong></td>
+                    <td width="10">&nbsp;</td>
+                    <td width="60">
+                        
+                        <span class="span_fourc_dollar">
+                            
+                                <img src='http://static.chahiatayba.com/Images/gif/dollar.gif' width="11" height="25" alt="fourchette" />
+                            
+                        </span>
+                        
+                        <span class="span_fourc_dollar">
+                            
+                                <img src='http://static.chahiatayba.com/Images/gif/dollar.gif' width="11" height="25" alt="fourchette" />
+                            
+                        </span>
+                        
+                        <span class="span_fourc_dollar">
+                            
+                                <img src='http://static.chahiatayba.com/Images/gif/dollar_inactif.gif' width="11" height="25" alt="fourchette" />
+                            
+                        </span>
+                        
+                    </td>
+                  </tr>
+                  <tr class="col2">
+                    <td><strong>Difficult&eacute;</strong></td>
+                    <td>&nbsp;</td>
+                    <td width="60">
+                        
+                        <span class="span_fourc_dollar">
+                            
+                                <img src='http://static.chahiatayba.com/Images/gif/fourchette.gif' width="9" height="24" alt="fourchette" />
+                            
+                        </span>
+                        
+                        <span class="span_fourc_dollar">
+                            
+                                <img src='http://static.chahiatayba.com/Images/gif/fourchette.gif' width="9" height="24" alt="fourchette" />
+                            
+                        </span>
+                        
+                        <span class="span_fourc_dollar">
+                            
+                                <img src='http://static.chahiatayba.com/Images/gif/fourchette_inactif.gif' width="9" height="24" alt="fourchette" />
+                            
+                        </span>
+                        
+                        
+                    </td>
+                  </tr>
+                  <tr class="col1">
+                    <td><strong>Temps de pr&eacute;paration</strong></td>
+                    <td>&nbsp;</td>
+                    <td width="60"> <time datetime="PT60M" itemprop="prepTime">60 min</time></td>
+                  </tr>
+                  <tr class="col2">
+                    <td><strong>Temps de Cuisson </strong></td>
+                    <td>&nbsp;</td>
+                    <td width="60"> <time datetime="PT10M" itemprop="cookTime">10 min</time></td>
+                  </tr>
+                  <tr class="col1">
+                    <td><strong>Temps d&apos;attente</strong></td>
+                    <td>&nbsp;</td>
+                    <td width="60">0 min</td>
+                  </tr>
+              </table></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="ht20"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+      <div class="b_wrapper">
+        <h2 class="title_b_wrapper"><span class="ingredient_nbr">pour  5 personnes</span><span>Les Ingr&eacute;dients <span style=" font-size:0.7em; margin-top:7px; width:100%; background-image:none; padding-left:0px;">recette de kefta tunisienne</span></span><span class="clear_span"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span></h2>
+        <div class="padding_wrapper">
+          <ul>
+            
+                <li class="div_ingredient"><span itemprop="ingredient" itemscope itemtype="http://data-vocabulary.org/RecipeIngredient"><span class="amount"></span>&nbsp;<span itemprop="name">4 pommes de terre </span></span></li>
+            
+                <li class="div_ingredient"><span itemprop="ingredient" itemscope itemtype="http://data-vocabulary.org/RecipeIngredient"><span class="amount"></span>&nbsp;<span itemprop="name">1 oignon</span></span></li>
+            
+                <li class="div_ingredient"><span itemprop="ingredient" itemscope itemtype="http://data-vocabulary.org/RecipeIngredient"><span class="amount"></span>&nbsp;<span itemprop="name">1/2 botte de persil </span></span></li>
+            
+                <li class="div_ingredient"><span itemprop="ingredient" itemscope itemtype="http://data-vocabulary.org/RecipeIngredient"><span class="amount"></span>&nbsp;<span itemprop="name">100g de viande hach&#233;e </span></span></li>
+            
+                <li class="div_ingredient"><span itemprop="ingredient" itemscope itemtype="http://data-vocabulary.org/RecipeIngredient"><span class="amount"></span>&nbsp;<span itemprop="name">2 oeufs </span></span></li>
+            
+                <li class="div_ingredient"><span itemprop="ingredient" itemscope itemtype="http://data-vocabulary.org/RecipeIngredient"><span class="amount"></span>&nbsp;<span itemprop="name">100 g de chapelure</span></span></li>
+            
+                <li class="div_ingredient"><span itemprop="ingredient" itemscope itemtype="http://data-vocabulary.org/RecipeIngredient"><span class="amount"></span>&nbsp;<span itemprop="name">1 pinc&#233;e de sel et de poivre </span></span></li>
+            
+                <li class="div_ingredient"><span itemprop="ingredient" itemscope itemtype="http://data-vocabulary.org/RecipeIngredient"><span class="amount">1 cui &#224; s</span>&nbsp;<span itemprop="name">Tabel</span></span></li>
+            
+          </ul>
+        </div>
+      </div>
+      <div class="ht20"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+      <div class="b_wrapper">
+        <h2 class="title_b_wrapper"><span>Etapes de préparation <span style=" font-size:0.7em; margin-top:7px; width:100%; background-image:none; padding-left:0px;">recette de kefta tunisienne</span></span></h2>
+        <div itemprop="instructions" class="padding_wrapper">
+          <ol >
+            
+            <li class="div_preparation">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td class="num_liste"><strong>0</strong></td>
+                  <td>1/Eplucher les pommes de terre et les faire cuire &#224; l&#39;eau.</td>
+                </tr>
+              </table>
+            </li>
+            
+            <li class="div_preparation">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td class="num_liste"><strong>1</strong></td>
+                  <td>2/Eplucher l&#39;oignons et le couper finement.</td>
+                </tr>
+              </table>
+            </li>
+            
+            <li class="div_preparation">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td class="num_liste"><strong>2</strong></td>
+                  <td>3/Faire revenir la viande hach&#233;e.</td>
+                </tr>
+              </table>
+            </li>
+            
+            <li class="div_preparation">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td class="num_liste"><strong>3</strong></td>
+                  <td>4/Hacher le persil.</td>
+                </tr>
+              </table>
+            </li>
+            
+            <li class="div_preparation">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td class="num_liste"><strong>4</strong></td>
+                  <td>5/M&#233;langer la viande, les pommes de terre &#233;cras&#233;es, le persil l&#39;oignon.</td>
+                </tr>
+              </table>
+            </li>
+            
+            <li class="div_preparation">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td class="num_liste"><strong>5</strong></td>
+                  <td>6/Y ajouter la chapelure.</td>
+                </tr>
+              </table>
+            </li>
+            
+            <li class="div_preparation">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td class="num_liste"><strong>6</strong></td>
+                  <td>7/Bien malaxer pour faire une pur&#233;e.</td>
+                </tr>
+              </table>
+            </li>
+            
+            <li class="div_preparation">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td class="num_liste"><strong>7</strong></td>
+                  <td>8/Ajouter les oeufs et bien m&#233;langer (il faut que cela face une p&#226;te moelleuse).</td>
+                </tr>
+              </table>
+            </li>
+            
+            <li class="div_preparation">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td class="num_liste"><strong>8</strong></td>
+                  <td>9/Faire chauffer de l&#39;huile dans une po&#234;le.</td>
+                </tr>
+              </table>
+            </li>
+            
+            <li class="div_preparation">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td class="num_liste"><strong>9</strong></td>
+                  <td>10/Quand l&#39;huile est assez chaude prendre un peu de la p&#226;te, la rouler dans la main, l&#39;aplatir comme une galette et la mettre dans l&#39;huile.</td>
+                </tr>
+              </table>
+            </li>
+            
+            <li class="div_preparation">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td class="num_liste"><strong>10</strong></td>
+                  <td>11/Faire dorer.</td>
+                </tr>
+              </table>
+            </li>
+            
+            <li class="div_preparation">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td class="num_liste"><strong>11</strong></td>
+                  <td>12/Laisser reposer une minute puis d&#233;guster .</td>
+                </tr>
+              </table>
+            </li>
+            
+           
+          </ol>
+        </div>
+      </div>
+      <div class="ht20"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+
+      
+<script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+        $("[id*=btnLikeComment]").click(function () {
+            var commentId = this.id.split('_');
+            likecomment(commentId[1])
+        });
+        $("#commentForm").submit(function () {
+            $('span[id*= "msgValidComment"]').attr("style", "visibility: hidden");
+            $('span[id*= "captchaTextRequired"]').attr("style", "visibility: hidden");
+            $('span[id*= "captchaTextValid"]').attr("style", "visibility: hidden");
+            var validData = true;
+            //Validation de données : tous les champs sont obligatoires.
+            if ($('[name="txtCaptcha"]').val() == "") {
+                $('span[id*= "captchaTextRequired"]').attr("style", "visibility: visible");
+                validData = false;
+            }
+            else {
+                var methodParams = { mdText: $('[name="hdnCaptcha"]').val(), msgText: $('[name="txtCaptcha"]').val() };
+                var stringMethodParams = JSON.stringify(methodParams);
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    url: 'http://www.chahiatayba.com/Controls/Captcha/SecurityHelper.asmx/IsValidTextMD5',
+                    data: stringMethodParams,
+                    dataType: "json",
+                    async: false,
+                    success: function (data, text) {
+                        if (data != null) {
+                            if (!data.d) {
+                                validData = false;
+                                $('span[id*= "captchaTextValid"]').attr("style", "visibility: visible");
+                            }
+
+                        }
+                    },
+                    error: function (request, status, error) {
+                        alert('problème lors de l\'appel au service de vérification captcha');
+
+                    }
+                });
+
+
+            }
+
+            if ($('#commentText').val() == "" || $('#commentName').val() == "" || $('#commentEmail').val() == "") {
+                $('span[id*= "msgValidComment"]').attr("style", "visibility: visible");
+                validData = false;
+            }
+
+            return validData;
+
+        });
+
+        
+
+    });
+
+    function likecomment(commentId) {
+        var methodParams = { commentId: commentId, category: '2' };
+        var stringMethodParams = JSON.stringify(methodParams);
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: 'http://www.chahiatayba.com/Services/CommentService.asmx/likeComment',
+            data: stringMethodParams,
+            dataType: "json",
+            async: false,
+            success: function (data, text) {
+                if (data != null) {
+                    //like comment OK 
+                    if (data.d > 0) {
+                        $('#nblike_' + commentId).html(data.d);
+                        
+                    }
+                    //already like comment
+                    else if (data.d == 0) {
+                        var opts = {
+                            title: 'Notification',
+                            text: "Vous aimez déjà ce commentaire !",
+                            addclass: "stack-bottomright",
+                            //addclass: "stack-custom2",
+                            pnotify_delay: 3000,
+                            pnotify_stack: stack_bottomright,
+                            pnotify_type: "notice"
+                        };
+
+                        $.pnotify(opts);
+                    }
+                    //non connecté
+                    else if (data.d == -1) {
+                        var identificationUrl = 'http://www.chahiatayba.com/login.aspx?returnurl=%2frecettes%2f233%2fkefta-tunisienne?likecomment=' + commentId;
+                        var opts = {
+                            title: 'Notification',
+                            text: 'Veuillez vous <a href="' + identificationUrl + '">connecter</a>',
+                            addclass: "stack-bottomright",
+                            //addclass: "stack-custom2",
+                            pnotify_delay: 3000,
+                            pnotify_stack: stack_bottomright,
+                            pnotify_type: "notice"
+                        };
+
+                        $.pnotify(opts);
+                    }
+                    //erreur serveur
+                    else {
+
+                    }
+
+                }
+            },
+            error: function (request, status, error) {
+                alert('problème lors de l\'appel au service de vérification captcha');
+
+            }
+        });
+    }
+    
+</script>
+
+      <div class="b_wrapper">
+        <h2 class="title_comm_wrapper"><span>Commentaires</span></h2>
+        <div class="padding_wrapper">
+            
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    leila mhenni 
+                    
+                </div>
+                <div class="postele"> 15/03/2011 17:34:10</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_1191" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_1191">1</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">c tr&#232;s d&#233;licieux tr&#232;s simple avec un peu de sauce &#224; la tomate fraiche une salade un repas complet bichfa &#224; tous</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    sawsan 
+                    
+                </div>
+                <div class="postele"> 25/03/2011 11:45:03</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_1205" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_1205">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">slt svp c&#39;est koi le chapelure et le persil et merci</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    
+                       <a href='/blogs/180/hadhoud'>hadhoud </a>
+                    
+                </div>
+                <div class="postele"> 25/03/2011 13:51:37</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_1206" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_1206">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">chapelure : الخبز كيف يبات و بعدين ترحيه
+persil: معدنوس </div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    kawthar 
+                    
+                </div>
+                <div class="postele"> 05/04/2011 12:31:27</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_1232" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_1232">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">mer&#231;i pour la recette j&#39;ai essay&#233; sans pomme de terre elle est plus d&#233;licieuse</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    rafika 
+                    
+                </div>
+                <div class="postele"> 05/04/2011 12:59:36</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_1233" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_1233">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">pour ceux qui veulent &#233;viter les fritures faire cuire dans la sauce seulement il faut mettre la viande crue</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    SALOUA bERREHOUMA 
+                    
+                </div>
+                <div class="postele"> 05/04/2011 13:37:06</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_1234" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_1234">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">On peut remplacer la viande (qui devient trop ch&#232;re, par du Hareg fum&#233; ( une tranche de 5 cm) &#224; &#233;mietter, ou une boite de sardine : c&#39;est d&#233;licieux!!</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    
+                       <a href='/blogs/393/lahmar-thouraya'>lahmar thouraya </a>
+                    
+                </div>
+                <div class="postele"> 22/04/2011 00:44:42</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_1316" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_1316">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">On peut remplacer la viande hach&#233; par des sardines ,,c encore meilleur...
+c un d&#233;lice ,,merci pour la recette .</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    fatou 
+                    
+                </div>
+                <div class="postele"> 14/05/2011 11:43:08</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_1379" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_1379">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">merci pour la recette mais esq tu peux donne_moi la recette de la chapelure stv</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    riadh bouzid 
+                    
+                </div>
+                <div class="postele"> 01/06/2011 12:32:13</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_1429" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_1429">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">avec du merlan c&#39;est excellent aussi :)</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    nes 
+                    
+                </div>
+                <div class="postele"> 18/11/2011 09:06:48</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_2014" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_2014">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">bonjours a tous merci pour les recette . 
+</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    mazlout amel 
+                    
+                </div>
+                <div class="postele"> 26/11/2011 12:42:19</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_2027" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_2027">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">merci pour la recette est ce ke on cuir le viande hache</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    Administrateur 
+                    
+                </div>
+                <div class="postele"> 01/12/2011 11:57:08</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_2040" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_2040">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">@amel : oui il faut cuire la viande. (&#233;tape 3)</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    meriem 
+                    
+                </div>
+                <div class="postele"> 03/01/2013 10:47:06</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3128" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3128">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">on peut remplacer la viande hach&#233; par le poulet aussi ou bien la sardine</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    lobna 
+                    
+                </div>
+                <div class="postele"> 20/01/2013 16:43:51</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3139" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3139">1</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">stp c&#39;est quoi tabel ???
+
+</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    lobna 
+                    
+                </div>
+                <div class="postele"> 20/01/2013 16:43:51</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3140" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3140">1</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">stp c&#39;est quoi tabel ???
+
+</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    lobna 
+                    
+                </div>
+                <div class="postele"> 20/01/2013 16:43:51</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3141" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3141">1</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">stp c&#39;est quoi tabel ???
+
+</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    Coulibaly 
+                    
+                </div>
+                <div class="postele"> 03/02/2013 19:08:39</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3153" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3153">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">Je suis tres content pour avoir ce recette</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    noura 
+                    
+                </div>
+                <div class="postele"> 16/06/2013 10:05:42</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3243" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3243">1</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">j&#39;adore </div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    defectos26 
+                    
+                </div>
+                <div class="postele"> 12/07/2013 14:46:30</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3297" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3297">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">tabel c&#39;est coriandre moulu lobna
+</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    Onclesab 
+                    
+                </div>
+                <div class="postele"> 28/07/2013 16:46:33</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3351" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3351">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">Selem arlecoum, la chapelure c&#39;est du pain sec &#233;mi&#233;tt&#233; dans ce cas la ou de la biscotte.
+Je voulais savoir combien de kefta on fait avec cette quantit&#233; ?</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    Onclesab 
+                    
+                </div>
+                <div class="postele"> 28/07/2013 18:04:33</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3352" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3352">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">Selem arlecoum, la chapelure c&#39;est du pain sec &#233;mi&#233;tt&#233; dans ce cas la ou de la biscotte.
+Je voulais savoir combien de kefta on fait avec cette quantit&#233; ?</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    tunisianman 
+                    
+                </div>
+                <div class="postele"> 30/06/2014 13:52:46</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3456" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3456">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">chaque galette doit etre enduite d&#39;une fine pellicule de farine afin d&#39;eviter que ca colle dans les maina et dans la poelle . chahia taiiba.
+</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    Sudtunisien 
+                    
+                </div>
+                <div class="postele"> 10/07/2014 15:07:28</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3462" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3462">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">moi, j&#39;utilise du thon &#224; la place de la viande hach&#233;e et j&#39;ai mis de la farine &#224; la place de chaplure.......tr&#232;s bonne!! </div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    Sudtunisien 
+                    
+                </div>
+                <div class="postele"> 10/07/2014 15:09:24</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3463" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3463">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">Et surtout j&#39;ajoute du cumin en poudre + ail hach&#233; !!! </div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    amel 
+                    
+                </div>
+                <div class="postele"> 07/02/2015 18:44:27</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3597" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3597">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">Merci pour la recette c tres bon et en plus c tres facile a faire </div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    Guinoubi 
+                    
+                </div>
+                <div class="postele"> 26/02/2015 10:29:39</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3604" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3604">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">Je vait essaiyer dans faire aujourd&#39;hui</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    marielam 
+                    
+                </div>
+                <div class="postele"> 28/02/2015 20:40:36</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3605" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3605">1</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">merci c&#39;est r&#233;ussi juste ajout&#233; du harissa !</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    melanie 
+                    
+                </div>
+                <div class="postele"> 18/06/2015 17:58:26</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3624" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3624">1</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">bonjour jsui peut etre bete mes svp c koi le tabel ?? merci</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo"><a href='/blogs/3/zied-nemili'><img class="comment_photo_img" alt="Editeur" src='http://www.chahiatayba.com/Photos/Editeur/129991357991478254.jpg' /></a></div>
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    
+                       <a href='/blogs/3/zied-nemili'>zied.nemili </a>
+                    
+                </div>
+                <div class="postele"> 22/06/2015 15:46:47</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3635" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3635">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">le &quot;tabel&quot; est une &#233;pice : c&#39;est le coriandre en poudre !</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    sourour 
+                    
+                </div>
+                <div class="postele"> 09/01/2016 10:31:21</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3701" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3701">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">on peut meme remplacer les carottes par du choud fleur bouilliavec de l&#39;ail. et meme mettre la pate de kefta entre deux tranches de pommes de terre. c trop bon aussi 
+
+ </div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    Nesma 
+                    
+                </div>
+                <div class="postele"> 22/07/2016 19:55:23</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3792" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3792">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">Est ce que en peut remplacer l viande avec le ton</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    aouadi sihem 
+                    
+                </div>
+                <div class="postele"> 29/10/2016 16:24:27</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_3801" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_3801">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">moi je la fait kathaba sans viande et c tr&#232;s bon surtout pour les enfants qui n aiment pas la viande ils raffolent, j ajoute du hrissa 3arbi et du korkom essayez la c formidable
+</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <div class="comments">
+            
+            <div class="comment_photo">
+                <div class="comment">
+                    Zaibi aurelie 
+                    
+                </div>
+                <div class="postele"> 24/02/2021 16:18:48</div>
+            </div>
+            <div class="clear">
+                <img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 32px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:large">
+                            <input type="button" class="btnLikeComment" id="btnLikeComment_9233" name="btnLikeComment" />
+                            &nbsp;&nbsp;<span id="nblike_9233">0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="comm">
+                            <div class="div_commanataire"><span class="top_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                                <div class="padding_comm">Bonjour a vous je souhaite faire cette recette esceque je peux pr&#233;parer mes keftas a 16h par exemple et les re passer au four le soir pour r&#233;chauffer??</div>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+
+            
+          </div>
+          
+          <form id="commentForm" method="post" action="">
+            <div class="comments">
+            
+              <div class="comment_nouv">Votre nom : <span id="msgValidCommentName" class="commentMsgValid">(obligatoire)</span> </div>
+              <div class="comm">
+                <div class="div_nouv_commanataire"><span class="top_nouv_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                  <div class="padding_nouv_comm">
+                    <input id="commentName" name="commentName" type="text" />
+                  </div>
+                </div>
+              </div>
+              
+              <div class="clear"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+              <div class="ht20"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+    
+              <div class="comment_nouv">Votre email : <span id="msgValidCommentEmail" class="commentMsgValid">(obligatoire)</span></div>
+              <div class="comm">
+                <div class="div_nouv_commanataire"><span class="top_nouv_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                  <div class="padding_nouv_comm">
+                    <input id="commentEmail" name="commentEmail" type="text" />
+                  </div>
+                </div>
+              </div>
+              
+              <div class="clear"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+              <div class="ht20"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+    
+              <div class="comment_nouv">Votre commentaire : <span id="msgValidCommentText" class="commentMsgValid">(obligatoire)</span></div>
+              <div class="comm">
+                <div class="div_nouv_commanataire"><span class="top_nouv_comm"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></span>
+                  <div class="padding_nouv_comm">
+                    <textarea id="commentText" name="commentText" cols="" rows=""></textarea>
+                  </div>
+                </div>
+              </div>
+            
+            <div class="clear"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+            <div class="ht20"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+    
+            <div class="comm">
+                
+<script language="javascript" type="text/javascript">
+    function reloadCaptcha() {
+        var methodParams = { numberOfCaracters: 5 };
+        var stringMethodParams = JSON.stringify(methodParams);
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: 'http://www.chahiatayba.com/Controls/Captcha/RandomText.asmx/GetNewCaptchaText',
+            data: stringMethodParams,
+            dataType: "json",
+            async: false,
+            success: function (data, text) {
+                if (data != null && data.d != "") {
+                    var captchaText = data.d;
+                    if (captchaText != null && captchaText != "") {
+                        var captchaArray = captchaText.split('|');
+                        if (captchaArray.length > 1) {
+                            $('[name="ImgCaptcha"]').attr("src", 'http://www.chahiatayba.com/' + 'Services/GetImageFromText/GetImageFromText.ashx?CaptchaText=' + captchaArray[1]);
+                            $('input[name="hdnCaptcha"]').attr("value", captchaArray[0])
+                        }
+                    }
+                }
+            },
+            error: function (request, status, error) {
+                alert('problème lors de l\'appel au service de text aléatoire');
+
+            }
+        });
+    }
+</script>
+<table>
+    <tr>
+        <td colspan="2" valign="bottom">Recopier les lettres à partir de l'image</td>
+    </tr>
+    <tr>
+        <td colspan="2"> &nbsp;</td>
+    </tr>
+    <tr>
+        <td valign="bottom">
+            <img src="http://www.chahiatayba.com/Services/GetImageFromText/GetImageFromText.ashx?CaptchaText=%2fNtRVPNc74UrtZMNLOAgeMlChMFk5M82wm8kYcaQfOo%3d" id="UcComment1_ucCaptcha_ImgCaptcha" name="ImgCaptcha" alt="captcha" />
+        </td>
+        <td style="width:100%;">
+            
+            &nbsp;&nbsp;<a href="javascript:reloadCaptcha();">Recharger l'image</a>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2"> &nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2" valign="middle">
+            
+            <input id="txtCaptcha" name="txtCaptcha" style="border: 2px inset #999;" type="text" /> <span id="captchaTextRequired" class="commentMsgValid">(obligatoire)</span> <span id="captchaTextValid" class="commentMsgValid">(Le texte doit correspondre à celui de l'image ci-dessus)</span> 
+            
+                <input  type="hidden" name="hdnCaptcha" id="hdnCaptcha" value='fe1688b0a2b4d669e825eeab6b8bb221' /> 
+            
+        </td>
+    </tr>
+</table>
+
+            </div>
+            </div>
+
+            <div>
+              <input id="btnEnvoyer" name="btnEnvoyer" type="submit" class="btn_form" value="envoyer" />
+              <input id="btnReset" name="btnReset" type="reset" class="btn_form" value="effacer" />
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+
+       
+      
+    </div>
+    <div class="clear"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+    <div class="ht25"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+    <div>
+        
+
+<div class="border_top5">
+    
+        <div class="top5_elem">
+          <div class="padding_t5"><a href='/recettes/624/CANNELLONIS-AUX-%C3%89PINARDS-ET-%C3%80-LA-RICOTTA-'><img src='http://www.chahiatayba.com/Photos/Thum120/defaultRecette.jpg' width="152" height="100" alt="ff" /></a>
+            <div><span class="span_note">4,71 / 5</span><span class="t5plus"><a href='/recettes/624/CANNELLONIS-AUX-%C3%89PINARDS-ET-%C3%80-LA-RICOTTA-'><img src='http://static.chahiatayba.com/Images/gif/top5_plus.gif' width="31" height="30" alt="+" /></a></span> </div>
+          </div>
+        </div>
+    
+        <div class="top5_elem">
+          <div class="padding_t5"><a href='/recettes/146/Gateau-au-chocolat-extra-moelleux-aux-framboises'><img src='http://www.chahiatayba.com/Photos/Thum120/defaultRecette.jpg' width="152" height="100" alt="ff" /></a>
+            <div><span class="span_note">4,56 / 5</span><span class="t5plus"><a href='/recettes/146/Gateau-au-chocolat-extra-moelleux-aux-framboises'><img src='http://static.chahiatayba.com/Images/gif/top5_plus.gif' width="31" height="30" alt="+" /></a></span> </div>
+          </div>
+        </div>
+    
+        <div class="top5_elem">
+          <div class="padding_t5"><a href='/recettes/607/couscous-a-l-agneau'><img src='http://www.chahiatayba.com/Photos/Thum120/130219210210008000.jpg' width="152" height="100" alt="ff" /></a>
+            <div><span class="span_note">4,24 / 5</span><span class="t5plus"><a href='/recettes/607/couscous-a-l-agneau'><img src='http://static.chahiatayba.com/Images/gif/top5_plus.gif' width="31" height="30" alt="+" /></a></span> </div>
+          </div>
+        </div>
+    
+        <div class="top5_elem">
+          <div class="padding_t5"><a href='/recettes/597/malfouf-escalope-aux-epinards'><img src='http://www.chahiatayba.com/Photos/Thum120/130197900423222000.jpg' width="152" height="100" alt="ff" /></a>
+            <div><span class="span_note">4,14 / 5</span><span class="t5plus"><a href='/recettes/597/malfouf-escalope-aux-epinards'><img src='http://static.chahiatayba.com/Images/gif/top5_plus.gif' width="31" height="30" alt="+" /></a></span> </div>
+          </div>
+        </div>
+    
+        <div class="top5_elem">
+          <div class="padding_t5"><a href='/recettes/165/Smoothie-aux-dattes'><img src='http://www.chahiatayba.com/Photos/Thum120/129306110062669362.jpg' width="152" height="100" alt="ff" /></a>
+            <div><span class="span_note">4,14 / 5</span><span class="t5plus"><a href='/recettes/165/Smoothie-aux-dattes'><img src='http://static.chahiatayba.com/Images/gif/top5_plus.gif' width="31" height="30" alt="+" /></a></span> </div>
+          </div>
+        </div>
+    
+        <div class="clear"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="gradients">
+        
+</div>
+<div class="footer">
+  <div class="footer_content">
+  <ul class="menu_footer">
+    
+                  <li class="li_cell">
+                    <ul>  
+               
+
+                   <li><a href='/recettes/t2/gateau-cake-petit-dejeuner-cafe'>G&#226;teaux pour le petit d&#233;jeuner</a></li>
+               
+
+                   <li><a href='/recettes/t11/recette-salade-cuite-cuisine'>Les salades cuites</a></li>
+               
+
+                   <li><a href='/recettes/t12/aperitifs-amuse-gueule-bouche'>Tous les Ap&#233;ritifs</a></li>
+               
+
+                   <li><a href='/recettes/t14/Recette-poulet-viande-blanche'>Les recettes au poulet</a></li>
+               
+
+                   <li><a href='/recettes/t17/recette-rapide-chrono-30-minutes'>Toutes les recettes en moins de 30 minutes</a></li>
+               
+                    </ul>
+                  </li>  
+               
+                  <li class="li_cell">
+                    <ul>  
+               
+
+                   <li><a href='/recettes/t18/tarte-salee-quiche'>Les tartes sal&#233;es / Quiches</a></li>
+               
+
+                   <li><a href='/recettes/t20/recette-pate-pizza-epaisse-fine'>Les p&#226;tes &#224; pizza</a></li>
+               
+
+                   <li><a href='/recettes/t22/recette-couscous-agneau-poulet-veau-boeuf-poisson-masfouf'>Le couscous sous toutes ses formes</a></li>
+               
+
+                   <li><a href='/recettes/t38/Chorba-ramadhan-soupe-orientale-'>Soupes orientales / Chorba</a></li>
+               
+
+                   <li><a href='/recettes/t39/mar9a-marka-plat-sauce-pain'>Mar9a ou plat &#224; saucer</a></li>
+               
+                    </ul>
+                  </li>  
+               
+                  <li class="li_cell">
+                    <ul>  
+               
+
+                   <li><a href='/recettes/t74/tajine-tunisien-tagine-oeuf'>Les tajines tunisiens</a></li>
+               
+
+                   <li><a href='/recettes/t77/recette-Riz--'>Toutes les recettes de riz</a></li>
+               
+
+                   <li><a href='/recettes/t79/recette-glace-maison-sorbetiere'>Les glaces maison</a></li>
+               
+
+                   <li><a href='/recettes/t81/Verrine-presente-verre'>Les Verrines</a></li>
+               
+            </ul>
+          </li>  
+        
+
+    
+    
+    </ul>
+    <div class="clear"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+    <div class="ht20"><img src='http://static.chahiatayba.com/Images/gif/vide.gif' width="1" height="1" alt=" " /></div>
+    <ul class="menu_footer">
+        <li class="li_cell"> <a href='http://www.chahiatayba.com/Partenaires.aspx'>Nos partenaires</a></li>
+        <li class="li_cell"> <a href='http://www.tunisia-satellite.com/' target="_blank">Forum Tunisie</a></li>
+        
+    </ul>
+
+    
+    <div class="copyright">
+        <a href="mailto:administrateur@chahiatayba.com?subject=Contact via chahiatayba.com" target="_blank">Nous contacter</a>
+        <strong> - chahiyatayba.com  -  © 2011</strong>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+    _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+    _gaq.push(['_setAccount', 'UA-17643940-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+
+<!-- Start Alexa Certify Javascript -->
+<script type="text/javascript">
+_atrk_opts = { atrk_acct:"CdlLj1a8y100MR", domain:"chahiatayba.com",dynamic: true};
+(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+</script>
+<noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=CdlLj1a8y100MR" style="display:none" height="1" width="1" alt="" /></noscript>
+<!-- End Alexa Certify Javascript -->  
+  
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#tagsphere').tagSphere(); 
+	});
+</script>
+</body>
+</html>

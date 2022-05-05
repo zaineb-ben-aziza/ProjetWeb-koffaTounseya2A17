@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<?php
+//include('action.php');
+?>
+
+
+ 
+
 <html dir="ltr" lang="en">
 
 <head>
@@ -227,31 +233,31 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">ajout recette</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-    <form action="action.php" method="POST">
+    <form action="action.php" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
-            <label> nom_recette</label>
-            <input type="text" class="form-control" placeholder="entrez le nom" required>
+            <label> nom_recette </label>
+            <input type="text" name="nom_recette" class="form-control" placeholder="entrez le nom" required>
           </div>
           <div class="mb-3">
             <label> type_recette</label>
-            <input type="text" class="form-control" placeholder="entrez le type_recette" required>
+            <input type="text" name="type_recette" class="form-control" placeholder="entrez le type_recette" required>
           </div>
           <div class="mb-3">
             <label> description</label>
-            <input type="text" class="form-control" placeholder="entrez la description" required>
+            <input type="text" name="description_recette" class="form-control" placeholder="entrez la description" required>
           </div>
           <div class="mb-3">
             <label>  Upload Image </label>
-            <input type="file" name="image_rec" id="image_rec"  class="form-control"  required>
+            <input type="file" name="image_recette" id="image_rec"  class="form-control"  required>
           </div>    
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save </button>
+          <button type="submit" name="save_recette" class="btn btn-primary">Save </button>
         </div>
     </form> 
       </div>
@@ -269,7 +275,20 @@
             </h6>
         </div>
         <div class="card-body">
+        <?php
+        if(isset($_SESSION['sucesss']) && $_SESSION['sucesss'] !='')
+          {
+              echo '<h2 class="bg-primary text-white"> '.$_SESSION['success'].' </h2>';
+              unset($_SESSION['success'] );
 
+          }
+          if(isset($_SESSION['status']) && $_SESSION['status'] !='')
+          {
+              echo '<h2 class="bg-dander text-white"> '.$_SESSION['status'].' </h2>';
+              unset($_SESSION['status'] );
+              
+          }          
+     ?>
             <div class="table-responsive">
 
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -313,7 +332,7 @@
     </div>
 </div>            
         
-            <!-- =======================FORMULAIRE GESTION DES  recettes======================================= -->
+       <!-- =======================FORMULAIRE GESTION DES  recettes======================================= -->
          <!--  <form>
 		   <div class="container">
 
@@ -343,21 +362,22 @@
 </button>
  
   
-</form>-->
+</form>-->  
 
  
  
 
     <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
+    //<!-- Bootstrap tether Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app-style-switcher.js"></script>
-    <!--Wave Effects -->
+   // <!--Wave Effects -->
     <script src="js/waves.js"></script>
-    <!--Menu sidebar -->
+   // <!--Menu sidebar -->
     <script src="js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
+    //<!--Custom JavaScript -->
     <script src="js/custom.js"></script>
 </body>
 
-</html>
+
+
