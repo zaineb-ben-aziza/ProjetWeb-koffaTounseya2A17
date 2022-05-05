@@ -1,7 +1,6 @@
-<!DOCTYPE html>
 
        <?php
-    include_once'C:/xampp/htdocs/projet/ingredientC.php';
+    include_once'C:/xampp/htdocs/projet/Controller/ingredientC.php';
 	$ingredientC=new ingredientC();
 	$listeingredient=$ingredientC->afficheringredient(); 
 ?>
@@ -138,48 +137,52 @@
 
 <!-- ------------------------------------NOS INGREDIENT-------------------------------------------------------------------->
 
-<section class="products" id="products">
+
+ 
+			
+
+      <section class="products" id="products">
 
     <h1 class="heading"> Nos<span>ingrédients</span> </h1>
 
     <div class="swiper product-slider">
+   
 
-       <?php
-    include_once'C:/xampp/htdocs/projet/ingredientC.php';
-	$ingredientC=new ingredientC();
+        <div class="swiper-wrapper">
+        <?php
+             include_once'C:/xampp/htdocs/projet/Controller/ingredientC.php';
+         $ingredientC=new ingredientC();
 	$listeingredient=$ingredientC->afficheringredient(); 
-?>
-			<?php
-			
-				foreach($listeingredient as $ingredient){
-			echo'
-			
-			<div class="swiper-slide box">
-                <img src="image/couscous.png" alt="">
-                <h1>'.$ingredient['noming'].'</h1>
-                <div class="price">Prix: '.$ingredient['prixing'].' TND </div>
-				   <div class="price"> '.$ingredient['composant'].' </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-				
-               <p><input type="submit"  value="Ajouter" class="btn btn-info"  name="ajouter" >
-			 
+	
+            foreach($listeingredient as $ingredient){
+           ?>
+       
+            <div class="swiper-slide box">
+          
+            <img src="image/<?php echo $ingredient["codeing"];?>.png" >
+            <h3><?php echo $ingredient["noming"]; ?></h3>
+                <p class="price">prix: <?php echo $ingredient["prixing"]; ?></p>
+				<p class="price">Quantité: <?php echo $ingredient["qteing"]; ?></p>
+                <div class="price"><?php echo $ingredient["composant"];?> 
+                <br>
+                <a href="viewmore.php" class="btn">view more</a>
+            
             </div>
-			';
-				?>
-		
-			<?php
-				}
-			?>
-			
+            </div>
+            <?php
+            }
+        ?>
 
-           
+            </div>
+              
+          
 
+        </div>
+       
+
+
+</section>
+     
 <!-- -------------------------------------------------------------------------------------------------------------->
 
 <!-- categories section starts  -->

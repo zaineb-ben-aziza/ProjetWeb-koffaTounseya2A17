@@ -1,5 +1,5 @@
 <?php
-include_once 'C:/xampp/htdocs/projet/ingredientC.php';
+require 'C:/xampp/htdocs/projet/Controller/ingredientC.php';
          if (isset($_POST["modifier"])) {
            $ingredient = new ingredient(
             $_GET['deletevar'],
@@ -38,7 +38,7 @@ include_once 'C:/xampp/htdocs/projet/ingredientC.php';
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-<script src="script1.js">
+<script src="js/script1.js">
 
       </script>
 </head>
@@ -222,7 +222,7 @@ include_once 'C:/xampp/htdocs/projet/ingredientC.php';
   </div>
   <div class="">
     <label for="exampleInputPassword1" class="">Prix de l'ingredient:</label>
-    <input type="number"  step="0.1"    type="number" placeholder="0.1 TND" name="prixing" class="form-control" id="prixing" value=<?php echo $ingredient['prixing'];?>>
+    <input type="text"     placeholder="0.1 TND" name="prixing" class="form-control" id="prixing" value=<?php echo $ingredient['prixing'];?>>
 	<span id="cprixing" style="color:#FF0000"> </span>
   </div>
     <div class="">

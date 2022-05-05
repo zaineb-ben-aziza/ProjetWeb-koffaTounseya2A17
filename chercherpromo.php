@@ -181,7 +181,7 @@
  <!-- =======================PHP======================================= -->
  <form method="GET" name="ff">
 <?php
-include_once 'C:/xampp/htdocs/projet/promosC.php';
+require 'C:/xampp/htdocs/projet/Controller/promosC.php';
 if(isset($_POST['chercher'])){
 $promos=new promosC();
 $listepromos=$promos->chercherpromo($_POST["code"]);

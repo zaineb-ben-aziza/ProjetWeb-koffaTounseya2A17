@@ -187,7 +187,7 @@
 <?php
 require 'C:/xampp/htdocs/projet/Controller/ingredientC.php';
 
-if(isset($_POST['chercher'])){
+try(isset($_POST['chercher'])){
 $ingredient=new ingredientC();
 $listeingredient=$ingredient->chercherID($_POST["code"]);
 echo'
@@ -227,7 +227,7 @@ echo'
 </div>';	
 
 }
-else{
+catch{
 
 echo'<div class="alert alert-danger" role="alert">
   Recherche failed!

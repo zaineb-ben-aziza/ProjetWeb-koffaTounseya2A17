@@ -1,5 +1,5 @@
 <?php
-include_once 'C:/xampp/htdocs/projet/promosC.php';
+require 'C:/xampp/htdocs/projet/Controller/promosC.php';
 if(isset($_POST['ajouter'])){
 $promos=new promosC();
 $promos->ajouterpromos();
@@ -7,7 +7,7 @@ header('Location:afficher_promos.php');
 
 }
 //appel liste deroulante ingredient
-include'C:/xampp/htdocs/projet/ingredientC.php';
+include'C:/xampp/htdocs/projet/Controller/ingredientC.php';
 	$ingredientC=new ingredientC();
 	$listeingredient=$ingredientC->afficheringredient(); 
 	
@@ -40,7 +40,7 @@ include'C:/xampp/htdocs/projet/ingredientC.php';
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<script src="script2.js">
+<script src="js/script2.js">
 </script>
 </head>
 

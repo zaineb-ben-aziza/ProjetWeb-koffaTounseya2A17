@@ -185,7 +185,7 @@
 
 
 <?php
-include_once 'C:/xampp/htdocs/projet/ingredientC.php';
+require 'C:/xampp/htdocs/projet/Controller/ingredientC.php';
 if(isset($_POST['tridesc'])){
 $ingredient=new ingredientC();
 $listeingredient=$ingredient->triNomDESC();

@@ -1,4 +1,5 @@
 <?php
+
   class config {
     private static $pdo = NULL;
 
@@ -19,6 +20,7 @@
       return self::$pdo;
     }
   }
+  
   
 ?>
   

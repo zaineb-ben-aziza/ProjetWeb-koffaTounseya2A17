@@ -1,5 +1,5 @@
 <?php
-include_once 'C:/xampp/htdocs/projet/promosC.php';
+require 'C:/xampp/htdocs/projet/Controller/promosC.php';
          if (isset($_POST["modifier"])) {
            $promos = new promos(
             $_GET['deletevar'],
@@ -184,14 +184,14 @@ include_once 'C:/xampp/htdocs/projet/promosC.php';
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Gestion des  ingredients</h4>
+                        <h4 class="page-title">Gestion des promos</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
                             <ol class="breadcrumb ms-auto">
                                 <li><a href="Dashboard.html" class="fw-normal">Home</a></li>
                             </ol>
-                            <a href="https://www.wrappixel.com/templates/ampleadmin/" target="_blank"
+                            <a href="frontafficheing.php" target="_blank"
                                 class="btn btn-danger  d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">front
                                 </a>
                         </div>

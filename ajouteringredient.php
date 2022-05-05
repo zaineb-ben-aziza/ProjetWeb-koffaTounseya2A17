@@ -1,5 +1,5 @@
 <?php
-include_once 'C:/xampp/htdocs/projet/ingredientC.php';
+require 'C:/xampp/htdocs/projet/Controller/ingredientC.php';
 if(isset($_POST['ajouter'])){
 $ingredient=new ingredientC();
 $ingredient->ajouteringredient();
@@ -27,7 +27,7 @@ header('Location:afficheringredient.php');
        <link rel="icon" type="image/png" sizes="32x32" href="C:/xampp/htdocs/projet/icon/icon.png">
     <!-- Custom CSS -->
    <link href="css/style.min.css" rel="stylesheet">
-    <script src="script.js">
+    <script src="js/script0.js">
 
       </script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -185,7 +185,7 @@ header('Location:afficheringredient.php');
                             <ol class="breadcrumb ms-auto">
                                 <li><a href="Dashboard.html" class="fw-normal">Home</a></li>
                             </ol>
-                            <a href="https://www.wrappixel.com/templates/ampleadmin/" target="_blank"
+                            <a href="frontafficheing.php" target="_blank"
                                 class="btn btn-danger  d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">front
                                 </a>
                         </div>
@@ -211,7 +211,7 @@ header('Location:afficheringredient.php');
   </div>
   <div class="">
     <label for="exampleInputPassword1" class="">Prix de l'ingredient:</label>
-    <input type="number"  step="0.1"    type="number" placeholder="0.1 TND" name="prixing" class="form-control" id="prixing">
+    <input   type="text"   placeholder="0.1 TND" name="prixing" class="form-control" id="prixing">
 	<span id="cprixing" style="color:#FF0000"> </span>
   </div>
     <div class="">
